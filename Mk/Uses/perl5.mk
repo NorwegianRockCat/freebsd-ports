@@ -50,6 +50,8 @@ USE_PERL5?=	run build
 .include "${PORTSDIR}/lang/perl5.28/version.mk"
 .    elif ${PERL5_DEFAULT} == 5.30
 .include "${PORTSDIR}/lang/perl5.30/version.mk"
+.    elif ${PERL5_DEFAULT} == 5.32
+.include "${PORTSDIR}/lang/perl5.32/version.mk"
 .    elif ${PERL5_DEFAULT} == devel
 .include "${PORTSDIR}/lang/perl5-devel/version.mk"
 # Force PERL_PORT here in case two identical PERL_VERSION.
