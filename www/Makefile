@@ -1,8 +1,3 @@
-# $FreeBSD$
-#
-
-    COMMENT = Ports related to the World Wide Web
-
     SUBDIR += R-cran-RgoogleMaps
     SUBDIR += R-cran-Rook
     SUBDIR += R-cran-crosstalk
@@ -2472,4 +2467,3 @@
     SUBDIR += zola
     SUBDIR += zope213
 
-.include <bsd.port.subdir.mk>

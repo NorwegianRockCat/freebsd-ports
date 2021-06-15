@@ -65,10 +65,10 @@ LLVM_DEFAULT?=		80
 LUA_DEFAULT?=		5.2
 # Possible values: 5.5, 5.6, 5.7, 8.0, 5.5m, 10.0m, 10.1m, 10.2m, 10.3m, 5.5p, 5.6p, 5.7p, 5.6w
 MYSQL_DEFAULT?=		5.7
-# Possible values: 5.26, 5.28, 5.30, devel
+# Possible values: 5.26, 5.28, 5.30, 5.32, devel
 .if !exists(${LOCALBASE}/bin/perl) || (!defined(_PORTS_ENV_CHECK) && \
     defined(PACKAGE_BUILDING))
-PERL5_DEFAULT?=		5.30
+PERL5_DEFAULT?=		5.32
 .elif !defined(PERL5_DEFAULT)
 # There's no need to replace development versions, like "5.23" with "devel"
 # because 1) nobody is supposed to use it outside of poudriere, and 2) it must
