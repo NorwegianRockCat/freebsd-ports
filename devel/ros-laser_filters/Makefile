@@ -1,0 +1,90 @@
+PORTNAME=	ros-laser_filters
+DISTVERSION=	1.8.11
+CATEGORIES=	devel
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	henrik@gulbra.net
+COMMENT=	ROS laser_filters package
+
+LICENSE=	BSD3CLAUSE
+
+BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
+		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
+LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
+		libboost_atomic.so:devel/boost-libs\
+		libboost_chrono.so:devel/boost-libs\
+		libboost_date_time.so:devel/boost-libs\
+		libboost_filesystem.so:devel/boost-libs\
+		libboost_program_options.so:devel/boost-libs\
+		libboost_regex.so:devel/boost-libs\
+		libboost_system.so:devel/boost-libs\
+		libboost_thread.so:devel/boost-libs\
+		libclass_loader.so:devel/ros-class_loader\
+		libconsole_bridge.so:devel/ros-console_bridge\
+		libcpp_common.so:devel/ros-cpp_common\
+		libdynamic_reconfigure_config_init_mutex.so:devel/ros-dynamic_reconfigure\
+		libincrement.so:devel/ros-filters\
+		liblaser_geometry.so:devel/ros-laser_geometry\
+		liblog4cxx.so:devel/log4cxx\
+		libmean.so:devel/ros-filters\
+		libmedian.so:devel/ros-filters\
+		libmessage_filters.so:devel/ros-message_filters\
+		libparams.so:devel/ros-filters\
+		libPocoFoundation.so:devel/poco\
+		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
+		librosconsole_backend_interface.so:devel/ros-rosconsole\
+		librosconsole_log4cxx.so:devel/ros-rosconsole\
+		librosconsole.so:devel/ros-rosconsole\
+		libroscpp_serialization.so:devel/ros-roscpp_serialization\
+		libroscpp.so:devel/ros-roscpp\
+		libroslib.so:devel/ros-roslib\
+		librospack.so:devel/ros-rospack\
+		librostime.so:devel/ros-rostime\
+		libtf.so:devel/ros-tf\
+		libtf2_ros.so:devel/ros-tf2_ros\
+		libtf2.so:devel/ros-tf2\
+		libtinyxml2.so:textproc/tinyxml2\
+		libtransfer_function.so:devel/ros-filters\
+		libxmlrpcpp.so:devel/ros-xmlrpcpp
+RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+USES=		cmake eigen:3 python
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	ros-perception
+GH_PROJECT=	laser_filters
+
+USE_LDCONFIG=	yes
+
+CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
+
+_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest
+
+_COMMON_RDEPS=	angles dynamic_reconfigure filters laser_geometry\
+		message_filters pluginlib roscpp sensor_msgs tf
+
+_PYLIBDIR=	${PYTHON_SITELIBDIR}
+_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
+_SHAREDIR=	${LOCALBASE}/share
+
+post-stage:
+	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete
+	${MV} ${STAGEDIR}${PREFIX}/lib/liblaser_scan_filters.so\
+	    ${STAGEDIR}${PREFIX}/lib/liblaser_scan_filters.so.1.8.11
+	${LN} -fs liblaser_scan_filters.so.1.8.11\
+	    ${STAGEDIR}${PREFIX}/lib/liblaser_scan_filters.so.1.8
+	${LN} -fs liblaser_scan_filters.so.1.8\
+	    ${STAGEDIR}${PREFIX}/lib/liblaser_scan_filters.so.1
+	${LN} -fs liblaser_scan_filters.so.1\
+	    ${STAGEDIR}${PREFIX}/lib/liblaser_scan_filters.so
+	${MV} ${STAGEDIR}${PREFIX}/lib/libpointcloud_filters.so\
+	    ${STAGEDIR}${PREFIX}/lib/libpointcloud_filters.so.1.8.11
+	${LN} -fs libpointcloud_filters.so.1.8.11\
+	    ${STAGEDIR}${PREFIX}/lib/libpointcloud_filters.so.1.8
+	${LN} -fs libpointcloud_filters.so.1.8\
+	    ${STAGEDIR}${PREFIX}/lib/libpointcloud_filters.so.1
+	${LN} -fs libpointcloud_filters.so.1\
+	    ${STAGEDIR}${PREFIX}/lib/libpointcloud_filters.so
+
+.include <bsd.port.mk>

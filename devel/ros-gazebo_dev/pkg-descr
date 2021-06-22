@@ -1,0 +1,4 @@
+Provides a cmake config for the default version of Gazebo for the
+ROS distribution.
+
+WWW: https://wiki.ros.org/gazebo_dev

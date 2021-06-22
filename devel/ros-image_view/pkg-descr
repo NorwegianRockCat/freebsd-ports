@@ -1,0 +1,4 @@
+A simple viewer for ROS image topics. Includes a specialized viewer
+for stereo + disparity images.
+
+WWW: https://wiki.ros.org/image_view

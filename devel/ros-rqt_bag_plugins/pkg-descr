@@ -1,0 +1,4 @@
+rqt_bag provides a GUI plugin for displaying and replaying ROS bag
+files.
+
+WWW: https://wiki.ros.org/rqt_bag_plugins

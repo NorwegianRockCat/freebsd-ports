@@ -1,0 +1,4 @@
+This metapackage depends on the SMACH library and ROS SMACH integration
+packages.
+
+WWW: https://wiki.ros.org/executive_smach

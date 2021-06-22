@@ -1,0 +1,11 @@
+bin/rosnode
+%%PYTHON_SITELIBDIR%%/rosnode-1.15.11-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rosnode-1.15.11-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rosnode-1.15.11-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rosnode-1.15.11-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rosnode/__init__.py
+%%PYTHON_SITELIBDIR%%/rosnode/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/rosnode.pc
+share/rosnode/cmake/rosnodeConfig-version.cmake
+share/rosnode/cmake/rosnodeConfig.cmake
+share/rosnode/package.xml

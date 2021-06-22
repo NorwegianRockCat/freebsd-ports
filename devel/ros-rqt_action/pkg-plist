@@ -1,0 +1,10 @@
+%%PYTHON_SITELIBDIR%%/rqt_action-0.4.9-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_action/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_action/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_action/__pycache__/action_plugin%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_action/action_plugin.py
+libdata/pkgconfig/rqt_action.pc
+share/rqt_action/cmake/rqt_actionConfig-version.cmake
+share/rqt_action/cmake/rqt_actionConfig.cmake
+share/rqt_action/package.xml
+share/rqt_action/plugin.xml

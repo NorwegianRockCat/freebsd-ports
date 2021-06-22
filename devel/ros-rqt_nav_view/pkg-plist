@@ -1,0 +1,13 @@
+%%PYTHON_SITELIBDIR%%/rqt_nav_view-0.5.7-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/__pycache__/nav_view%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/__pycache__/nav_view_plugin%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/nav_view.py
+%%PYTHON_SITELIBDIR%%/rqt_nav_view/nav_view_plugin.py
+lib/rqt_nav_view/rqt_nav_view
+libdata/pkgconfig/rqt_nav_view.pc
+share/rqt_nav_view/cmake/rqt_nav_viewConfig-version.cmake
+share/rqt_nav_view/cmake/rqt_nav_viewConfig.cmake
+share/rqt_nav_view/package.xml
+share/rqt_nav_view/plugin.xml

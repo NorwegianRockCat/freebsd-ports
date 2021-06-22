@@ -1,0 +1,10 @@
+include/rqt_gui_cpp/plugin.h
+lib/librqt_gui_cpp.so
+lib/librqt_gui_cpp.so.0
+lib/librqt_gui_cpp.so.0.5
+lib/librqt_gui_cpp.so.0.5.2
+libdata/pkgconfig/rqt_gui_cpp.pc
+share/rqt_gui_cpp/cmake/rqt_gui_cppConfig-version.cmake
+share/rqt_gui_cpp/cmake/rqt_gui_cppConfig.cmake
+share/rqt_gui_cpp/package.xml
+share/rqt_gui_cpp/plugin.xml

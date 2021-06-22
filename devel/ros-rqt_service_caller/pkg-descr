@@ -1,0 +1,4 @@
+rqt_service_caller provides a GUI plugin for calling arbitrary
+services.
+
+WWW: https://wiki.ros.org/rqt_service_caller

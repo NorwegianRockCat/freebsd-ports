@@ -1,0 +1,6 @@
+roscpp is a C++ implementation of ROS. It provides a client library
+that enables C++ programmers to quickly interface with ROS Topics,
+Services, and Parameters.  roscpp is the most widely used ROS client
+library and is designed to be the high-performance library for ROS.
+
+WWW: https://wiki.ros.org/roscpp

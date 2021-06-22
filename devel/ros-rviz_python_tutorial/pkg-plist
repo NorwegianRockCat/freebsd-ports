@@ -1,0 +1,6 @@
+lib/rviz_python_tutorial/myviz.py
+libdata/pkgconfig/rviz_python_tutorial.pc
+share/rviz_python_tutorial/cmake/rviz_python_tutorialConfig-version.cmake
+share/rviz_python_tutorial/cmake/rviz_python_tutorialConfig.cmake
+share/rviz_python_tutorial/config.myviz
+share/rviz_python_tutorial/package.xml

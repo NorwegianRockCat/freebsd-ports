@@ -1,0 +1,16 @@
+include/image_publisher/ImagePublisherConfig.h
+lib/image_publisher/image_publisher
+lib/libimage_publisher.so
+lib/libimage_publisher.so.1
+lib/libimage_publisher.so.1.15
+lib/libimage_publisher.so.1.15.3
+%%PYTHON_SITELIBDIR%%/image_publisher/__init__.py
+%%PYTHON_SITELIBDIR%%/image_publisher/cfg/ImagePublisherConfig.py
+%%PYTHON_SITELIBDIR%%/image_publisher/cfg/__init__.py
+%%PYTHON_SITELIBDIR%%/image_publisher/cfg/__pycache__/ImagePublisherConfig%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/image_publisher/cfg/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/image_publisher.pc
+share/image_publisher/cmake/image_publisherConfig-version.cmake
+share/image_publisher/cmake/image_publisherConfig.cmake
+share/image_publisher/nodelet_plugins.xml
+share/image_publisher/package.xml

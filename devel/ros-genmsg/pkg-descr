@@ -1,0 +1,4 @@
+Standalone Python library for generating ROS message and service
+data structures for various languages.
+
+WWW: https://wiki.ros.org/genmsg

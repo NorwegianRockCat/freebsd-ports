@@ -1,0 +1,16 @@
+include/roslz4/lz4s.h
+lib/libroslz4.so
+lib/libroslz4.so.1
+lib/libroslz4.so.1.15
+lib/libroslz4.so.1.15.11
+%%PYTHON_SITELIBDIR%%/roslz4-1.15.11-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/roslz4-1.15.11-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/roslz4-1.15.11-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/roslz4-1.15.11-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/roslz4/__init__.py
+%%PYTHON_SITELIBDIR%%/roslz4/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslz4/_roslz4.so
+libdata/pkgconfig/roslz4.pc
+share/roslz4/cmake/roslz4Config-version.cmake
+share/roslz4/cmake/roslz4Config.cmake
+share/roslz4/package.xml

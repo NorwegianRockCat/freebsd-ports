@@ -1,0 +1,3 @@
+rosclean: cleanup filesystem resources (e.g. log files).
+
+WWW: https://wiki.ros.org/rosclean

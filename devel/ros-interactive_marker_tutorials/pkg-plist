@@ -1,0 +1,15 @@
+lib/interactive_marker_tutorials/basic_controls
+lib/interactive_marker_tutorials/basic_controls.py
+lib/interactive_marker_tutorials/cube
+lib/interactive_marker_tutorials/cube.py
+lib/interactive_marker_tutorials/menu
+lib/interactive_marker_tutorials/menu.py
+lib/interactive_marker_tutorials/point_cloud
+lib/interactive_marker_tutorials/pong
+lib/interactive_marker_tutorials/selection
+lib/interactive_marker_tutorials/simple_marker
+lib/interactive_marker_tutorials/simple_marker.py
+libdata/pkgconfig/interactive_marker_tutorials.pc
+share/interactive_marker_tutorials/cmake/interactive_marker_tutorialsConfig-version.cmake
+share/interactive_marker_tutorials/cmake/interactive_marker_tutorialsConfig.cmake
+share/interactive_marker_tutorials/package.xml

@@ -1,0 +1,6 @@
+rosmsg contains two command-line tools: rosmsg and rossrv. rosmsg
+is a command-line tool for displaying information about ROS Message
+types. rossrv is a command-line tool for displaying information
+about ROS Service types.
+
+WWW: https://wiki.ros.org/rosmsg

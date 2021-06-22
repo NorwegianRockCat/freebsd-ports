@@ -1,0 +1,3 @@
+Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
+
+WWW: https://wiki.ros.org/eigen_conversions

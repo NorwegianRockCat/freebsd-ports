@@ -1,0 +1,4 @@
+This package defines messages for commonly used sensors, including
+cameras and scanning laser rangefinders.
+
+WWW: https://wiki.ros.org/sensor_msgs

@@ -1,0 +1,4 @@
+This empty package allows to export rosbag migration rule files
+without depending on rosbag.
+
+WWW: https://wiki.ros.org/rosbag_migration_rule

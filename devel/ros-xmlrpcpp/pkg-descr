@@ -1,0 +1,6 @@
+XmlRpc++ is a C++ implementation of the XML-RPC protocol. This
+version is heavily modified from the package available on SourceForge
+in order to support roscpp's threading model. As such, we are
+maintaining our own fork.
+
+WWW: https://wiki.ros.org/xmlrpcpp

@@ -1,0 +1,13 @@
+bin/rosboost-cfg
+%%PYTHON_SITELIBDIR%%/rosboost_cfg-1.15.7-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rosboost_cfg-1.15.7-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rosboost_cfg-1.15.7-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rosboost_cfg-1.15.7-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rosboost_cfg/__init__.py
+%%PYTHON_SITELIBDIR%%/rosboost_cfg/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rosboost_cfg/__pycache__/rosboost_cfg%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rosboost_cfg/rosboost_cfg.py
+libdata/pkgconfig/rosboost_cfg.pc
+share/rosboost_cfg/cmake/rosboost_cfgConfig-version.cmake
+share/rosboost_cfg/cmake/rosboost_cfgConfig.cmake
+share/rosboost_cfg/package.xml

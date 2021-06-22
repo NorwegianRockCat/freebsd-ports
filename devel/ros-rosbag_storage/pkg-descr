@@ -1,0 +1,4 @@
+This is a set of tools for recording from and playing back ROS
+message without relying on the ROS client library.
+
+WWW: https://wiki.ros.org/rosbag_storage

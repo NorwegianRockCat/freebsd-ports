@@ -1,0 +1,14 @@
+%%PYTHON_SITELIBDIR%%/rqt_web-0.4.10-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_web/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_web/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_web/__pycache__/web%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_web/__pycache__/web_widget%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_web/web.py
+%%PYTHON_SITELIBDIR%%/rqt_web/web_widget.py
+lib/rqt_web/rqt_web
+libdata/pkgconfig/rqt_web.pc
+share/rqt_web/cmake/rqt_webConfig-version.cmake
+share/rqt_web/cmake/rqt_webConfig.cmake
+share/rqt_web/package.xml
+share/rqt_web/plugin.xml
+share/rqt_web/resource/web_widget.ui

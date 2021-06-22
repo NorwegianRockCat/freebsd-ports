@@ -1,0 +1,4 @@
+Theora_image_transport provides a plugin to image_transport for
+transparently sending an image stream encoded with the Theora codec.
+
+WWW: https://wiki.ros.org/theora_image_transport

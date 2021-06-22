@@ -1,0 +1,11 @@
+include/ros/roscpp_serialization_macros.h
+include/ros/serialization.h
+include/ros/serialized_message.h
+lib/libroscpp_serialization.so
+lib/libroscpp_serialization.so.0
+lib/libroscpp_serialization.so.0.7
+lib/libroscpp_serialization.so.0.7.2
+libdata/pkgconfig/roscpp_serialization.pc
+share/roscpp_serialization/cmake/roscpp_serializationConfig-version.cmake
+share/roscpp_serialization/cmake/roscpp_serializationConfig.cmake
+share/roscpp_serialization/package.xml

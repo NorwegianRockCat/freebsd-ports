@@ -1,0 +1,7 @@
+rqt_graph provides a GUI plugin for visualizing the ROS computation
+graph.  Its components are made generic so that other packages where
+you want to achieve graph representation can depend upon this pkg
+(use rqt_dep to find out the pkgs that depend. rqt_dep itself depends
+on rqt_graph too).
+
+WWW: https://wiki.ros.org/rqt_graph

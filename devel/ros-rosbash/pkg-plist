@@ -1,0 +1,17 @@
+bin/rosrun
+etc/catkin/profile.d/15.rosbash.bash
+etc/catkin/profile.d/15.rosbash.fish
+etc/catkin/profile.d/15.rosbash.tcsh
+etc/catkin/profile.d/15.rosbash.zsh
+libdata/pkgconfig/rosbash.pc
+share/rosbash/catkin_env_hook/15.rosbash.bash
+share/rosbash/catkin_env_hook/15.rosbash.fish
+share/rosbash/catkin_env_hook/15.rosbash.tcsh
+share/rosbash/catkin_env_hook/15.rosbash.zsh
+share/rosbash/cmake/rosbashConfig-version.cmake
+share/rosbash/cmake/rosbashConfig.cmake
+share/rosbash/package.xml
+share/rosbash/rosbash
+share/rosbash/rosfish
+share/rosbash/rostcsh
+share/rosbash/roszsh

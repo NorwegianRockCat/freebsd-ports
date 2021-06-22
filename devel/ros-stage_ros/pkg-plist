@@ -1,0 +1,13 @@
+lib/stage_ros/stageros
+lib/stage_ros/upgrade-world.sh
+libdata/pkgconfig/stage_ros.pc
+share/stage_ros/cmake/stage_rosConfig-version.cmake
+share/stage_ros/cmake/stage_rosConfig.cmake
+share/stage_ros/package.xml
+share/stage_ros/rviz/stage.rviz
+share/stage_ros/world/erratic-inc.world
+share/stage_ros/world/intense.world
+share/stage_ros/world/willow-erratic.world
+share/stage_ros/world/willow-four-erratics-multisensor.world
+share/stage_ros/world/willow-four-erratics.world
+share/stage_ros/world/willow-full.pgm

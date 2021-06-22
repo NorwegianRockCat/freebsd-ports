@@ -1,0 +1,10 @@
+include/eigen_conversions/eigen_kdl.h
+include/eigen_conversions/eigen_msg.h
+lib/libeigen_conversions.so
+lib/libeigen_conversions.so.1
+lib/libeigen_conversions.so.1.13
+lib/libeigen_conversions.so.1.13.2
+libdata/pkgconfig/eigen_conversions.pc
+share/eigen_conversions/cmake/eigen_conversionsConfig-version.cmake
+share/eigen_conversions/cmake/eigen_conversionsConfig.cmake
+share/eigen_conversions/package.xml

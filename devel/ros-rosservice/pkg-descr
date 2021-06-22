@@ -1,0 +1,6 @@
+rosservice contains the rosservice command-line tool for listing
+and querying ROS Services. It also contains a Python library for
+retrieving information about Services and dynamically invoking them.
+The Python library is experimental and is for internal-use only.
+
+WWW: https://wiki.ros.org/rosservice

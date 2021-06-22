@@ -1,0 +1,4 @@
+camera_calibration_parsers contains routines for reading and writing
+camera calibration parameters.
+
+WWW: https://wiki.ros.org/camera_calibration_parsers

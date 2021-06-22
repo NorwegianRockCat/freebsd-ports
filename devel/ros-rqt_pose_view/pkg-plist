@@ -1,0 +1,16 @@
+%%PYTHON_SITELIBDIR%%/rqt_pose_view-0.5.11-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/__pycache__/gl_widget%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/__pycache__/pose_view%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/__pycache__/pose_view_widget%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/gl_widget.py
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/pose_view.py
+%%PYTHON_SITELIBDIR%%/rqt_pose_view/pose_view_widget.py
+lib/rqt_pose_view/rqt_pose_view
+libdata/pkgconfig/rqt_pose_view.pc
+share/rqt_pose_view/cmake/rqt_pose_viewConfig-version.cmake
+share/rqt_pose_view/cmake/rqt_pose_viewConfig.cmake
+share/rqt_pose_view/package.xml
+share/rqt_pose_view/plugin.xml
+share/rqt_pose_view/resource/PoseViewWidget.ui

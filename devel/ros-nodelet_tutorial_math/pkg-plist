@@ -1,0 +1,11 @@
+lib/libnodelet_math.so
+lib/libnodelet_math.so.0
+lib/libnodelet_math.so.0.2
+lib/libnodelet_math.so.0.2.0
+libdata/pkgconfig/nodelet_tutorial_math.pc
+share/nodelet_tutorial_math/cmake/nodelet_tutorial_mathConfig-version.cmake
+share/nodelet_tutorial_math/cmake/nodelet_tutorial_mathConfig.cmake
+share/nodelet_tutorial_math/nodelet_math.xml
+share/nodelet_tutorial_math/package.xml
+share/nodelet_tutorial_math/plus.launch
+share/nodelet_tutorial_math/plus_default.yaml

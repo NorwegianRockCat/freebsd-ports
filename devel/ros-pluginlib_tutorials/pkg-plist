@@ -1,0 +1,12 @@
+include/pluginlib_tutorials/polygon_base.h
+include/pluginlib_tutorials/polygon_plugins.h
+lib/libpluginlib_tutorials.so
+lib/libpluginlib_tutorials.so.0
+lib/libpluginlib_tutorials.so.0.2
+lib/libpluginlib_tutorials.so.0.2.0
+lib/pluginlib_tutorials/polygon_loader
+libdata/pkgconfig/pluginlib_tutorials.pc
+share/pluginlib_tutorials/cmake/pluginlib_tutorialsConfig-version.cmake
+share/pluginlib_tutorials/cmake/pluginlib_tutorialsConfig.cmake
+share/pluginlib_tutorials/package.xml
+share/pluginlib_tutorials/polygon_plugins.xml

@@ -1,0 +1,4 @@
+Provides nodes to assemble point clouds from either LaserScan or
+PointCloud messages
+
+WWW: https://wiki.ros.org/laser_assembler
