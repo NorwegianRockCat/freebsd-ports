@@ -1,0 +1,16 @@
+bin/rqt
+%%PYTHON_SITELIBDIR%%/rqt_gui-0.5.2-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_gui/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_gui/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_gui/__pycache__/main%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_gui/__pycache__/ros_plugin_provider%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_gui/__pycache__/rospkg_plugin_provider%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_gui/main.py
+%%PYTHON_SITELIBDIR%%/rqt_gui/ros_plugin_provider.py
+%%PYTHON_SITELIBDIR%%/rqt_gui/rospkg_plugin_provider.py
+lib/rqt_gui/rqt_gui
+libdata/pkgconfig/rqt_gui.pc
+share/rqt_gui/cmake/rqt_guiConfig-version.cmake
+share/rqt_gui/cmake/rqt_guiConfig.cmake
+share/rqt_gui/package.xml
+share/rqt_gui/resource/rqt.png

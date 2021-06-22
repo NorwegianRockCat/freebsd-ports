@@ -1,0 +1,3 @@
+Interface for enforcing joint limits.
+
+WWW: https://wiki.ros.org/joint_limits_interface

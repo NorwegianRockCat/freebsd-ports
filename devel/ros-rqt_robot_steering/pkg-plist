@@ -1,0 +1,12 @@
+%%PYTHON_SITELIBDIR%%/rqt_robot_steering-0.5.12-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_robot_steering/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_robot_steering/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_robot_steering/__pycache__/robot_steering%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_robot_steering/robot_steering.py
+lib/rqt_robot_steering/rqt_robot_steering
+libdata/pkgconfig/rqt_robot_steering.pc
+share/rqt_robot_steering/cmake/rqt_robot_steeringConfig-version.cmake
+share/rqt_robot_steering/cmake/rqt_robot_steeringConfig.cmake
+share/rqt_robot_steering/package.xml
+share/rqt_robot_steering/plugin.xml
+share/rqt_robot_steering/resource/RobotSteering.ui

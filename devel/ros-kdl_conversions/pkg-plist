@@ -1,0 +1,9 @@
+include/kdl_conversions/kdl_msg.h
+lib/libkdl_conversions.so
+lib/libkdl_conversions.so.1
+lib/libkdl_conversions.so.1.13
+lib/libkdl_conversions.so.1.13.2
+libdata/pkgconfig/kdl_conversions.pc
+share/kdl_conversions/cmake/kdl_conversionsConfig-version.cmake
+share/kdl_conversions/cmake/kdl_conversionsConfig.cmake
+share/kdl_conversions/package.xml

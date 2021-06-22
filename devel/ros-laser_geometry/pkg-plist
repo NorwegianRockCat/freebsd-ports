@@ -1,0 +1,14 @@
+include/laser_geometry/laser_geometry.h
+lib/liblaser_geometry.so
+lib/liblaser_geometry.so.1
+lib/liblaser_geometry.so.1.6
+lib/liblaser_geometry.so.1.6.7
+%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/laser_geometry/__init__.py
+%%PYTHON_SITELIBDIR%%/laser_geometry/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/laser_geometry/__pycache__/laser_geometry%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/laser_geometry/laser_geometry.py
+libdata/pkgconfig/laser_geometry.pc
+share/laser_geometry/cmake/laser_geometryConfig-version.cmake
+share/laser_geometry/cmake/laser_geometryConfig.cmake
+share/laser_geometry/package.xml

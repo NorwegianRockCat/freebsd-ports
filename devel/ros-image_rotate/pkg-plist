@@ -1,0 +1,16 @@
+include/image_rotate/ImageRotateConfig.h
+lib/image_rotate/image_rotate
+lib/libimage_rotate.so
+lib/libimage_rotate.so.1
+lib/libimage_rotate.so.1.15
+lib/libimage_rotate.so.1.15.3
+%%PYTHON_SITELIBDIR%%/image_rotate/__init__.py
+%%PYTHON_SITELIBDIR%%/image_rotate/cfg/ImageRotateConfig.py
+%%PYTHON_SITELIBDIR%%/image_rotate/cfg/__init__.py
+%%PYTHON_SITELIBDIR%%/image_rotate/cfg/__pycache__/ImageRotateConfig%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/image_rotate/cfg/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/image_rotate.pc
+share/image_rotate/cmake/image_rotateConfig-version.cmake
+share/image_rotate/cmake/image_rotateConfig.cmake
+share/image_rotate/nodelet_plugins.xml
+share/image_rotate/package.xml

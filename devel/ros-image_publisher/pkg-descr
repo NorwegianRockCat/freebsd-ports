@@ -1,0 +1,5 @@
+
+Contains a node publish an image stream from single image file or
+avi motion file.
+
+WWW: https://wiki.ros.org/image_publisher

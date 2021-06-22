@@ -1,0 +1,11 @@
+--- src/python_bindings/sip/CMakeLists.txt.orig	2021-04-11 11:39:23 UTC
++++ src/python_bindings/sip/CMakeLists.txt
+@@ -70,6 +70,8 @@ if(sip_helper_FOUND)
+     set(rviz_sip_LIBRARY_FILE librviz_sip.so)
+   elseif(WIN32)
+     set(rviz_sip_LIBRARY_FILE librviz_sip.pyd)
++  elseif(UNIX AND NOT ${PYTHON_VERSION} VERSION_LESS "3.8.7")
++    set(rviz_sip_LIBRARY_FILE librviz_sip.cpython-${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}.so)
+   else()
+     set(rviz_sip_LIBRARY_FILE librviz_sip${CMAKE_SHARED_LIBRARY_SUFFIX})
+   endif()

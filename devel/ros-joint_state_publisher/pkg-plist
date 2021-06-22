@@ -1,0 +1,8 @@
+lib/joint_state_publisher/joint_state_publisher
+%%PYTHON_SITELIBDIR%%/joint_state_publisher-1.15.0-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/joint_state_publisher/__init__.py
+%%PYTHON_SITELIBDIR%%/joint_state_publisher/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/joint_state_publisher.pc
+share/joint_state_publisher/cmake/joint_state_publisherConfig-version.cmake
+share/joint_state_publisher/cmake/joint_state_publisherConfig.cmake
+share/joint_state_publisher/package.xml

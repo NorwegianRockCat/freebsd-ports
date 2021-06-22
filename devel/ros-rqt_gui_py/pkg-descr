@@ -1,0 +1,4 @@
+rqt_gui_py enables GUI plugins to use the Python client library for
+ROS.
+
+WWW: https://wiki.ros.org/rqt_gui_py

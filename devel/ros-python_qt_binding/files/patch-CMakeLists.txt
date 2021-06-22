@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2020-06-11 18:51:15 UTC
++++ CMakeLists.txt
+@@ -7,6 +7,7 @@ catkin_package(CFG_EXTRAS python_qt_binding-extras.cma
+ catkin_python_setup()
+ 
+ install(FILES
++  cmake/pyproject.toml.in
+   cmake/shiboken_helper.cmake
+   cmake/sip_configure.py
+   cmake/sip_helper.cmake

@@ -1,0 +1,13 @@
+include/smclib/statemap.h
+%%PYTHON_SITELIBDIR%%/smclib-1.8.6-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/smclib-1.8.6-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/smclib-1.8.6-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/smclib-1.8.6-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/smclib/__init__.py
+%%PYTHON_SITELIBDIR%%/smclib/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/smclib/__pycache__/statemap%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/smclib/statemap.py
+libdata/pkgconfig/smclib.pc
+share/smclib/cmake/smclibConfig-version.cmake
+share/smclib/cmake/smclibConfig.cmake
+share/smclib/package.xml

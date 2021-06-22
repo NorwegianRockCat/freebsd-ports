@@ -1,0 +1,14 @@
+lib/librviz_plugin_tutorials.so
+lib/librviz_plugin_tutorials.so.0
+lib/librviz_plugin_tutorials.so.0.11
+lib/librviz_plugin_tutorials.so.0.11.0
+lib/rviz_plugin_tutorials/send_test_msgs.py
+libdata/pkgconfig/rviz_plugin_tutorials.pc
+share/rviz_plugin_tutorials/cmake/rviz_plugin_tutorialsConfig-version.cmake
+share/rviz_plugin_tutorials/cmake/rviz_plugin_tutorialsConfig.cmake
+share/rviz_plugin_tutorials/icons/classes/Imu.png
+share/rviz_plugin_tutorials/icons/classes/PlantFlag.png
+share/rviz_plugin_tutorials/icons/classes/Teleop.png
+share/rviz_plugin_tutorials/media/flag.dae
+share/rviz_plugin_tutorials/package.xml
+share/rviz_plugin_tutorials/plugin_description.xml

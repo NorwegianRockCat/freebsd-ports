@@ -1,0 +1,16 @@
+include/gazebo_ros_control/default_robot_hw_sim.h
+include/gazebo_ros_control/gazebo_ros_control_plugin.h
+include/gazebo_ros_control/robot_hw_sim.h
+lib/libdefault_robot_hw_sim.so
+lib/libdefault_robot_hw_sim.so.2
+lib/libdefault_robot_hw_sim.so.2.9
+lib/libdefault_robot_hw_sim.so.2.9.2
+lib/libgazebo_ros_control.so
+lib/libgazebo_ros_control.so.2
+lib/libgazebo_ros_control.so.2.9
+lib/libgazebo_ros_control.so.2.9.2
+libdata/pkgconfig/gazebo_ros_control.pc
+share/gazebo_ros_control/cmake/gazebo_ros_controlConfig-version.cmake
+share/gazebo_ros_control/cmake/gazebo_ros_controlConfig.cmake
+share/gazebo_ros_control/package.xml
+share/gazebo_ros_control/robot_hw_sim_plugins.xml

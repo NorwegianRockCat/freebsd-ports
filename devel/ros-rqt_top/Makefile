@@ -1,0 +1,33 @@
+PORTNAME=	ros-rqt_top
+DISTVERSION=	0.4.10
+CATEGORIES=	devel
+PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+
+MAINTAINER=	henrik@gulbra.net
+COMMENT=	ROS rqt_top package
+
+LICENSE=	BSD3CLAUSE
+
+BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+		${_PYLIBDIR}/psutil:sysutils/py-psutil@${PY_FLAVOR}
+
+USES=		cmake python
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	ros-visualization
+GH_PROJECT=	rqt_top
+
+CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
+
+NO_ARCH=	yes
+
+_BUILD_RDEPS=	catkin
+_PYLIBDIR=	${PYTHON_SITELIBDIR}
+_RUN_RDEPS=	python_qt_binding rospy rqt_gui rqt_gui_py
+_SHAREDIR=	${LOCALBASE}/share
+
+post-stage:
+	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete
+
+.include <bsd.port.mk>

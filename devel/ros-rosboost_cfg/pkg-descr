@@ -1,0 +1,4 @@
+Contains scripts used by the rosboost-cfg tool for determining
+cflags/lflags/etc. of boost on your system
+
+WWW: https://wiki.ros.org/rosboost_cfg

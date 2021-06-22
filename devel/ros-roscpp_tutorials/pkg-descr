@@ -1,0 +1,4 @@
+This package attempts to show the features of ROS step-by-step,
+including using messages, servers, parameters, etc.
+
+WWW: https://wiki.ros.org/roscpp_tutorials

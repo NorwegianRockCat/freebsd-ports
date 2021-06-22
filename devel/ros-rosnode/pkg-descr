@@ -1,0 +1,6 @@
+rosnode is a command-line tool for displaying debug information
+about ROS Nodes, including publications, subscriptions and connections.
+It also contains an experimental library for retrieving node
+information. This library is intended for internal use only.
+
+WWW: https://wiki.ros.org/rosnode

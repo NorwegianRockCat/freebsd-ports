@@ -1,0 +1,5 @@
+control_msgs contains base messages and actions useful for controlling
+robots.  It provides representations for controller setpoints and
+joint and cartesian trajectories.
+
+WWW: https://wiki.ros.org/control_msgs

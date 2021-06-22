@@ -1,0 +1,11 @@
+include/position_controllers/joint_group_position_controller.h
+include/position_controllers/joint_position_controller.h
+lib/libposition_controllers.so
+lib/libposition_controllers.so.0
+lib/libposition_controllers.so.0.18
+lib/libposition_controllers.so.0.18.1
+libdata/pkgconfig/position_controllers.pc
+share/position_controllers/cmake/position_controllersConfig-version.cmake
+share/position_controllers/cmake/position_controllersConfig.cmake
+share/position_controllers/package.xml
+share/position_controllers/position_controllers_plugins.xml

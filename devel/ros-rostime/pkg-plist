@@ -1,0 +1,14 @@
+include/ros/duration.h
+include/ros/impl/duration.h
+include/ros/impl/time.h
+include/ros/rate.h
+include/ros/rostime_decl.h
+include/ros/time.h
+lib/librostime.so
+lib/librostime.so.0
+lib/librostime.so.0.7
+lib/librostime.so.0.7.2
+libdata/pkgconfig/rostime.pc
+share/rostime/cmake/rostimeConfig-version.cmake
+share/rostime/cmake/rostimeConfig.cmake
+share/rostime/package.xml

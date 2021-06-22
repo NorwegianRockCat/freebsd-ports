@@ -1,0 +1,12 @@
+include/resource_retriever/retriever.h
+lib/libresource_retriever.so
+lib/libresource_retriever.so.1
+lib/libresource_retriever.so.1.12
+lib/libresource_retriever.so.1.12.6
+%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/resource_retriever/__init__.py
+%%PYTHON_SITELIBDIR%%/resource_retriever/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/resource_retriever.pc
+share/resource_retriever/cmake/resource_retrieverConfig-version.cmake
+share/resource_retriever/cmake/resource_retrieverConfig.cmake
+share/resource_retriever/package.xml

@@ -1,0 +1,5 @@
+roslang is a common package that all ROS client libraries depend
+on.  This is mainly used to find client libraries (via 'rospack
+depends-on1 roslang').
+
+WWW: https://wiki.ros.org/roslang

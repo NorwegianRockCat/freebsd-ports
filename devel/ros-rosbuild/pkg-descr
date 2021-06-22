@@ -1,0 +1,4 @@
+rosbuild contains scripts for managing the CMake-based build system
+for ROS.
+
+WWW: https://wiki.ros.org/rosbuild

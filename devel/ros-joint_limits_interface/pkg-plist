@@ -1,0 +1,9 @@
+include/joint_limits_interface/joint_limits.h
+include/joint_limits_interface/joint_limits_interface.h
+include/joint_limits_interface/joint_limits_interface_exception.h
+include/joint_limits_interface/joint_limits_rosparam.h
+include/joint_limits_interface/joint_limits_urdf.h
+libdata/pkgconfig/joint_limits_interface.pc
+share/joint_limits_interface/cmake/joint_limits_interfaceConfig-version.cmake
+share/joint_limits_interface/cmake/joint_limits_interfaceConfig.cmake
+share/joint_limits_interface/package.xml

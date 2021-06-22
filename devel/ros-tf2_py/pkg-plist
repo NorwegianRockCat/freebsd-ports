@@ -1,0 +1,11 @@
+%%PYTHON_SITELIBDIR%%/tf2_py-0.7.5-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/tf2_py-0.7.5-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/tf2_py-0.7.5-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/tf2_py-0.7.5-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/tf2_py/__init__.py
+%%PYTHON_SITELIBDIR%%/tf2_py/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/tf2_py/_tf2.so
+libdata/pkgconfig/tf2_py.pc
+share/tf2_py/cmake/tf2_pyConfig-version.cmake
+share/tf2_py/cmake/tf2_pyConfig.cmake
+share/tf2_py/package.xml

@@ -1,0 +1,4 @@
+roscpp_traits contains the message traits code as described in
+MessagesTraits.  This package is a component of roscpp.
+
+WWW: https://wiki.ros.org/roscpp_traits

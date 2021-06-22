@@ -1,0 +1,8 @@
+include/controller_interface/controller.h
+include/controller_interface/controller_base.h
+include/controller_interface/internal/robothw_interfaces.h
+include/controller_interface/multi_interface_controller.h
+libdata/pkgconfig/controller_interface.pc
+share/controller_interface/cmake/controller_interfaceConfig-version.cmake
+share/controller_interface/cmake/controller_interfaceConfig.cmake
+share/controller_interface/package.xml

@@ -1,0 +1,16 @@
+include/rqt_rviz/config_dialog.h
+include/rqt_rviz/rviz.h
+lib/librqt_rviz.so
+lib/librqt_rviz.so.0
+lib/librqt_rviz.so.0.6
+lib/librqt_rviz.so.0.6.1
+%%PYTHON_SITELIBDIR%%/rqt_rviz-0.6.1-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rqt_rviz-0.6.1-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rqt_rviz-0.6.1-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rqt_rviz-0.6.1-py%%PYTHON_VER%%.egg-info/top_level.txt
+lib/rqt_rviz/rqt_rviz
+libdata/pkgconfig/rqt_rviz.pc
+share/rqt_rviz/cmake/rqt_rvizConfig-version.cmake
+share/rqt_rviz/cmake/rqt_rvizConfig.cmake
+share/rqt_rviz/package.xml
+share/rqt_rviz/plugin.xml

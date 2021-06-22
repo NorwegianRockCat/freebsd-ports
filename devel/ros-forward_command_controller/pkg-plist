@@ -1,0 +1,6 @@
+include/forward_command_controller/forward_command_controller.h
+include/forward_command_controller/forward_joint_group_command_controller.h
+libdata/pkgconfig/forward_command_controller.pc
+share/forward_command_controller/cmake/forward_command_controllerConfig-version.cmake
+share/forward_command_controller/cmake/forward_command_controllerConfig.cmake
+share/forward_command_controller/package.xml

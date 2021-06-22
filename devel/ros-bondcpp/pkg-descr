@@ -1,0 +1,4 @@
+C++ implementation of bond, a mechanism for checking when another
+process has terminated.
+
+WWW: https://wiki.ros.org/bondcpp

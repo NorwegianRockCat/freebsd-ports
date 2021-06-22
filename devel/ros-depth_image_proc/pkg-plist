@@ -1,0 +1,11 @@
+include/depth_image_proc/depth_conversions.h
+include/depth_image_proc/depth_traits.h
+lib/libdepth_image_proc.so
+lib/libdepth_image_proc.so.1
+lib/libdepth_image_proc.so.1.15
+lib/libdepth_image_proc.so.1.15.3
+libdata/pkgconfig/depth_image_proc.pc
+share/depth_image_proc/cmake/depth_image_procConfig-version.cmake
+share/depth_image_proc/cmake/depth_image_procConfig.cmake
+share/depth_image_proc/nodelet_plugins.xml
+share/depth_image_proc/package.xml

@@ -1,0 +1,6 @@
+lib/visualization_marker_tutorials/basic_shapes
+lib/visualization_marker_tutorials/points_and_lines
+libdata/pkgconfig/visualization_marker_tutorials.pc
+share/visualization_marker_tutorials/cmake/visualization_marker_tutorialsConfig-version.cmake
+share/visualization_marker_tutorials/cmake/visualization_marker_tutorialsConfig.cmake
+share/visualization_marker_tutorials/package.xml

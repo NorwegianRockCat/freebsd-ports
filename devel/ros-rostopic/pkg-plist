@@ -1,0 +1,12 @@
+bin/rostopic
+%%PYTHON_SITELIBDIR%%/rostopic-1.15.11-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rostopic-1.15.11-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rostopic-1.15.11-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rostopic-1.15.11-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rostopic/__init__.py
+%%PYTHON_SITELIBDIR%%/rostopic/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+lib/rostopic/rostopic
+libdata/pkgconfig/rostopic.pc
+share/rostopic/cmake/rostopicConfig-version.cmake
+share/rostopic/cmake/rostopicConfig.cmake
+share/rostopic/package.xml

@@ -1,0 +1,14 @@
+%%PYTHON_SITELIBDIR%%/bondpy-1.8.6-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/bondpy-1.8.6-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/bondpy-1.8.6-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/bondpy-1.8.6-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/bondpy/BondSM_sm.py
+%%PYTHON_SITELIBDIR%%/bondpy/__init__.py
+%%PYTHON_SITELIBDIR%%/bondpy/__pycache__/BondSM_sm%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/bondpy/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/bondpy/__pycache__/bondpy%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/bondpy/bondpy.py
+libdata/pkgconfig/bondpy.pc
+share/bondpy/cmake/bondpyConfig-version.cmake
+share/bondpy/cmake/bondpyConfig.cmake
+share/bondpy/package.xml

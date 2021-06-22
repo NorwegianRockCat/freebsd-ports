@@ -1,0 +1,13 @@
+%%PYTHON_SITELIBDIR%%/rqt_top-0.4.10-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_top/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_top/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_top/__pycache__/node_info%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_top/__pycache__/top_plugin%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_top/node_info.py
+%%PYTHON_SITELIBDIR%%/rqt_top/top_plugin.py
+lib/rqt_top/rqt_top
+libdata/pkgconfig/rqt_top.pc
+share/rqt_top/cmake/rqt_topConfig-version.cmake
+share/rqt_top/cmake/rqt_topConfig.cmake
+share/rqt_top/package.xml
+share/rqt_top/plugin.xml

@@ -1,0 +1,4 @@
+This contains CvBridge, which converts between ROS Image messages
+and OpenCV images.
+
+WWW: https://wiki.ros.org/cv_bridge

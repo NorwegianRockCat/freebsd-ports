@@ -1,0 +1,4 @@
+stereo_msgs contains messages specific to stereo processing, such
+as disparity images.
+
+WWW: https://wiki.ros.org/stereo_msgs

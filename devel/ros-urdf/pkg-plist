@@ -1,0 +1,11 @@
+include/urdf/model.h
+include/urdf/urdfdom_compatibility.h
+include/urdf/visibility_control.hpp
+lib/liburdf.so
+lib/liburdf.so.1
+lib/liburdf.so.1.13
+lib/liburdf.so.1.13.2
+libdata/pkgconfig/urdf.pc
+share/urdf/cmake/urdfConfig-version.cmake
+share/urdf/cmake/urdfConfig.cmake
+share/urdf/package.xml

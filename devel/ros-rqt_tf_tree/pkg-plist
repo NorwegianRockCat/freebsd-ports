@@ -1,0 +1,14 @@
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/__pycache__/dotcode_tf%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/__pycache__/tf_tree%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/dotcode_tf.py
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree/tf_tree.py
+lib/rqt_tf_tree/rqt_tf_tree
+libdata/pkgconfig/rqt_tf_tree.pc
+share/rqt_tf_tree/cmake/rqt_tf_treeConfig-version.cmake
+share/rqt_tf_tree/cmake/rqt_tf_treeConfig.cmake
+share/rqt_tf_tree/package.xml
+share/rqt_tf_tree/plugin.xml
+share/rqt_tf_tree/resource/RosTfTree.ui

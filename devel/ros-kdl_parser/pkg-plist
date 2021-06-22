@@ -1,0 +1,10 @@
+include/kdl_parser/kdl_parser.hpp
+include/kdl_parser/visibility_control.hpp
+lib/libkdl_parser.so
+lib/libkdl_parser.so.1
+lib/libkdl_parser.so.1.14
+lib/libkdl_parser.so.1.14.1
+libdata/pkgconfig/kdl_parser.pc
+share/kdl_parser/cmake/kdl_parserConfig-version.cmake
+share/kdl_parser/cmake/kdl_parserConfig.cmake
+share/kdl_parser/package.xml

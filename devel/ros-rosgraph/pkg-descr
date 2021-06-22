@@ -1,0 +1,5 @@
+rosgraph contains the rosgraph command-line tool, which prints
+information about the ROS Computation Graph. It also provides an
+internal library that can be used by graphical tools.
+
+WWW: https://wiki.ros.org/rosgraph

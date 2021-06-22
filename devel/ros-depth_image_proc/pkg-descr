@@ -1,0 +1,6 @@
+Contains nodelets for processing depth images such as those produced
+by OpenNI camera. Functions include creating disparity images and
+point clouds, as well as registering (reprojecting) a depth image
+into another camera frame.
+
+WWW: https://wiki.ros.org/depth_image_proc

@@ -1,0 +1,16 @@
+%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_topic/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/topic%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/topic_info%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/topic_widget%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_topic/topic.py
+%%PYTHON_SITELIBDIR%%/rqt_topic/topic_info.py
+%%PYTHON_SITELIBDIR%%/rqt_topic/topic_widget.py
+lib/rqt_topic/rqt_topic
+libdata/pkgconfig/rqt_topic.pc
+share/rqt_topic/cmake/rqt_topicConfig-version.cmake
+share/rqt_topic/cmake/rqt_topicConfig.cmake
+share/rqt_topic/package.xml
+share/rqt_topic/plugin.xml
+share/rqt_topic/resource/TopicWidget.ui

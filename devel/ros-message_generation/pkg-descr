@@ -1,0 +1,4 @@
+Package modeling the build-time dependencies for generating language
+bindings of messages.
+
+WWW: https://wiki.ros.org/message_generation
