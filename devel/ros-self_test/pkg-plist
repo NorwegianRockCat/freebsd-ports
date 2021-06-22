@@ -1,0 +1,8 @@
+bin/run_selftest
+bin/selftest_example
+bin/selftest_rostest
+include/self_test/self_test.h
+libdata/pkgconfig/self_test.pc
+share/self_test/cmake/self_testConfig-version.cmake
+share/self_test/cmake/self_testConfig.cmake
+share/self_test/package.xml

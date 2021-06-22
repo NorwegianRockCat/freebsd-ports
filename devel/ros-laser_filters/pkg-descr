@@ -1,0 +1,4 @@
+Assorted filters designed to operate on 2D planar laser scanners,
+which use the sensor_msgs/LaserScan type.
+
+WWW: https://wiki.ros.org/laser_filters

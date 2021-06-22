@@ -1,0 +1,12 @@
+bin/rosservice
+%%PYTHON_SITELIBDIR%%/rosservice-1.15.11-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rosservice-1.15.11-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rosservice-1.15.11-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rosservice-1.15.11-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rosservice/__init__.py
+%%PYTHON_SITELIBDIR%%/rosservice/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+lib/rosservice/rosservice
+libdata/pkgconfig/rosservice.pc
+share/rosservice/cmake/rosserviceConfig-version.cmake
+share/rosservice/cmake/rosserviceConfig.cmake
+share/rosservice/package.xml

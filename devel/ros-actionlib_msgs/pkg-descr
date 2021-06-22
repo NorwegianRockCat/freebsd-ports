@@ -1,0 +1,5 @@
+actionlib_msgs defines the common messages to interact with an
+action server and an action client.  For full documentation of the
+actionlib API see the actionlib package.
+
+WWW: https://wiki.ros.org/actionlib_msgs

@@ -1,0 +1,13 @@
+bin/rosmsg
+bin/rosmsg-proto
+bin/rossrv
+%%PYTHON_SITELIBDIR%%/rosmsg-1.15.11-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rosmsg-1.15.11-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rosmsg-1.15.11-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rosmsg-1.15.11-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rosmsg/__init__.py
+%%PYTHON_SITELIBDIR%%/rosmsg/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/rosmsg.pc
+share/rosmsg/cmake/rosmsgConfig-version.cmake
+share/rosmsg/cmake/rosmsgConfig.cmake
+share/rosmsg/package.xml

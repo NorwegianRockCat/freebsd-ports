@@ -1,0 +1,4 @@
+rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArray
+messages.
+
+WWW: https://wiki.ros.org/rqt_runtime_monitor

@@ -1,0 +1,16 @@
+include/ros/cpp_common_decl.h
+include/ros/datatypes.h
+include/ros/debug.h
+include/ros/exception.h
+include/ros/header.h
+include/ros/macros.h
+include/ros/platform.h
+include/ros/types.h
+lib/libcpp_common.so
+lib/libcpp_common.so.0
+lib/libcpp_common.so.0.7
+lib/libcpp_common.so.0.7.2
+libdata/pkgconfig/cpp_common.pc
+share/cpp_common/cmake/cpp_commonConfig-version.cmake
+share/cpp_common/cmake/cpp_commonConfig.cmake
+share/cpp_common/package.xml

@@ -1,0 +1,4 @@
+rqt_console provides a GUI plugin for displaying and filtering ROS
+messages.
+
+WWW: https://wiki.ros.org/rqt_console

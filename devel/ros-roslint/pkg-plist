@@ -1,0 +1,17 @@
+%%PYTHON_SITELIBDIR%%/roslint-0.12.0-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/roslint/__init__.py
+%%PYTHON_SITELIBDIR%%/roslint/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslint/__pycache__/cpplint%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslint/__pycache__/cpplint_wrapper%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslint/__pycache__/pycodestyle%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslint/__pycache__/pycodestyle_wrapper%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/roslint/cpplint.py
+%%PYTHON_SITELIBDIR%%/roslint/cpplint_wrapper.py
+%%PYTHON_SITELIBDIR%%/roslint/pycodestyle.py
+%%PYTHON_SITELIBDIR%%/roslint/pycodestyle_wrapper.py
+lib/roslint/test_wrapper
+libdata/pkgconfig/roslint.pc
+share/roslint/cmake/roslint-extras.cmake
+share/roslint/cmake/roslintConfig-version.cmake
+share/roslint/cmake/roslintConfig.cmake
+share/roslint/package.xml

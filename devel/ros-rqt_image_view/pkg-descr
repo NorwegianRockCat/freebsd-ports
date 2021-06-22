@@ -1,0 +1,4 @@
+rqt_image_view provides a GUI plugin for displaying images using
+image_transport.
+
+WWW: https://wiki.ros.org/rqt_image_view

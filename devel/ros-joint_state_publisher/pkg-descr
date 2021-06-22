@@ -1,0 +1,4 @@
+This package contains a tool for setting and publishing joint state
+values for a given URDF.
+
+WWW: https://wiki.ros.org/joint_state_publisher

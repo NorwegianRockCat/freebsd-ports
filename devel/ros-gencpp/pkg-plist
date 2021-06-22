@@ -1,0 +1,15 @@
+etc/ros/genmsg/gencpp
+lib/gencpp/gen_cpp.py
+%%PYTHON_SITELIBDIR%%/gencpp-0.6.5-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/gencpp-0.6.5-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/gencpp-0.6.5-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/gencpp-0.6.5-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/gencpp/__init__.py
+%%PYTHON_SITELIBDIR%%/gencpp/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/gencpp.pc
+share/gencpp/cmake/gencpp-extras.cmake
+share/gencpp/cmake/gencppConfig-version.cmake
+share/gencpp/cmake/gencppConfig.cmake
+share/gencpp/msg.h.template
+share/gencpp/package.xml
+share/gencpp/srv.h.template

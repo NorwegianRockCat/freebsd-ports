@@ -1,0 +1,4 @@
+The dynamic_reconfigure package provides a means to update parameters
+at runtime without having to restart the node.
+
+WWW: https://wiki.ros.org/dynamic_reconfigure

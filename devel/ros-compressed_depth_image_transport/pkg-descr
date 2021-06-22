@@ -1,0 +1,5 @@
+Compressed_depth_image_transport provides a plugin to image_transport
+for transparently sending depth images (raw, floating-point) using
+PNG compression.
+
+WWW: https://wiki.ros.org/compressed_depth_image_transport

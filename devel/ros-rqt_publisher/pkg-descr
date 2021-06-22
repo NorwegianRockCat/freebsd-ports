@@ -1,0 +1,4 @@
+rqt_publisher provides a GUI plugin for publishing arbitrary messages
+with fixed or computed field values.
+
+WWW: https://wiki.ros.org/rqt_publisher

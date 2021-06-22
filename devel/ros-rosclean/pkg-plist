@@ -1,0 +1,11 @@
+bin/rosclean
+%%PYTHON_SITELIBDIR%%/rosclean-1.15.7-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rosclean-1.15.7-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rosclean-1.15.7-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rosclean-1.15.7-py%%PYTHON_VER%%.egg-info/top_level.txt
+%%PYTHON_SITELIBDIR%%/rosclean/__init__.py
+%%PYTHON_SITELIBDIR%%/rosclean/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/rosclean.pc
+share/rosclean/cmake/roscleanConfig-version.cmake
+share/rosclean/cmake/roscleanConfig.cmake
+share/rosclean/package.xml

@@ -1,0 +1,11 @@
+%%PYTHON_SITELIBDIR%%/rqt_srv-0.4.9-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_srv/__init__.py
+%%PYTHON_SITELIBDIR%%/rqt_srv/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_srv/__pycache__/services%%PYTHON_EXT_SUFFIX%%.pyc
+%%PYTHON_SITELIBDIR%%/rqt_srv/services.py
+lib/rqt_srv/rqt_srv
+libdata/pkgconfig/rqt_srv.pc
+share/rqt_srv/cmake/rqt_srvConfig-version.cmake
+share/rqt_srv/cmake/rqt_srvConfig.cmake
+share/rqt_srv/package.xml
+share/rqt_srv/plugin.xml

@@ -1,0 +1,4 @@
+this package contains a set of messages that are used by the
+introspection interfaces for smach.
+
+WWW: https://wiki.ros.org/smach_msgs

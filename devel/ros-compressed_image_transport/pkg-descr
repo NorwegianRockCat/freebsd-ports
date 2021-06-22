@@ -1,0 +1,4 @@
+Compressed_image_transport provides a plugin to image_transport for
+transparently sending images encoded as JPEG or PNG.
+
+WWW: https://wiki.ros.org/compressed_image_transport

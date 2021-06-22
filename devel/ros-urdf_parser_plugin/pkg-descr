@@ -1,0 +1,3 @@
+This package contains a C++ base class for URDF parsers.
+
+WWW: https://wiki.ros.org/urdf_parser_plugin

@@ -1,0 +1,16 @@
+etc/catkin/profile.d/10.rosbuild.sh
+libdata/pkgconfig/rosbuild.pc
+share/ros/core/rosbuild/FindPkgConfig.cmake
+share/ros/core/rosbuild/ProcessorCount.cmake
+share/ros/core/rosbuild/bin/check_same_directories.py
+share/ros/core/rosbuild/bin/download_checkmd5.py
+share/ros/core/rosbuild/private.cmake
+share/ros/core/rosbuild/public.cmake
+share/ros/core/rosbuild/rosbuild.cmake
+share/ros/core/rosbuild/rosconfig.cmake
+share/ros/core/rosbuild/rostoolchain.cmake
+share/ros/core/rosbuild/tests/count_cores.py
+share/rosbuild/catkin_env_hook/10.rosbuild.sh
+share/rosbuild/cmake/rosbuildConfig-version.cmake
+share/rosbuild/cmake/rosbuildConfig.cmake
+share/rosbuild/package.xml

@@ -1,0 +1,4 @@
+Integration test suite based on roslaunch that is compatible with
+xUnit frameworks.
+
+WWW: https://wiki.ros.org/rostest

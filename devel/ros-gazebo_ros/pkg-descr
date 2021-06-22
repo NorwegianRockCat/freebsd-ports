@@ -1,0 +1,4 @@
+Provides ROS plugins that offer message and service publishers for
+interfacing with Gazebo through ROS.  Formally simulator_gazebo/gazebo
+
+WWW: https://wiki.ros.org/gazebo_ros

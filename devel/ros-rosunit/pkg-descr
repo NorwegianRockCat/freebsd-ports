@@ -1,0 +1,5 @@
+Unit-testing package for ROS. This is a lower-level library for
+rostest and handles unit tests, whereas rostest handles integration
+tests.
+
+WWW: https://wiki.ros.org/rosunit

@@ -1,0 +1,4 @@
+rqt_rviz provides a GUI plugin embedding RViz.  Note that this rqt
+plugin does NOT supersede RViz but depends on it.
+
+WWW: https://wiki.ros.org/rqt_rviz

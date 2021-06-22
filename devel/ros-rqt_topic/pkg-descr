@@ -1,0 +1,5 @@
+rqt_topic provides a GUI plugin for displaying debug information
+about ROS topics including publishers, subscribers, publishing rate,
+and ROS Messages.
+
+WWW: https://wiki.ros.org/rqt_topic

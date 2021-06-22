@@ -1,0 +1,17 @@
+include/pluginlib/class_desc.h
+include/pluginlib/class_desc.hpp
+include/pluginlib/class_list_macros.h
+include/pluginlib/class_list_macros.hpp
+include/pluginlib/class_loader.h
+include/pluginlib/class_loader.hpp
+include/pluginlib/class_loader_base.h
+include/pluginlib/class_loader_base.hpp
+include/pluginlib/class_loader_imp.h
+include/pluginlib/class_loader_imp.hpp
+include/pluginlib/exceptions.hpp
+include/pluginlib/pluginlib_exceptions.h
+lib/pluginlib/pluginlib_headers_migration.py
+libdata/pkgconfig/pluginlib.pc
+share/pluginlib/cmake/pluginlibConfig-version.cmake
+share/pluginlib/cmake/pluginlibConfig.cmake
+share/pluginlib/package.xml

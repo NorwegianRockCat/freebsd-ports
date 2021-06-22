@@ -1,0 +1,5 @@
+rosconsole_bridge is a package used in conjunction with console_bridge
+and rosconsole for connecting console_bridge-based logging to
+rosconsole-based logging.
+
+WWW: https://wiki.ros.org/rosconsole_bridge

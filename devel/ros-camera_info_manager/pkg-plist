@@ -1,0 +1,9 @@
+include/camera_info_manager/camera_info_manager.h
+lib/libcamera_info_manager.so
+lib/libcamera_info_manager.so.1
+lib/libcamera_info_manager.so.1.12
+lib/libcamera_info_manager.so.1.12.0
+libdata/pkgconfig/camera_info_manager.pc
+share/camera_info_manager/cmake/camera_info_managerConfig-version.cmake
+share/camera_info_manager/cmake/camera_info_managerConfig.cmake
+share/camera_info_manager/package.xml

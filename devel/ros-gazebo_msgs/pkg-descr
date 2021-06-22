@@ -1,0 +1,4 @@
+Message and service data structures for interacting with Gazebo
+from ROS.
+
+WWW: https://wiki.ros.org/gazebo_msgs

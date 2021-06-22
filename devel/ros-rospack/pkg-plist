@@ -1,0 +1,13 @@
+bin/rospack
+bin/rosstack
+include/rospack/macros.h
+include/rospack/rospack.h
+include/rospack/rospack_backcompat.h
+lib/librospack.so
+lib/librospack.so.2
+lib/librospack.so.2.6
+lib/librospack.so.2.6.2
+libdata/pkgconfig/rospack.pc
+share/rospack/cmake/rospackConfig-version.cmake
+share/rospack/cmake/rospackConfig.cmake
+share/rospack/package.xml

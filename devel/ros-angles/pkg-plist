@@ -1,0 +1,8 @@
+include/angles/angles.h
+%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/angles/__init__.py
+%%PYTHON_SITELIBDIR%%/angles/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
+libdata/pkgconfig/angles.pc
+share/angles/cmake/anglesConfig-version.cmake
+share/angles/cmake/anglesConfig.cmake
+share/angles/package.xml
