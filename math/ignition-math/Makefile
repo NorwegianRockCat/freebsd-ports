@@ -1,8 +1,7 @@
-PORTNAME=	ignition-math
-DISTVERSION=	6.0.0
-PORTREVISION=	4
-CATEGORIES=	math
-MASTER_SITES=	https://bitbucket.org/${BB_ACCOUNT}/${BB_PROJECT}/get/${BB_COMMIT}.tar.gz?dummy=/
+PORTNAME=		ignition-math
+DISTVERSIONPREFIX=	${PORTNAME}${DISTVERSION:R:R}_
+DISTVERSION=		6.8.0
+CATEGORIES=		math
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	General purpose math library for robot applications
@@ -10,18 +9,17 @@ COMMENT=	General purpose math library for robot applications
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	ignition-cmake==2:devel/ignition-cmake
+BUILD_DEPENDS=	ignition-cmake>=2<3:devel/ignition-cmake
 
 USES=		compiler:c++17-lang cmake eigen:3
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	ignitionrobotics
+GH_PROJECT=	ign-math
+
 USE_LDCONFIG=	yes
 
 CMAKE_OFF=	BUILD_TESTING
-
-BB_ACCOUNT=	ignitionrobotics
-BB_PROJECT=	ign-math
-BB_COMMIT=	46f3dd24499c
-
-WRKSRC=		${WRKDIR}/${BB_ACCOUNT}-${BB_PROJECT}-${BB_COMMIT}
 
 PLIST_SUB+=	MATH_IGN_VER=math${DISTVERSION:R:R}
 

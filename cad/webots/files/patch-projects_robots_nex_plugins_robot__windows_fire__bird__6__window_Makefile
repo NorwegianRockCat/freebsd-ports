@@ -1,0 +1,25 @@
+--- projects/robots/nex/plugins/robot_windows/fire_bird_6_window/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/nex/plugins/robot_windows/fire_bird_6_window/Makefile
+@@ -69,6 +69,15 @@ ifeq ($(OSTYPE),linux)
+  INCLUDE += -isystem "$(QT_INCLUDE_DIR)/QtCore" -isystem "$(QT_INCLUDE_DIR)/QtGui" -isystem "$(QT_INCLUDE_DIR)/QtWidgets" -isystem "$(QT_INCLUDE_DIR)/QtConcurrent"
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++ QT_INCLUDE_DIR = $(LOCALBASE)/include/qt5
++ QT_LIB_DIR = $(LOCALBASE)/lib/qt5
++ MOC = $(LOCALBASE)/lib/qt5/bin/moc
++ MOC_PLATFORM_FLAGS = -D__FreeBSD__
++ DYNAMIC_LIBRARIES += -L"$(QT_LIB_DIR)" -lQt5Core -lQt5Gui -lQt5Widgets -lQt5Concurrent
++ INCLUDE += -isystem "$(QT_INCLUDE_DIR)"
++endif
++
+ ifeq ($(OSTYPE),darwin)
+  WBCFLAGS += -Wno-unknown-pragmas
+  FRAMEWORKS_DIR = $(WEBOTS_HOME)/Contents/Frameworks
+@@ -89,4 +98,4 @@ $(BUILD_DIR)/%.moc.cpp: %.hpp
+ 	@echo "# moc-generating" $(notdir $<)
+ 	$(SILENT)$(MOC) $(MOC_PLATFORM_FLAGS) $(INCLUDE:-isystem:-I) $< -o $@
+ 
+-$(BUILD_GOAL_DIR)/$(MAIN_TARGET): $(OBJECTS)
+\ No newline at end of file
++$(BUILD_GOAL_DIR)/$(MAIN_TARGET): $(OBJECTS)

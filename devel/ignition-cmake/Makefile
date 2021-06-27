@@ -1,7 +1,7 @@
-PORTNAME=	ignition-cmake
-DISTVERSION=	2.0.0
-CATEGORIES=	devel
-MASTER_SITES=	https://bitbucket.org/${BB_ACCOUNT}/${BB_PROJECT}/get/${BB_COMMIT}.tar.gz?dummy=/
+PORTNAME=		ignition-cmake
+DISTVERSIONPREFIX=	${PORTNAME}${DISTVERSION:R:R}_
+DISTVERSION=		2.8.0
+CATEGORIES=		devel
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	CMake modules to be used by the Ignition projects
@@ -9,15 +9,15 @@ COMMENT=	CMake modules to be used by the Ignition projects
 LICENSE=	APACHE20
 
 USES=		cmake pkgconfig
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	ignitionrobotics
+GH_PROJECT=	ign-cmake
+
 USE_RUBY=	yes
 
 CMAKE_OFF=	BUILD_TESTING
 
-BB_ACCOUNT=	ignitionrobotics
-BB_PROJECT=	ign-cmake
-BB_COMMIT=	776c2bfe1d18
-
-WRKSRC=		${WRKDIR}/${BB_ACCOUNT}-${BB_PROJECT}-${BB_COMMIT}
 NO_ARCH=	yes
 
 PLIST_SUB+=	CMAKE_IGN_VER=cmake${DISTVERSION:R:R}

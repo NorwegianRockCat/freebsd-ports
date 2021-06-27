@@ -1,0 +1,24 @@
+--- projects/robots/robotis/darwin-op/libraries/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/robotis/darwin-op/libraries/Makefile
+@@ -19,6 +19,10 @@ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.incl
+ 
+ TARGETS=robotis-op2.Makefile managers.Makefile python.Makefile
+ 
++ifeq ($(OSTYPE),freebsd)
++export PYTHON_COMMAND=$(shell basename $(realpath -f $(shell which python)))
++endif
++
+ ifeq ($(OSTYPE),windows)
+ PYTHON_MAKE = PATH="$(PYTHON27_HOME):$(PATH)" make
+ else
+@@ -56,6 +60,10 @@ endif
+ 	+PYTHON_COMMAND=python3.8 make -s -C python $(MAKECMDGOALS)
+ 	@echo "# make" $@ python3.9;
+ 	+PYTHON_COMMAND=python3.9 make -s -C python $(MAKECMDGOALS)
++endif
++ifeq ($(OSTYPE),freebsd)
++	@echo "# make" $@ $(PYTHON_COMMAND);
++	+make -s -C python $(MAKECMDGOALS)
+ endif
+ ifeq ($(OSTYPE),windows)
+ 	@echo "# make" $@ python3.9;

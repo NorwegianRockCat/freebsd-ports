@@ -1,0 +1,25 @@
+--- src/ode/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/ode/Makefile
+@@ -23,6 +23,9 @@ endif
+ ifeq ($(OSTYPE),linux)
+ TARGET_ODE_LIBRARY=$(WEBOTS_LIB_PATH)/libode.so
+ endif
++ifeq ($(OSTYPE),freebsd)
++TARGET_ODE_LIBRARY=$(WEBOTS_LIB_PATH)/libode.so
++endif
+ ifeq ($(OSTYPE),darwin)
+ TARGET_ODE_LIBRARY=$(WEBOTS_LIB_PATH)/libode.dylib
+ endif
+@@ -56,8 +59,12 @@ FILES_TO_REMOVE = $(TARGET_ODE_LIBRARY) libode.a ode.a
+ WEBOTS_DISABLE_BINARY_COPY=true
+ 
+ CFLAGS = -DdTRIMESH_ENABLED -DdTRIMESH_OPCODE -DODE_MT -DODE_LIB -DODE_THREADMODE_PTHREAD
++ifeq ($(OSTYPE),freebsd)
++  CFLAGS += -Wno-misleading-indentation
++else
+ ifneq ($(OSTYPE),darwin)
+   CFLAGS += -Wno-misleading-indentation -Wno-nonnull-compare
++endif
+ endif
+ 
+ ifeq ($(MAKECMDGOALS),release)

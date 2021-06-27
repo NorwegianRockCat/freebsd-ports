@@ -1,0 +1,16 @@
+--- resources/projects/plugins/physics/Makefile.orig	2020-12-15 08:37:01 UTC
++++ resources/projects/plugins/physics/Makefile
+@@ -33,9 +33,12 @@ endif
+ ifeq ($(OSTYPE), linux)
+ PLATFORM_FLAGS = -fPIC
+ endif
++ifeq ($(OSTYPE), freebsd)
++PLATFORM_FLAGS = -fPIC
++endif
+ 
+ physics.o: physics.c $(WEBOTS_HOME_PATH)/include/plugins/physics.h
+-	@gcc $(CFLAGS) $(PLATFORM_FLAGS) physics.c -I$(WEBOTS_HOME_PATH)/include -I$(WEBOTS_HOME_PATH)/include/ode
++	@$(CC) $(CFLAGS) $(PLATFORM_FLAGS) physics.c -I$(WEBOTS_HOME_PATH)/include -I$(WEBOTS_HOME_PATH)/include/ode
+ release debug profile: physics.o
+ clean:
+ 	@rm -f physics.o

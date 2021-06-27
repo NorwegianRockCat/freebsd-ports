@@ -1,0 +1,13 @@
+SVOX Pico is a very compact multilingual Text-To-Speech (TTS) library.
+It was designed for integration in mobile devices and includes female
+voices for English (US and GB), French, German, Italian, and Spanish,
+each of which takes about 1 MiB of disk space on a 64-bit x86 system.
+
+Pico TTS was originally open-sourced for Android. This version is the
+one maintained by Debian. They consider it to be non-free because the
+binary language files don't come with the corresponding source code.
+However, formats for both source and binary versions of the lingware
+knowledge bases seem to be well documented, and it's all Apache 2.0.
+Also, lingware source IS included, but not that for the build tools.
+
+WWW: https://web.archive.org/web/20100310022501/http://svox.com/

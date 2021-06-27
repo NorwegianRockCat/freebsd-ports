@@ -1,0 +1,42 @@
+--- src/controller/java/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/controller/java/Makefile
+@@ -87,10 +87,6 @@ WEBOTS_INCLUDES = -I$(WEBOTS_HOME_PATH)/include/contro
+ 
+ SWIG_EXISTS = $(shell which $(SWIG) 2> /dev/null)
+ 
+-ifeq ($(CC),cc)
+-CC=gcc
+-endif
+-
+ # variables depending on the OS
+ ifeq ($(OSTYPE),windows)
+ CFLAGS1         = -I$(WEBOTS_HOME_PATH)/windows/include
+@@ -115,7 +111,20 @@ JAVA_INCLUDES   = -I"$(JAVA_HOME)/include" -I"$(JAVA_H
+ LIBCONTROLLER   = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.dylib
+ LIBCPPCONTROLLER= $(WEBOTS_CONTROLLER_LIB_PATH)/libCppController.dylib
+ ECHO_N          = '\c'ifdef USE_STD_CXX
++else
+ 
++ifeq ($(OSTYPE),freebsd)
++CFLAGS1         = -fPIC
++PLATFORM_INCLUDE= -I"$(JAVA_HOME)/include/freebsd" -I"/usr/X11R6/include"
++PLATFORM_LIBS   =
++TARGET          = $(WEBOTS_CONTROLLER_LIB_PATH)/java/lib$(LIBNAME).so
++CFLAGS2         = -c -Wall -Wno-unused-function -fPIC
++JNILIB_FLAGS    = -bundle
++JAVA_INCLUDES   = -I"$(JAVA_HOME)/include" -I"$(JAVA_HOME)/include/freebsd"
++LIBCONTROLLER   = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.so
++LIBCPPCONTROLLER= $(WEBOTS_CONTROLLER_LIB_PATH)/libCppController.so
++ECHO_N          = -n
++
+ else #Linux
+ CFLAGS1         = -fPIC
+ PLATFORM_INCLUDE= -I"$(JAVA_HOME)/include/linux" -I"/usr/X11R6/include"
+@@ -127,6 +136,7 @@ JAVA_INCLUDES   = -I"$(JAVA_HOME)/include" -I"$(JAVA_H
+ LIBCONTROLLER   = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.so
+ LIBCPPCONTROLLER= $(WEBOTS_CONTROLLER_LIB_PATH)/libCppController.so
+ ECHO_N          = -n
++endif
+ endif
+ endif
+ 

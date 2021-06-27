@@ -1,0 +1,9 @@
+Webots is an open-source robot simulator. It allows you to test robots or other
+mechanical systems in a simulated environment to speed up the design process.
+The simulator comes with a user-friendly GUI, good documentation, and lots of
+working examples, so it should be easy to get started on a new robot project.
+
+Robots are modeled in an extended version of VRML and robot controllers can be
+written in C, C++, Python, or Java. There is also support for ROS controllers.
+
+WWW: https://www.cyberbotics.com

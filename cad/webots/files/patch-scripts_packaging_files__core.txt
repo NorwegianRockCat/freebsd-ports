@@ -1,0 +1,118 @@
+--- scripts/packaging/files_core.txt.orig	2020-12-15 08:37:01 UTC
++++ scripts/packaging/files_core.txt
+@@ -1,4 +1,4 @@
+-bin/ [mac,linux]
++bin/ [mac,linux,bsd]
+ bin/qt/ [mac,linux]
+ bin/qt/lrelease [mac,linux,exe] # allow users to create translations in their own language
+ bin/qt/lupdate [mac,linux,exe]
+@@ -79,7 +79,7 @@ lib/controller/libCppController.a [windows]
+ lib/controller/java/
+ lib/controller/java/*.jar
+ lib/controller/java/*.dll [windows]
+-lib/controller/java/lib*.so [linux]
++lib/controller/java/lib*.so [bsd,linux]
+ lib/controller/java/lib*.jnilib [mac]
+ 
+ lib/controller/car [dll]
+@@ -89,8 +89,8 @@ lib/controller/driver [dll]
+ lib/controller/car.lib [windows]
+ lib/controller/driver.lib [windows]
+ 
+-lib/controller/python27/
+-lib/controller/python27/*.py
++lib/controller/python27/ [linux,mac,windows]
++lib/controller/python27/*.py [linux,mac,windows]
+ lib/controller/python27/_*.so [linux,mac]
+ lib/controller/python27/_*.pyd [windows]
+ 
+@@ -100,15 +100,15 @@ lib/controller/python36/_*.so [linux]
+ 
+ lib/controller/python37/
+ lib/controller/python37/*.py
+-lib/controller/python37/_*.so [linux,mac]
++lib/controller/python37/_*.so [bsd,linux,mac]
+ lib/controller/python37/_*.pyd [windows]
+ 
+ lib/controller/python37_brew/ [mac]
+ lib/controller/python37_brew/*.py [mac]
+ lib/controller/python37_brew/_*.so [mac]
+ 
+-lib/controller/python38/
+-lib/controller/python38/*.py
++lib/controller/python38/ [linux,mac,windows]
++lib/controller/python38/*.py [linux,mac,windows]
+ lib/controller/python38/_*.so [linux,mac]
+ lib/controller/python38/_*.pyd [windows]
+ 
+@@ -116,8 +116,8 @@ lib/controller/python38_brew/ [mac]
+ lib/controller/python38_brew/*.py [mac]
+ lib/controller/python38_brew/_*.so [mac]
+ 
+-lib/controller/python39/
+-lib/controller/python39/*.py
++lib/controller/python39/ [linux,mac,windows]
++lib/controller/python39/*.py [linux,mac,windows]
+ lib/controller/python39/_*.so [linux,mac]
+ lib/controller/python39/_*.pyd [windows]
+ 
+@@ -129,14 +129,14 @@ lib/controller/matlab/
+ lib/controller/matlab/allincludes.h
+ lib/controller/matlab/*.m
+ 
+-lib/webots/ [linux,mac]
++lib/webots/ [bsd,linux,mac]
+ lib/webots/libassimp.so* [linux]
+ lib/webots/libgd.3.dylib [mac]
+ lib/webots/libIrrXML.dylib [mac]
+ lib/webots/liblua.dylib [mac]
+ lib/webots/libOIS-1.4.0.so [linux]
+ lib/webots/libOIS.dylib [mac]
+-lib/webots/libode.so [linux]
++lib/webots/libode.so [bsd,linux]
+ lib/webots/libode.dylib [mac]
+ lib/webots/libpico.so [linux]
+ lib/webots/libpico.dylib [mac]
+@@ -254,10 +254,10 @@ resources/osm_importer/utils/
+ resources/osm_importer/utils/*.py
+ resources/osm_importer/webots_objects/
+ resources/osm_importer/webots_objects/*.py
+-resources/pico/
+-resources/pico/lang/
+-resources/pico/lang/*.bin
+-resources/pico/lang/*.mk
++resources/pico/ [linux,mac,windows]
++resources/pico/lang/ [linux,mac,windows]
++resources/pico/lang/*.bin [linux,mac,windows]
++resources/pico/lang/*.mk [linux,mac,windows]
+ resources/projects/
+ resources/projects/controllers/
+ resources/projects/controllers/void/
+@@ -300,6 +300,7 @@ resources/projects/plugins/robot_windows/generic_windo
+ resources/projects/plugins/robot_windows/generic_window/*pp
+ resources/projects/worlds/
+ resources/projects/worlds/empty.wbt
++resources/stylesheet.freebsd.qss [bsd]
+ resources/stylesheet.linux.qss [linux]
+ resources/stylesheet.macos.qss [mac]
+ resources/webots_classic.qss
+@@ -316,7 +317,7 @@ resources/web/
+ resources/web/local/
+ resources/web/local/webots.css
+ resources/web/local/webots.js
+-resources/web/local/qwebchannel.js [mac,linux]
++resources/web/local/qwebchannel.js [mac,linux,bsd]
+ resources/web/server/
+ resources/web/server/async_process.py
+ resources/web/server/server.sh
+@@ -380,8 +381,8 @@ src/controller/matlab/mgenerate.py
+ util/ [mac]
+ util/ffmpeg [mac]
+ 
+-webots [exe,mac,linux] # on Windows, we create a shortcut in setup.iss
+-bin/webots-bin [linux]
++webots [exe,mac,linux,bsd] # on Windows, we create a shortcut in setup.iss
++bin/webots-bin [linux,bsd]
+ bin/qt.conf [linux]
+ Contents/ [mac]
+ Contents/Frameworks/ [mac]

@@ -1,8 +1,7 @@
-PORTNAME=	ignition-fuel-tools
-DISTVERSION=	1.2.0
-PORTREVISION=	5
-CATEGORIES=	misc
-MASTER_SITES=	https://bitbucket.org/${BB_ACCOUNT}/${BB_PROJECT}/get/${BB_COMMIT}.tar.gz?dummy=/
+PORTNAME=		ignition-fuel-tools
+DISTVERSIONPREFIX=	${PORTNAME}${DISTVERSION:R:R}_
+DISTVERSION=		4.3.0
+CATEGORIES=		misc
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Classes and tools for interacting with Ignition Fuel
@@ -10,24 +9,27 @@ COMMENT=	Classes and tools for interacting with Ignition Fuel
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	ignition-cmake==2:devel/ignition-cmake
+BUILD_DEPENDS=	ignition-cmake>=2<3:devel/ignition-cmake
 LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libignition-common3.so:devel/ignition-common \
+		libignition-math6.so:math/ignition-math\
+		libignition-msgs5.so:devel/ignition-msgs\
 		libjsoncpp.so:devel/jsoncpp \
+		libprotobuf.so:devel/protobuf\
+		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid \
 		libyaml.so:textproc/libyaml \
 		libzip.so:archivers/libzip
 
 USES=		cmake compiler:c++17-lang pkgconfig
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	ignitionrobotics
+GH_PROJECT=	ign-fuel-tools
+
 USE_LDCONFIG=	yes
 
 CMAKE_OFF=	BUILD_TESTING
-
-BB_ACCOUNT=	ignitionrobotics
-BB_PROJECT=	ign-fuel-tools
-BB_COMMIT=	0ffbf3a2c836
-
-WRKSRC=		${WRKDIR}/${BB_ACCOUNT}-${BB_PROJECT}-${BB_COMMIT}
 
 PLIST_SUB+=	FUEL_TOOLS_IGN_VER=fuel_tools${DISTVERSION:R:R}
 

@@ -14,7 +14,7 @@
 # bsd.port.mk.  There are significant differences in those so non-FreeBSD code
 # was removed.
 #
-# $MCom$
+# $MCom: portlint/portlint.pl,v 1.528 2021/05/14 16:53:31 jclarke Exp $
 #
 
 use strict;
@@ -594,6 +594,7 @@ sub checkplist {
 	my $owner_seen = 0;
 	my $group_seen = 0;
 	my $found_so = 0;
+	my $found_naked_so = 0;
 
 	# Variables that are allowed to be out-of-sync in the XXXDIR check.
 	# E.g., %%PORTDOCS%%%%RUBY_MODDOCDIR%% will be OK because there is
@@ -809,8 +810,10 @@ sub checkplist {
 			$makevar{USE_LDCONFIG} eq '') {
 			&perror("WARN", $file, $., "installing shared libraries, ".
 				"please define USE_LDCONFIG as appropriate");
-		} elsif ($_ =~ m|lib[^\/]+\.so[.\d]*$|) {
+		} elsif ($_ =~ m|lib[^\/]+\.so\.\d+$|) {
 			$found_so++;
+		} elsif ($_ =~ m|lib[^\/]+\.so$|) {
+			$found_naked_so++;
 		}
 
 		if ($_ =~ m|\.omf$| && $makevar{INSTALLS_OMF} eq '') {
@@ -938,8 +941,14 @@ sub checkplist {
 	}
 
 	if ($makevar{USE_LDCONFIG} ne '' && !$found_so) {
-		&perror("WARN", $file, -1, "You have defined USE_LDCONFIG, but this ".
-			"port does not install any shared objects.");
+		if ($found_naked_so) {
+			&perror("WARN", $file, -1, "You have defined USE_LDCONFIG, but this ".
+				"port does not install shared objects in the format lib*.so.[0-9] ".
+				"which ldconfig(8) needs to register them in the hints file.");
+		} else {
+			&perror("WARN", $file, -1, "You have defined USE_LDCONFIG, but this ".
+				"port does not install any shared objects.");
+		}
 	}
 
 	close(IN);
@@ -1152,6 +1161,27 @@ sub check_depends_syntax {
 				push @ks, split(/\s+/, $k);
 				next;
 			}
+
+			# Variables with modifiers are recursively expanded
+			if ($k =~ /^
+			  \$\{\w+          # main variable
+			    (:             # optional modifiers:
+			      (?:          #   one or more:
+			        [^\${}]+   #     anything but a variable
+			        (?:        #     zero or more:
+			          \$\{\w+  #       nested variable
+			            (?1)?  #       recursive optional modifiers
+			          }
+			        )*
+			      )+
+			    )?
+			  }
+			$/gx) {
+				$k = get_makevar($k);
+				push @ks, split(/\s+/, $k);
+				next;
+			}
+
 			if ($k eq '') {
 				next;
 			}
@@ -2698,7 +2728,7 @@ EOF
 	&checkorder('PORTNAME', $tmp, $file, qw(
 PORTNAME PORTVERSION DISTVERSIONPREFIX DISTVERSION DISTVERSIONSUFFIX
 PORTREVISION PORTEPOCH CATEGORIES MASTER_SITES MASTER_SITE_SUBDIR
-PROJECTHOST PKGNAMEPREFIX PKGNAMESUFFIX DISTNAME EXTRACT_SUFX DISTFILES(_\w+)?
+PROJECTHOST PKGNAMEPREFIX PKGNAMESUFFIX DISTNAME EXTRACT_SUFX DISTFILES
 DIST_SUBDIR EXTRACT_ONLY
 	));
 
@@ -3089,7 +3119,7 @@ DIST_SUBDIR EXTRACT_ONLY
 	push(@varnames, qw(
 PORTNAME PORTVERSION DISTVERSIONPREFIX DISTVERSION DISTVERSIONSUFFIX
 PORTREVISION PORTEPOCH CATEGORIES MASTER_SITES MASTER_SITE_SUBDIR
-PROJECTHOST PKGNAMEPREFIX PKGNAMESUFFIX DISTNAME EXTRACT_SUFX DISTFILES(_\w+)?
+PROJECTHOST PKGNAMEPREFIX PKGNAMESUFFIX DISTNAME EXTRACT_SUFX DISTFILES
 DIST_SUBDIR EXTRACT_ONLY
 	));
 
@@ -3264,7 +3294,7 @@ MAINTAINER COMMENT
 	@linestocheck = qw(
 DEPRECATED EXPIRATION_DATE FORBIDDEN BROKEN(_\w+)? IGNORE(_\w+)?
 ONLY_FOR_ARCHS ONLY_FOR_ARCHS_REASON(_\w+)?
-NOT_FOR_ARCHS NOT_FOR_ARCHS_REASON(_\w+)? LEGAL_TEXT
+NOT_FOR_ARCHS NOT_FOR_ARCHS_REASON(_\w+)?
 	);
 
 	my $brokenpattern = "^(" . join("|", @linestocheck) . ")[?+:]?=";
@@ -3456,6 +3486,15 @@ TEST_DEPENDS FETCH_DEPENDS DEPENDS_TARGET
 			&perror("WARN", $file, -1, "definition of WRKSRC not necessary. ".
 				"WRKSRC is \${WRKDIR} by default.");
 		}
+	}
+
+	# check RESTRICTED/NO_CDROM/NO_PACKAGE
+	print "OK: checking RESTRICTED/NO_CDROM/NO_PACKAGE.\n" if ($verbose);
+	my $lps = $makevar{LICENSE_PERMS} // '';
+	if ($committer && ($tmp =~ /\n(RESTRICTED|NO_CDROM|NO_PACKAGE)[+?]?=/ ||
+		$lps =~ /\bno-\b/)) {
+		&perror("WARN", $file, -1, "Possible restrictive licensing found.  ".
+			"If there are, in fact, limitations to use or distribution, please update ports/LEGAL.");
 	}
 
 	if ($tmp =~ /\nNO_PACKAGE[+?]?=/) {

@@ -1,0 +1,25 @@
+--- projects/vehicles/controllers/racing_wheel/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/vehicles/controllers/racing_wheel/Makefile
+@@ -25,7 +25,7 @@ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.incl
+ 
+ LIBRARIES = -ldriver -lcar -lCppDriver
+ 
+-ifeq ($(OSTYPE),linux)
++ifneq ($(filter $(OSTYPE),linux freebsd),)
+ CFLAGS = -fPIC
+ LIBRARIES += -Wl,-rpath,$(WEBOTS_LIB_PATH)
+ endif
+@@ -51,6 +51,13 @@ ifeq ($(OSTYPE),linux)
+  QT_LIB_DIR = $(WEBOTS_HOME)/lib/webots
+  DYNAMIC_LIBRARIES += -L"$(QT_LIB_DIR)" -lQt5Core
+  INCLUDE += -isystem "$(QT_INCLUDE_DIR)/QtCore"
++endif
++
++ifeq ($(OSTYPE),freebsd)
++ QT_INCLUDE_DIR = $(LOCALBASE)/include/qt5
++ QT_LIB_DIR = $(LOCALBASE)/lib/qt5
++ DYNAMIC_LIBRARIES += -L"$(QT_LIB_DIR)" -lQt5Core
++ INCLUDE += -isystem "$(QT_INCLUDE_DIR)"
+ endif
+ 
+ ifeq ($(OSTYPE),darwin)

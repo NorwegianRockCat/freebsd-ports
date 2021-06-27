@@ -1,0 +1,14 @@
+--- src/CMakeLists.txt.orig	2021-03-17 16:18:59 UTC
++++ src/CMakeLists.txt
+@@ -191,11 +191,6 @@ target_link_libraries(${PROJECT_LIBRARY_TARGET_NAME}
+ target_include_directories(${PROJECT_LIBRARY_TARGET_NAME}
+   SYSTEM PUBLIC $<TARGET_PROPERTY:protobuf::libprotobuf,INTERFACE_INCLUDE_DIRECTORIES>)
+ 
+-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  # Disable warning in generated *.pb.cc code
+-  target_compile_options(${PROJECT_LIBRARY_TARGET_NAME} PRIVATE -Wno-extended-offsetof)
+-endif()
+-
+ target_include_directories(${PROJECT_LIBRARY_TARGET_NAME}
+   PUBLIC
+     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>

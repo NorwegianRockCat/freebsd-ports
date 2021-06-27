@@ -1,0 +1,44 @@
+--- Makefile.orig	2020-12-15 08:37:01 UTC
++++ Makefile
+@@ -31,6 +31,13 @@ export JAVA_HOME:=$(shell dirname $(dir $(shell readli
+ endif
+ endif
+ 
++ifeq ($(JAVA_HOME)$(OSTYPE),freebsd)
++JAVAC := $(shell which javac)
++ifneq ($(JAVAC),)
++export JAVA_HOME := $(shell JAVAVM_DRYRUN=yes $(JAVAC) | grep JAVA_HOME | sed 's/.*=//')
++endif
++endif
++
+ WEBOTS_DISTRIBUTION_PATH ?= $(WEBOTS_HOME)/distribution
+ 
+ ifeq ($(MAKECMDGOALS),)
+@@ -135,7 +142,7 @@ ifeq ($(OSTYPE),windows)
+ 	@+make --silent -C dependencies -f Makefile.windows $(MAKECMDGOALS)
+ endif
+ 
+-ifeq ($(OSTYPE),darwin)
++ifneq ($(filter $(OSTYPE),freebsd darwin),)
+ NUMBER_OF_PROCESSORS = `sysctl -n hw.ncpu`
+ else
+ NUMBER_OF_PROCESSORS ?= `grep -c ^processor /proc/cpuinfo`
+@@ -145,7 +152,9 @@ THREADS = $$(($(NUMBER_OF_PROCESSORS) * 3 / 2))
+ docs:
+ ifneq (, $(shell which python 2> /dev/null))
+ 	@+echo "#"; echo "# * documentation *";
++ifneq ($(OSTYPE),freebsd)
+ 	-@+python docs/local_exporter.py --silent
++endif
+ else
+ 	@+echo "#"; echo -e "# \033[0;33mPython not installed, skipping documentation\033[0m";
+ endif
+@@ -155,7 +164,7 @@ clean-docs:
+ 	@rm -fr docs/index.html docs/dependencies
+ 
+ install:
+-	@+echo "#"; echo "# * installing (snap) *";
++	@+echo "#"; echo "# * installing *";
+ 	@+make --silent -C scripts/packaging -f Makefile install
+ 
+ help:

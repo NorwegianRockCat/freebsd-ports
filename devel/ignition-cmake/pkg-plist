@@ -1,4 +1,6 @@
+include/ignition/%%CMAKE_IGN_VER%%/ignition/utilities/ExtraTestMacros.hh
 include/ignition/%%CMAKE_IGN_VER%%/ignition/utilities/SuppressWarning.hh
+include/ignition/%%CMAKE_IGN_VER%%/ignition/utilities/detail/ExtraTestMacros.hh
 include/ignition/%%CMAKE_IGN_VER%%/ignition/utilities/detail/SuppressWarning.hh
 libdata/pkgconfig/ignition-%%CMAKE_IGN_VER%%.pc
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/Export.hh.in
@@ -12,12 +14,13 @@ share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindEIGEN3.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindFreeImage.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindGTS.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIFADDRS.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIgnBullet.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIgnCURL.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIgnOGRE.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIgnOGRE2.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindIgnProtobuf.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindJSONCPP.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindODE.cmake
-share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindOGRE2.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindOptiX.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindSQLite3.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindSWSCALE.cmake
@@ -26,6 +29,7 @@ share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindUUID.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindYAML.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindZIP.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/FindZeroMQ.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnBenchmark.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnCMake.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnCheckSSE.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnCodeCheck.cmake
@@ -33,9 +37,12 @@ share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnCodeCoverage.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnConfigureBuild.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnConfigureProject.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnCreateDocs.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnGenerateVersionInfo.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnImportTarget.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnManualSearch.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnPackaging.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnPkgConfig.cmake
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnPython.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnRonn2Man.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnSetCompilerFlags.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/IgnUtils.cmake
@@ -48,9 +55,11 @@ share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/ignition-config.cmake.i
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/pkgconfig/ignition-component.pc.in
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/pkgconfig/ignition.pc.in
 share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/upload_doc.sh.in
+share/cmake/ignition-%%CMAKE_IGN_VER%%/%%CMAKE_IGN_VER%%/version_info.json.in
 share/cmake/ignition-%%CMAKE_IGN_VER%%/ignition-%%CMAKE_IGN_VER%%-config-version.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/ignition-%%CMAKE_IGN_VER%%-config.cmake
 share/cmake/ignition-%%CMAKE_IGN_VER%%/ignition-%%CMAKE_IGN_VER%%-utilities-targets.cmake
+share/ignition/ignition-%%CMAKE_IGN_VER%%/benchmark/run_benchmarks.py
 share/ignition/ignition-%%CMAKE_IGN_VER%%/codecheck/cpplint.py
 share/ignition/ignition-%%CMAKE_IGN_VER%%/codecheck/header_guard.rule
 share/ignition/ignition-%%CMAKE_IGN_VER%%/codecheck/namespace_AZ.rule

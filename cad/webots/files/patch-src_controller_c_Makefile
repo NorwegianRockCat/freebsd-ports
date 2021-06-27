@@ -1,0 +1,17 @@
+--- src/controller/c/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/controller/c/Makefile
+@@ -52,6 +52,14 @@ SHARED_LIBS = -lm -lpthread -ldl -lrt
+ TARGET      = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.so
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++CFLAGS      = -fPIC -Wall
++INCLUDE     = -I$(WEBOTS_HOME_PATH)/include/controller/c -I$(WEBOTS_HOME_PATH)/include
++LD_FLAGS    = -shared -Wl,-soname,libController.so
++SHARED_LIBS = -lm -lpthread -ldl -lrt
++TARGET      = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.so
++endif
++
+ ifeq ($(OSTYPE),windows)
+ CFLAGS      = -Wall -mwindows
+ INCLUDE     = -I$(WEBOTS_HOME_PATH)/include/controller/c -I$(WEBOTS_HOME_PATH)/include -I/mingw64/include

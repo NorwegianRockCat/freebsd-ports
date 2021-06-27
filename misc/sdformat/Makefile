@@ -1,8 +1,7 @@
-PORTNAME=	sdformat
-DISTVERSION=	8.0.0
-PORTREVISION=	4
-CATEGORIES=	misc
-MASTER_SITES=	https://bitbucket.org/${BB_ACCOUNT}/${BB_PROJECT}/get/${BB_COMMIT}.tar.gz?dummy=/
+PORTNAME=		sdformat
+DISTVERSIONPREFIX=	${PORTNAME}${DISTVERSION:R:R}_
+DISTVERSION=		9.5.0
+CATEGORIES=		misc
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Simulation Description Format (SDF) parser and description files
@@ -21,15 +20,14 @@ LIB_DEPENDS=	libignition-math6.so:math/ignition-math \
 RUN_DEPENDS=	ignition-tools>0:devel/ignition-tools
 
 USES=		cmake compiler:c++17-lang pkgconfig
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	osrf
+GH_PROJECT=	${PORTNAME}
+
 USE_LDCONFIG=	yes
 
 CMAKE_OFF=	BUILD_TESTING
-
-BB_ACCOUNT=	osrf
-BB_PROJECT=	${PORTNAME}
-BB_COMMIT=	f555f9a69f8f
-
-WRKSRC=		${WRKDIR}/${BB_ACCOUNT}-${BB_PROJECT}-${BB_COMMIT}
 
 PLIST_SUB+=	INCSUBDIR=${PORTNAME}-${DISTVERSION:R}
 

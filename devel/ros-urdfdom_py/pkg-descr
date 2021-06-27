@@ -1,0 +1,4 @@
+This package provides a urdf_parser_py Python module for
+dealing with URDF, the Unified Robot Description Format.
+
+WWW: https://wiki.ros.org/urdfdom_py
