@@ -1,0 +1,21 @@
+--- resources/web/wwi/Makefile.orig	2021-02-17 15:59:38 UTC
++++ resources/web/wwi/Makefile
+@@ -58,7 +58,7 @@ space := $(null) $(null)
+ WEBOTS_HOME_PATH=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
+ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.include
+ 
+-ifeq ($(OSTYPE),darwin)
++ifneq ($(filter $(OSTYPE),darwin freebsd),)
+  WGET=LANG=en_US.UTF-8 wget -qN -O
+  DISABLE_NPM_INSTALL_WARNING=2>&1
+ else
+@@ -93,6 +93,9 @@ release debug profile update:
+ 	@echo -e "# \033[0;33mnpm not installed, skipping webots.min.js\033[0m"
+ else
+ NPM_INSTALLED_PACKAGES := $(shell npm list --parseable | grep "node_modules" | sed 's/^.*node_modules\///')
++endif
++
++ifneq ($(NPM_EXISTS)$(wildcard $(INSTALL_TOKEN)),)
+ release profile update: webots.min.js webots.lib.js
+ debug: webots.debug.js
+ endif

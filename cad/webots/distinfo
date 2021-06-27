@@ -1,0 +1,17 @@
+TIMESTAMP = 1622659631
+SHA256 (cyberbotics-webots-R2021a_deps.tar.gz) = 3bd68bf0cb3d8cb0d03b8ad9a962c97420597865fdf3caac2ec284c8e6c914ee
+SIZE (cyberbotics-webots-R2021a_deps.tar.gz) = 5074865
+SHA256 (cyberbotics-webots-R2021a_GH0.tar.gz) = 6d2031c58925af7856d2911674de01419ee0557fb1cd7a0b0e5ddf60377b5a9f
+SIZE (cyberbotics-webots-R2021a_GH0.tar.gz) = 1674281147
+SHA256 (aseba-community-aseba-3c14f0cb_GH0.tar.gz) = 8940609e5f0aa8c6887107c374917f05cd32561537364132aad455628b6fa552
+SIZE (aseba-community-aseba-3c14f0cb_GH0.tar.gz) = 15889366
+SHA256 (aseba-community-dashel-1a8d36e7_GH0.tar.gz) = 5558e9d119b79f4d1db6382a2afeb035e8079f0f98e3132d66940c042fb9eb97
+SIZE (aseba-community-dashel-1a8d36e7_GH0.tar.gz) = 188750
+SHA256 (cyberbotics-webots_ros-8b17bf4e_GH0.tar.gz) = 2225903f1645d3d04674858d6bebf12438eae0e1f7bbc5184b46fb73f969bfa9
+SIZE (cyberbotics-webots_ros-8b17bf4e_GH0.tar.gz) = 61029
+SHA256 (g-truc-glm-dd48b56e_GH0.tar.gz) = b88d09a0530993afd4d52de383693bc26e2faf691f97453d6d2f40abb879bb7b
+SIZE (g-truc-glm-dd48b56e_GH0.tar.gz) = 2668683
+SHA256 (mrdoob-three.js-r104_GH0.tar.gz) = 328a9be56497f5b7726adad1b7318cb72ff7ed22ca0a86398958169b0684dec1
+SIZE (mrdoob-three.js-r104_GH0.tar.gz) = 257138504
+SHA256 (nothings-stb-f67165c2_GH0.tar.gz) = 26ca886ecf505a665b6e12e0d53ce8c929f0d8801eecb0e0b15099c5607ebf6b
+SIZE (nothings-stb-f67165c2_GH0.tar.gz) = 1358447

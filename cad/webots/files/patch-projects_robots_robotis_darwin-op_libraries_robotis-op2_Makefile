@@ -1,0 +1,11 @@
+--- projects/robots/robotis/darwin-op/libraries/robotis-op2/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/robotis/darwin-op/libraries/robotis-op2/Makefile
+@@ -38,7 +38,7 @@ C_SOURCES = \
+ INCLUDE = -I"$(ROBOTISOP2_FRAMEWORK_PATH)/include"
+ CFLAGS = -DWEBOTS
+ 
+-ifeq ($(OSTYPE),darwin)
++ifneq ($(filter $(OSTYPE),darwin freebsd),)
+ CFLAGS += -Wno-unused-private-field
+ else
+ CFLAGS += -Wno-stringop-truncation

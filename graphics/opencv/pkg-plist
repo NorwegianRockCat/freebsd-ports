@@ -724,9 +724,3 @@ libdata/pkgconfig/opencv4.pc
 %%DATADIR%%/valgrind_3rdparty.supp
 %%JAVA%%share/java/opencv4/libopencv_java451.so
 %%JAVA%%share/java/opencv4/opencv-451.jar
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/__init__.py
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/config-%%PYTHON_VER%%.py
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/config.py
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/load_config_py2.py
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/load_config_py3.py
-%%PYTHON%%%%PYTHON_SITELIBDIR%%/cv2/python-%%PYTHON_VER%%/cv2%%PYTHON_EXT_SUFFIX%%.so

@@ -1,4 +1,4 @@
---- cmake/SearchForStuff.cmake.orig	2018-11-21 00:19:13 UTC
+--- cmake/SearchForStuff.cmake.orig	2021-02-11 19:56:10 UTC
 +++ cmake/SearchForStuff.cmake
 @@ -9,24 +9,24 @@ if (USE_EXTERNAL_TINYXML)
    #################################################
@@ -7,12 +7,12 @@
 -  pkg_check_modules(tinyxml tinyxml)
 +  pkg_check_modules(tinyxml tinyxml2)
    if (NOT tinyxml_FOUND)
--    find_path (tinyxml_include_dirs tinyxml.h ${tinyxml_include_dirs} ENV CPATH)
+-    find_path (tinyxml_INCLUDE_DIRS tinyxml.h ${tinyxml_INCLUDE_DIRS} ENV CPATH)
 -    find_library(tinyxml_LIBRARIES NAMES tinyxml)
-+    find_path (tinyxml_include_dirs tinyxml2.h ${tinyxml_include_dirs} ENV CPATH)
++    find_path (tinyxml_INCLUDE_DIRS tinyxml2.h ${tinyxml_INCLUDE_DIRS} ENV CPATH)
 +    find_library(tinyxml_LIBRARIES NAMES tinyxml2)
      set (tinyxml_FAIL False)
-     if (NOT tinyxml_include_dirs)
+     if (NOT tinyxml_INCLUDE_DIRS)
 -      message (STATUS "Looking for tinyxml headers - not found")
 +      message (STATUS "Looking for tinyxml2 headers - not found")
        set (tinyxml_FAIL True)

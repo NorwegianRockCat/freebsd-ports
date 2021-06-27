@@ -1,0 +1,36 @@
+#!/bin/sh
+set -e
+
+### Sanity check ###############################################################
+
+REQUIRED="FILESDIR WRKSRC"
+
+for var in ${REQUIRED}; do
+        if eval [ -z "\${$var}" ]; then
+                echo "${var} is not set"
+                exit 1
+        fi
+done
+
+### Make index.html normally created by webots/docs/local_exporter.py ##########
+
+REPOS="https://cyberbotics.com/ https://cdnjs.cloudflare.com/ajax/libs/"
+CSS='<link type="text/css" rel="stylesheet" href="dependencies/%s"/>\\n    '
+JS='<script src="dependencies/%s"></script>\\n    '
+unset css js
+
+for path in $(cat ${FILESDIR}/deps.txt); do
+	for repo in ${REPOS}; do path=${path#${repo}}; done
+
+	if [ "${path%.css}" != "${path}" ]; then
+		css=${css}$(printf "${CSS}" "${path}")
+	elif [ "${path%.js}" != "${path}" ]; then
+		js=${js}$(printf "${JS}" "${path}")
+        fi
+done
+
+css="${css%??????}"; js="${js%??????}"
+sed < ${WRKSRC}/docs/index.template.html > ${WRKSRC}/docs/index.html \
+	-e "s|%{ CSS }%|${css}|; s|%{ JS }%|${js}|"
+
+################################################################################

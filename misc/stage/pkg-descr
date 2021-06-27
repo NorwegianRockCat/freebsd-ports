@@ -1,0 +1,6 @@
+Stage provides a virtual world populated by mobile robots and sensors,
+along with various objects for the robots to sense and manipulate.
+It was designed for computationally cheap multi-agent systems with lots
+of devices rather than perfect emulation of any particular device.
+
+WWW: https://rtv.github.io/Stage

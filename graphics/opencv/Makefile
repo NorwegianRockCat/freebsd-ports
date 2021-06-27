@@ -56,6 +56,7 @@ CMAKE_ON=	\
 # Disabled during tbb migration: not oneTBB-compatible
 #		WITH_TBB
 CMAKE_OFF=	OPENCV_GENERATE_SETUPVARS \
+		BUILD_opencv_ovis \
 		BUILD_opencv_python2 \
 		BUILD_TESTS
 CMAKE_ARGS=	-DOPENCV_EXTRA_MODULES_PATH="${WRKSRC}/contrib/modules" \

@@ -1,0 +1,18 @@
+--- projects/default/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/default/Makefile
+@@ -18,9 +18,13 @@ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.incl
+ 
+ .PHONY: release debug profile clean
+ 
+-TARGETS = controllers/braitenberg.Makefile libraries/vehicle.Makefile resources.Makefile
++TARGETS = controllers/braitenberg.Makefile libraries/vehicle.Makefile
+ 
+-ifeq ($(OSTYPE),linux)
++ifneq ($(OSTYPE),freebsd)
++TARGETS += resources.Makefile
++endif
++
++ifneq ($(filter $(OSTYPE),linux freebsd),)
+ TARGETS += controllers/ros.Makefile
+ endif
+ 

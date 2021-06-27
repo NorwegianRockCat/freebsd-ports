@@ -2,11 +2,15 @@ include/ignition/%%MATH_IGN_VER%%/ignition/math.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Angle.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/AxisAlignedBox.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Box.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/Capsule.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Color.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Cylinder.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/DiffDriveOdometry.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/Ellipsoid.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Export.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Filter.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Frustum.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/GaussMarkovProcess.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Helpers.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Inertial.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Kmeans.hh
@@ -24,9 +28,11 @@ include/ignition/%%MATH_IGN_VER%%/ignition/math/Plane.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Pose3.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Quaternion.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Rand.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/RollingMean.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/RotationSpline.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/SemanticVersion.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/SignalStats.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/SpeedLimiter.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Sphere.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/SphericalCoordinates.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Spline.hh
@@ -40,7 +46,9 @@ include/ignition/%%MATH_IGN_VER%%/ignition/math/Vector3Stats.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/Vector4.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/config.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Box.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Capsule.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Cylinder.hh
+include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Ellipsoid.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Export.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/detail/Sphere.hh
 include/ignition/%%MATH_IGN_VER%%/ignition/math/eigen3.hh
@@ -61,6 +69,6 @@ lib/cmake/ignition-%%MATH_IGN_VER%%/ignition-%%MATH_IGN_VER%%-targets-%%CMAKE_BU
 lib/cmake/ignition-%%MATH_IGN_VER%%/ignition-%%MATH_IGN_VER%%-targets.cmake
 lib/libignition-%%MATH_IGN_VER%%.so
 lib/libignition-%%MATH_IGN_VER%%.so.6
-lib/libignition-%%MATH_IGN_VER%%.so.6.0.0~pre4
+lib/libignition-%%MATH_IGN_VER%%.so.6.8.0
 libdata/pkgconfig/ignition-%%MATH_IGN_VER%%-eigen3.pc
 libdata/pkgconfig/ignition-%%MATH_IGN_VER%%.pc

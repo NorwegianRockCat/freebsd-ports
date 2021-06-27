@@ -1,0 +1,8 @@
+--- projects/robots/k-team/khepera1/controllers/pipe/Makefile.client.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/k-team/khepera1/controllers/pipe/Makefile.client
+@@ -1,5 +1,4 @@
+ CFLAGS=-Wall
+-CC=gcc
+ 
+ ifeq ($(OS),Windows_NT)
+ TARGET = client.exe

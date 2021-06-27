@@ -1,0 +1,27 @@
+--- src/controller/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/controller/Makefile
+@@ -14,6 +14,11 @@
+ 
+ include ../../resources/Makefile.os.include
+ 
++ifeq ($(OSTYPE),freebsd)
++export PYTHON_COMMAND=$(shell basename $(realpath -f $(shell which python)))
++PYTHON_VERSION=$(subst python,,$(PYTHON_COMMAND))
++endif
++
+ .PHONY: release debug profile
+ 
+ release debug profile clean:
+@@ -56,6 +61,12 @@ endif
+ 	@echo "# Python 3.9 controller library ("$@")"
+ 	@echo "#"
+ 	@+PYTHON_COMMAND=python3.9 make -s -C python $@
++endif
++ifeq ($(OSTYPE),freebsd)
++	@echo "#"
++	@echo "# Python $(PYTHON_VERSION) controller library ("$@")"
++	@echo "#"
++	@+make -s -C python $@
+ endif
+ ifeq ($(OSTYPE),windows)
+ 	@echo "#"

@@ -1,0 +1,12 @@
+--- projects/robots/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/Makefile
+@@ -76,7 +76,8 @@ REMOTE_CONTROLS=gctronic/e-puck/plugins/remote_control
+ 
+ PHYSICS_PLUGINS=epfl/lis/plugins/physics.Makefile
+ 
+-RESOURCES=gctronic/e-puck/transfer.Makefile
++# Not yet supported on FreeBSD
++# RESOURCES=gctronic/e-puck/transfer.Makefile
+ 
+ TARGETS = $(LIBRARIES) $(CONTROLLERS) $(ROBOT_WINDOWS) $(REMOTE_CONTROLS) $(PHYSICS_PLUGINS) $(RESOURCES)
+ 

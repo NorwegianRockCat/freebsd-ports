@@ -1,0 +1,20 @@
+--- src/controller/python/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/controller/python/Makefile
+@@ -85,6 +85,17 @@ LIBCONTROLLER   = $(WEBOTS_CONTROLLER_LIB_PATH)/libCon
+ LIBCPPCONTROLLER= $(WEBOTS_CONTROLLER_LIB_PATH)/libCppController.so
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++C_FLAGS         = -c -Wall -fPIC -Wno-uninitialized -Wno-sometimes-uninitialized
++LD_FLAGS        = -shared
++LIBS            = -L$(WEBOTS_CONTROLLER_LIB_PATH) -lController -lCppController
++LIBS           += $(shell $(PYTHON_COMMAND)-config --ldflags)
++LIBOUT          = $(addprefix $(WEBOTS_CONTROLLER_LIB_PATH)/python$(PYTHON_SHORT_VERSION)/_,$(INTERFACE:.i=.so))
++PYTHON_INCLUDES = $(shell $(PYTHON_COMMAND)-config --includes)
++LIBCONTROLLER   = $(WEBOTS_CONTROLLER_LIB_PATH)/libController.so
++LIBCPPCONTROLLER= $(WEBOTS_CONTROLLER_LIB_PATH)/libCppController.so
++endif
++
+ SWIG_EXISTS     = $(shell which $(SWIG) 2> /dev/null)
+ 
+ TARGET          = $(PYOUT) $(LIBOUT)

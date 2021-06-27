@@ -1,0 +1,45 @@
+--- cmake/test/gtest.cmake.orig	2021-04-22 15:06:53 UTC
++++ cmake/test/gtest.cmake
+@@ -337,7 +337,18 @@ if(TARGET gtest AND TARGET gtest_main AND TARGET gmock
+     set(GTEST_BOTH_LIBRARIES ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
+   endif()
+ else()
++  find_package(GTest CONFIG QUIET)
+   find_package(GTest QUIET)
++
++  # Modern GTest versions will also include GMock
++  if(TARGET GTest::gmock AND TARGET GTest::gmock_main)
++    string(REPLACE gtest gmock GMOCK_INCLUDE_DIRS "${GTEST_INCLUDE_DIRS}")
++    string(REPLACE gtest gmock GMOCK_LIBRARY_DIRS "${GTEST_LIBRARY_DIRS}")
++    string(REPLACE gtest gmock GMOCK_LIBRARIES "${GTEST_LIBRARIES}")
++    string(REPLACE gtest gmock GMOCK_MAIN_LIBRARIES "${GTEST_MAIN_LIBRARIES}")
++    string(REPLACE gtest gmock GMOCK_BOTH_LIBRARIES "${GTEST_BOTH_LIBRARIES}")
++    set(GMOCK_FOUND TRUE)
++  endif()
+ endif()
+ if(NOT GMOCK_FOUND OR NOT GTEST_FOUND)
+   # If we find one but not the other, see if we can get both from source
+@@ -427,20 +438,14 @@ if(FORCE_GTEST_GMOCK_FROM_SOURCE OR (NOT GMOCK_FOUND A
+   endif()
+ else()
+   if(GMOCK_FOUND)
+-    message(STATUS "Found gmock: gmock and gtests will be built")
++    message(STATUS "Found gmock: gmocks will be built")
+     set(GMOCK_FOUND ${GMOCK_FOUND} CACHE INTERNAL "")
+     set(GMOCK_INCLUDE_DIRS ${GMOCK_INCLUDE_DIRS} CACHE INTERNAL "")
+     set(GMOCK_LIBRARIES ${GMOCK_LIBRARIES} CACHE INTERNAL "")
+     set(GMOCK_MAIN_LIBRARIES ${GMOCK_MAIN_LIBRARIES} CACHE INTERNAL "")
+     set(GMOCK_BOTH_LIBRARIES ${GMOCK_BOTH_LIBRARIES} CACHE INTERNAL "")
+-
+-    set(GTEST_FOUND ${GMOCK_FOUND} CACHE INTERNAL "")
+-    set(GTEST_INCLUDE_DIRS ${GMOCK_INCLUDE_DIRS} CACHE INTERNAL "")
+-    set(GTEST_LIBRARY_DIRS ${GMOCK_LIBRARY_DIRS} CACHE INTERNAL "")
+-    set(GTEST_LIBRARIES ${GMOCK_LIBRARIES} CACHE INTERNAL "")
+-    set(GTEST_MAIN_LIBRARIES ${GMOCK_MAIN_LIBRARIES} CACHE INTERNAL "")
+-    set(GTEST_BOTH_LIBRARIES ${GMOCK_BOTH_LIBRARIES} CACHE INTERNAL "")
+-  elseif(GTEST_FOUND)
++  endif()
++  if(GTEST_FOUND)
+     message(STATUS "Found gtest: gtests will be built")
+     set(GTEST_FOUND ${GTEST_FOUND} CACHE INTERNAL "")
+     set(GTEST_INCLUDE_DIRS ${GTEST_INCLUDE_DIRS} CACHE INTERNAL "")

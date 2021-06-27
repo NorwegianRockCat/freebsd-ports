@@ -1,0 +1,5 @@
+--- scripts/packaging/omit_in_projects_freebsd.txt.orig	2021-02-23 13:49:59 UTC
++++ scripts/packaging/omit_in_projects_freebsd.txt
+@@ -0,0 +1,2 @@
++projects/default/resources/sumo
++projects/robots/gctronic/e-puck/transfer/xc16
