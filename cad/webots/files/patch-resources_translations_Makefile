@@ -1,0 +1,14 @@
+--- resources/translations/Makefile.orig	2021-02-22 12:31:45 UTC
++++ resources/translations/Makefile
+@@ -47,6 +47,11 @@ LUPDATE = LD_LIBRARY_PATH=$(WEBOTS_LIB_PATH) $(QT_BINA
+ LRELEASE = LD_LIBRARY_PATH=$(WEBOTS_LIB_PATH) $(QT_BINARIES_PATH)/lrelease
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++LUPDATE = lupdate
++LRELEASE = lrelease
++endif
++
+ ifeq ($(OSTYPE),darwin)
+ LUPDATE = DYLD_FRAMEWORK_PATH=$(WEBOTS_HOME)/Contents/Frameworks $(QT_BINARIES_PATH)/lupdate
+ LRELEASE = DYLD_FRAMEWORK_PATH=$(WEBOTS_HOME)/Contents/Frameworks $(QT_BINARIES_PATH)/lrelease

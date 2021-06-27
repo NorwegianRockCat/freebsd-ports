@@ -1,0 +1,11 @@
+--- plugins/CMakeLists.txt.orig	2021-04-02 01:08:12 UTC
++++ plugins/CMakeLists.txt
+@@ -147,7 +147,7 @@ set (plugins_private_header
+   TransporterPlugin
+ )
+ 
+-if (HAVE_USB AND UNIX AND NOT APPLE)
++if (HAVE_USB AND UNIX AND NOT APPLE AND NOT CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+   set (plugins_single_header ${plugins_single_header}
+     HydraPlugin
+     HydraDemoPlugin

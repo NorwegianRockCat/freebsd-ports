@@ -1,0 +1,4 @@
+Ignition Transport, a component of Ignition Robotics, provides fast and
+efficient asynchronous message passing, services, and data logging.
+
+WWW: https://www.ignitionrobotics.org/libs/transport

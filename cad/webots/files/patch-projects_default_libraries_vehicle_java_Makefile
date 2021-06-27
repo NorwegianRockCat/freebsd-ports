@@ -1,0 +1,15 @@
+--- projects/default/libraries/vehicle/java/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/default/libraries/vehicle/java/Makefile
+@@ -42,6 +42,12 @@ CFLAGS2       = -c -Wall -Wno-unused-function -fPIC
+ LIBRARY       = $(WEBOTS_CONTROLLER_LIB_PATH)/java/libvehicle.so
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++JAVA_INCLUDES = -I"$(JAVA_HOME)/include" -I"$(JAVA_HOME)/include/freebsd"
++CFLAGS2       = -c -Wall -Wno-unused-function -fPIC
++LIBRARY       = $(WEBOTS_CONTROLLER_LIB_PATH)/java/libvehicle.so
++endif
++
+ ifeq ($(OSTYPE),windows)
+ JAVA_INCLUDES = -I"$(JAVA_HOME)/include" -I"$(JAVA_HOME)/include/win32"
+ CFLAGS2       = -c -Wall -Wno-unused-function -O

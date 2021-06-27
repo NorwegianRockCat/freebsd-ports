@@ -1,0 +1,11 @@
+--- projects/samples/howto/controllers/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/samples/howto/controllers/Makefile
+@@ -17,7 +17,7 @@ space := $(null) $(null)
+ WEBOTS_HOME_PATH=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
+ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.include
+ 
+-DIRECTORIES=$(subst force_control_matlab,,$(subst Makefile,,$(shell ls)))
++DIRECTORIES=$(subst force_control_matlab,,$(patsubst Makefile%,,$(shell ls)))
+ TARGETS = $(DIRECTORIES:=.Makefile)
+ 
+ .PHONY: release debug profile clean

@@ -1,0 +1,11 @@
+--- src/wren/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/wren/Makefile
+@@ -29,6 +29,8 @@ ifeq ($(OSTYPE),darwin)
+ INCLUDE += -I$(WEBOTS_DEPENDENCY_PATH)/freetype-2.9/include -I$(WEBOTS_DEPENDENCY_PATH)/assimp/include
+ else ifeq ($(OSTYPE),linux)
+ INCLUDE += -I/usr/include/freetype2 -I$(WEBOTS_HOME_PATH)/include/libassimp/include
++else ifeq ($(OSTYPE),freebsd)
++INCLUDE += -I$(LOCALBASE)/include/freetype2 -I$(LOCALBASE)/include
+ else ifeq ($(OSTYPE),windows)
+ INCLUDE += -I/mingw64/include/freetype2 -I/mingw64/include
+ endif

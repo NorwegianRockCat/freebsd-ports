@@ -1,6 +1,6 @@
---- cmake/SDFUtils.cmake.orig	2018-11-21 00:24:14 UTC
+--- cmake/SDFUtils.cmake.orig	2021-02-11 19:56:10 UTC
 +++ cmake/SDFUtils.cmake
-@@ -148,9 +148,11 @@ macro (sdf_build_tests)
+@@ -152,9 +152,11 @@ macro (sdf_build_tests)
        message(FATAL_ERROR "Unsupported platform")
      endif()
  

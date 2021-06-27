@@ -1,0 +1,18 @@
+--- resources/projects/libraries/qt_utils/Makefile.orig	2020-12-15 08:37:01 UTC
++++ resources/projects/libraries/qt_utils/Makefile
+@@ -125,6 +125,15 @@ ifeq ($(OSTYPE),linux)
+  INCLUDE += -isystem "$(QT_INCLUDE_DIR)/QtCore" -isystem "$(QT_INCLUDE_DIR)/QtGui" -isystem "$(QT_INCLUDE_DIR)/QtWidgets"
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++ QT_INCLUDE_DIR = $(LOCALBASE)/include/qt5
++ QT_LIB_DIR = $(LOCALBASE)/lib/qt5
++ MOC = "$(LOCALBASE)/lib/qt5/bin/moc"
++ MOC_PLATFORM_FLAGS = -D__FreeBSD__
++ DYNAMIC_LIBRARIES += -L"$(QT_LIB_DIR)" -lQt5Core -lQt5Gui -lQt5Widgets
++ INCLUDE += -isystem "$(QT_INCLUDE_DIR)" -I $(LOCALBASE)/include
++endif
++
+ ifeq ($(OSTYPE),darwin)
+  WBCFLAGS += -Wno-unknown-pragmas
+  FRAMEWORKS_DIR = $(WEBOTS_HOME)/Contents/Frameworks

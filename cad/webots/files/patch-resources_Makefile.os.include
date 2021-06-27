@@ -1,0 +1,34 @@
+--- resources/Makefile.os.include.orig	2020-12-15 08:37:01 UTC
++++ resources/Makefile.os.include
+@@ -30,6 +30,10 @@ ifeq ($(OSTYPE),linux-gnu)
+  OSTYPE = linux
+ endif
+ 
++ifeq ($(OSTYPE),FreeBSD)
++ OSTYPE = freebsd
++endif
++
+ ifeq ($(OSTYPE),)
+  OSTYPE = windows
+ endif
+@@ -64,6 +68,11 @@ ifeq ($(OSTYPE),linux)
+   endif
+ endif
+ 
++# determine OSARCH for FreeBSD
++ifeq ($(OSTYPE),freebsd)
++  OSARCH = $(shell uname -p)
++endif
++
+ # OS specific variables
+ 
+ ifeq ($(OSTYPE),darwin)
+@@ -94,7 +103,7 @@ else
+  LIB_PREFIX = lib
+  WEBOTS_LIB_PATH=$(WEBOTS_HOME)/lib/webots
+  WEBOTS_CONTROLLER_LIB_PATH=$(WEBOTS_HOME)/lib/controller
+- ifeq ($(OSTYPE),linux)
++ ifneq ($(filter $(OSTYPE),linux freebsd),)
+   SHARED_LIB_EXTENSION = .so
+  else # macOS
+   SHARED_LIB_EXTENSION = .dylib

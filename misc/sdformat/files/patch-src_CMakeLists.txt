@@ -1,13 +1,13 @@
---- src/CMakeLists.txt.orig	2018-11-21 00:25:29 UTC
+--- src/CMakeLists.txt.orig	2021-02-11 19:56:10 UTC
 +++ src/CMakeLists.txt
-@@ -116,7 +116,9 @@ if (IGNITION-TOOLS_BINARY_DIRS)
-   )
- endif()
+@@ -149,7 +149,9 @@ if (BUILD_SDF_TEST)
+     )
+   endif()
  
--sdf_build_tests(${gtest_sources})
-+if (BUILD_TESTING)
+-  sdf_build_tests(${gtest_sources})
++  if (NOT BUILD_TESTING)
 +    sdf_build_tests(${gtest_sources})
-+endif()
++  endif()
  
- sdf_add_library(${sdf_target} ${sources})
- target_link_libraries(${sdf_target} PUBLIC ${IGNITION-MATH_LIBRARIES})
+   if (NOT WIN32)
+     set(SDF_BUILD_TESTS_EXTRA_EXE_SRCS Utils.cc)

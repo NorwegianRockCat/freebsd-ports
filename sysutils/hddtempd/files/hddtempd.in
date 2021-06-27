@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+# PROVIDE: hddtempd
+# REQUIRE: DAEMON
+#
+# Add the following line to /etc/rc.conf to enable hddtempd:
+#
+#     hddtempd_enable="YES"
+#
+
+. /etc/rc.subr
+
+name="hddtempd"
+
+hddtempd_enable="NO"
+rcvar=hddtempd_enable
+load_rc_config $name
+
+command="%%PREFIX%%/sbin/${name}"
+command_args="-d"
+
+run_rc_command "$1"

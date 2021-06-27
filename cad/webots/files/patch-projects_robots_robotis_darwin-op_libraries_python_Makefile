@@ -1,0 +1,18 @@
+--- projects/robots/robotis/darwin-op/libraries/python/Makefile.orig	2020-12-15 08:37:01 UTC
++++ projects/robots/robotis/darwin-op/libraries/python/Makefile
+@@ -42,6 +42,15 @@ PYTHON_INCLUDES = -I"/usr/include/python$(PYTHON_VERSI
+ LIB            += -L"$(WEBOTS_CONTROLLER_LIB_PATH)" -lController -lCppController
+ endif
+ 
++ifeq ($(OSTYPE),freebsd)
++C_FLAGS         = -c -Wall -fPIC
++LD_FLAGS        = -shared
++LIBRARY         = $(PYTHON_LIB_FOLDER)/_$(MODULE_NAME).so
++PYTHON_INCLUDES = $(shell $(PYTHON_COMMAND)-config --includes)
++LIB            += -L"$(WEBOTS_CONTROLLER_LIB_PATH)" -lController -lCppController
++LIB            += $(shell $(PYTHON_COMMAND)-config --ldflags)
++endif
++
+ ifeq ($(OSTYPE),windows)
+ PYTHON_HOME    := $(subst \ ,$(space),$(dir $(subst $(space),\ ,$(shell which python 2> /dev/null))))
+ C_FLAGS         = -c -O -Wall -DMS_WIN64 -D_hypot=hypot -Wno-stringop-truncation

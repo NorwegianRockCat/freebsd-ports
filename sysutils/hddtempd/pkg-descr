@@ -1,0 +1,11 @@
+This is a small BSD server to replace the Linux hddtemp utility.
+
+Current temperatures for all hard disks are printed on port 7634:
+
+    MyPrompt$ nc -d localhost 7634
+    |/dev/ada0|Samsung SSD 850 EVO 1TB|40|C|
+    |/dev/ada1|Samsung SSD 850 EVO 1TB|40|C|
+
+This is used by the devel/ros-diagnostic_common_diagnostics port.
+
+WWW: https://www.guzu.net/linux/hddtemp.php

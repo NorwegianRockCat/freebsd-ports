@@ -1,0 +1,5 @@
+Orocos project to supply RealTime usable kinematics and dynamics code.
+It contains code for rigid body kinematics calculations and representations
+for kinematic structures and their inverse and forward kinematic solvers.
+
+WWW: https://docs.orocos.org/kdl/overview.html

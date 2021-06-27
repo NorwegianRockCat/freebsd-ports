@@ -1,0 +1,103 @@
+#!/bin/sh
+set -e
+
+### Sanity check ###############################################################
+
+REQUIRED="DISTDIR DISTNAME FILESDIR QT5_VERSION _TIME WRKDIR WRKSRC"
+
+for var in ${REQUIRED}; do
+	if eval [ -z "\${$var}" ]; then
+		echo "${var} is not set"
+		exit 1
+	fi
+done
+
+### Necessity check ############################################################
+
+DEPSFILE="${DISTNAME%_GH*}_deps.tar.gz"
+
+# There is nothing to do if the file already exists
+if [ -e "${DISTDIR}/${DEPSFILE}" ]; then
+	exit 0
+fi
+
+### Dependencies normally fetched by webots/resources/web/wwi/Makefile #########
+
+TOPDIR="${WRKDIR}/deps/${WRKSRC##*/}"
+WWIDIR="${TOPDIR}/resources/web/wwi"
+export HOME="${WRKDIR}"
+
+THREEJS_EXAMPLE_SOURCES="\
+	loaders/RGBELoader.js\
+	pmrem/PMREMCubeUVPacker.js\
+	pmrem/PMREMGenerator.js\
+	shaders/CopyShader.js\
+	shaders/FXAAShader.js\
+	postprocessing/EffectComposer.js\
+	postprocessing/RenderPass.js\
+	postprocessing/ShaderPass.js\
+"
+
+# Download three.js
+if [ ! -e ${WWIDIR}/dependencies/three.min.js ]; then
+	mkdir -p "${WWIDIR}/dependencies"
+	fetch -Fpr -o "${WWIDIR}/dependencies/"\
+	    https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.min.js
+fi
+
+# Download example files
+for path in ${THREEJS_EXAMPLE_SOURCES}; do
+	directory="${WWIDIR}/dependencies/${path%/*}"
+	if [ -e "${WWIDIR}/dependencies/${path}" ]; then continue; fi
+	mkdir -p "${directory}" && fetch -Fpr -o "${directory}/"\
+	    https://cdn.jsdelivr.net/gh/mrdoob/three.js@r104/examples/js/${path}
+done
+
+# Download Node packages
+if [ ! -e "${WWIDIR}/install.token" ]; then
+	cp "${FILESDIR}/package-lock.json" "${WWIDIR}"
+	cd "${WWIDIR}"
+	printf "Downloading Node.js packages... "
+	if npm --silent install > ${WRKDIR}/npm.log 2>&1; then
+		touch install.token
+		echo "done."
+	else
+		echo "failed."
+		exit 1
+	fi
+	cd -
+fi
+
+### Dependencies normally fetched by webots/docs/local_exporter.py #############
+
+REPOS="https://cyberbotics.com/ https://cdnjs.cloudflare.com/ajax/libs/"
+
+for url in $(cat ${FILESDIR}/deps.txt); do
+	path="${url}"
+	for repo in ${REPOS}; do path=${path#${repo}}; done
+	path="${TOPDIR}/docs/dependencies/${path}"
+	if [ -e "${path}" ]; then continue; fi
+	mkdir -p "${path%/*}" && fetch -Fpr -o "${path}" "${url}"
+done
+
+### Script normally fetched by webots/scripts/install/qt_linux_installer.sh ####
+
+QT5_URL="https://github.com/qt/qtwebchannel/raw/v${QT5_VERSION}"
+url="${QT5_URL}/examples/webchannel/shared/qwebchannel.js"
+
+if [ ! -e "${TOPDIR}/resources/web/local/qwebchannel.js" ]; then
+	mkdir -p "${TOPDIR}/resources/web/local"
+	fetch -Fpr -o "${TOPDIR}/resources/web/local/" ${url}
+fi
+
+### Final tarball creation #####################################################
+
+# Let all timestamps match the tag to get reproducible tarballs
+find "${TOPDIR}" -exec touch -hd "${_TIME}" {} \;
+
+# For the same reason, sort all files and skip the gzip timestamp
+(cd "${WRKDIR}/deps"; find -s "${WRKSRC##*/}") | \
+    tar -cnz -T- --options !timestamp --uid=0 --gid=0 \
+        -C "${WRKDIR}/deps" -f "${DISTDIR}/${DEPSFILE}"
+
+################################################################################

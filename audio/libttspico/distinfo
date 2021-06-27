@@ -1,0 +1,5 @@
+TIMESTAMP = 1612955974
+SHA256 (svox_1.0+git20130326.orig.tar.gz) = 337b25e6ccb3764f0df1e176470b883c90e40e98840d4133340fcc89eb3cea0c
+SIZE (svox_1.0+git20130326.orig.tar.gz) = 26355286
+SHA256 (svox_1.0+git20130326-11.debian.tar.xz) = ebaa9ec2e430778240ef659e6b1fe7df2a3a893b951649d45670826c893cb53e
+SIZE (svox_1.0+git20130326-11.debian.tar.xz) = 20744

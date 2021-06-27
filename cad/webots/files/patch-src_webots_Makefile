@@ -1,0 +1,99 @@
+--- src/webots/Makefile.orig	2020-12-15 08:37:01 UTC
++++ src/webots/Makefile
+@@ -20,11 +20,6 @@ include $(WEBOTS_PATH)/resources/Makefile.os.include
+ 
+ WEBOTS_DEPENDENCY_PATH ?= $(WEBOTS_PATH)/dependencies
+ 
+-# compiler
+-ifeq ($(CC),cc)
+-CC = gcc
+-endif
+-
+ # module dependencies: please keep these lists of dependencies up-to-date so that we don't break dependencies in the code
+ # listed from the module with the less dependencies to the module with the more dependencies
+ 
+@@ -58,9 +53,15 @@ HOSTTYPE ?= $(shell uname -m)
+ %:: s.%
+ %:: SCCS/s.%
+ 
++ifeq ($(OSTYPE),freebsd)
++LUA_INCLUDE = -I$(LOCALBASE)/include/lua52
++PICO_INCLUDE = -I$(WEBOTS_DEPENDENCY_PATH)/Pico/include
++else
+ LUA_INCLUDE = -I$(WEBOTS_DEPENDENCY_PATH)/lua-5.2.3/src
+-OIS_INCLUDE = -isystem $(WEBOTS_PATH)/include/libOIS
+ PICO_INCLUDE = -I$(WEBOTS_PATH)/include/libpico
++endif
++
++OIS_INCLUDE = -isystem $(WEBOTS_PATH)/include/libOIS
+ WREN_INCLUDE = -I$(WEBOTS_PATH)/include
+ STB_INCLUDE  = -isystem $(WEBOTS_PATH)/src/stb
+ OPEN_VR_INCLUDE = -isystem $(WEBOTS_PATH)/include/openvr
+@@ -105,6 +106,36 @@ endif
+ # To compile with libpico without warnings about the "register" keyword.
+ CFLAGS += -Wno-deprecated-register
+ 
++else ifeq ($(OSTYPE),freebsd)
++LIB_WREN           = ../wren/libwren.a ../glad/libglad.a
++OPENAL_INCLUDE     = -isystem $(LOCALBASE)/include
++ASSIMP_INCLUDE     = -isystem $(LOCALBASE)/include
++QT_CORE_INCLUDE    = -isystem $(LOCALBASE)/include -isystem $(LOCALBASE)/include/qt5
++QT_GUI_INCLUDE     = -isystem $(LOCALBASE)/include/qt5
++QT_WIDGETS_INCLUDE = -isystem $(LOCALBASE)/include/qt5
++QT_PRINT_SUPPORT_INCLUDE = -isystem $(LOCALBASE)/include/qt5
++QT_OPENGL_INCLUDE  = -isystem $(LOCALBASE)/include/qt5
++QT_NETWORK_INCLUDE = -isystem $(LOCALBASE)/include/qt5
++QT_WEB_INCLUDE  = -isystem $(LOCALBASE)/include/qt5
++QT_WEBSOCKETS_INCLUDE = -isystem $(LOCALBASE)/include/qt5
++QT_XML_INCLUDE     = -isystem $(LOCALBASE)/include/qt5
++FREETYPE_INCLUDE   = -I$(LOCALBASE)/include/freetype2
++TARGET             = $(WEBOTS_PATH)/bin/webots-bin
++CFLAGS             = -fPIC
++CXXFLAGS           = -std=c++11
++MOC                = $(LOCALBASE)/lib/qt5/bin/moc
++LIBS              += $(LOCALBASE)/lib/liblua-5.2.a $(LIB_WREN) -lQt5Core -lQt5Network -lQt5Gui -lQt5OpenGL -lQt5WebSockets -lQt5Widgets -lQt5PrintSupport -lQt5WebEngine -lQt5WebEngineCore -lQt5WebEngineWidgets -lQt5Multimedia -lQt5MultimediaWidgets -lQt5Sql -lQt5Sensors -lQt5WebChannel -lQt5Xml -lopenal -lGL -lusb -lGLU -ldl -lOIS -lcrypto -lttspico -lfreetype -lassimp -lrt
++LD_FLAGS           = -rdynamic -Wl,-rpath $(WEBOTS_LIB_PATH) -L$(WEBOTS_LIB_PATH) -L$(LOCALBASE)/lib -L$(LOCALBASE)/lib/qt5 -L$(WEBOTS_DEPENDENCY_PATH)/Pico/lib
++EXTRA_CMD          = cp launcher/webots-freebsd.sh $(WEBOTS_PATH)/webots && chmod 755 $(WEBOTS_PATH)/webots
++FILES_TO_REMOVE    = $(WEBOTS_PATH)/webots
++QT_SOURCES         = WbRobotWindowTransportLayer.cpp
++ifeq ($(MAKECMDGOALS), profile)
++LIB_ODE = ../ode/libode.a
++LIBS += $(LIB_ODE) -lpthread
++else
++LIBS += -lode -lpthread
++endif
++
+ else ifeq ($(OSTYPE),linux)
+ LIB_WREN           = ../wren/libwren.a ../glad/libglad.a
+ OPENAL_INCLUDE     = -I$(WEBOTS_DEPENDENCY_PATH)/openal/include
+@@ -182,7 +213,7 @@ endif
+ ALL_INCLUDE        = -Iapp -Icontrol -Icore -Iwidgets -Ieditor -Iengine -isystem external/siphash -Igui -Imaths -Inodes -Inodes/utils -Iplugins -Iscene_tree -Isound -Iuser_commands -Ivrml -Iutil -Iexternal/compilation_timestamp
+ 
+ CONTROLLER_INCLUDE = -I$(WEBOTS_PATH)/include/controller/c
+-ODE_INCLUDE        = -Iode -isystem $(WEBOTS_PATH)/include/ode
++ODE_INCLUDE        = -Iode -I$(WEBOTS_PATH)/include/ode
+ QT_CORE_INCLUDE   += -I$(OBJDIR)
+ WREN_INCLUDE 	  += -Iwren
+ INCLUDE            = $(ALL_INCLUDE) $(CONTROLLER_INCLUDE) $(ODE_INCLUDE) $(QT_CORE_INCLUDE) $(QT_GUI_INCLUDE) $(QT_WIDGETS_INCLUDE) $(QT_PRINT_SUPPORT_INCLUDE) $(QT_OPENGL_INCLUDE) $(QT_NETWORK_INCLUDE) $(QT_WEB_INCLUDE) $(LUA_INCLUDE) $(OIS_INCLUDE) $(OPENAL_INCLUDE) $(PICO_INCLUDE) $(WREN_INCLUDE) $(GLU_INCLUDE) $(FREETYPE_INCLUDE) $(STB_INCLUDE) $(ASSIMP_INCLUDE)
+@@ -218,11 +249,13 @@ CFLAGS += -Wall -Wpointer-arith -Wcast-align -Wwrite-s
+ CXXFLAGS += -DQT_NO_DEBUG
+ 
+ ifneq ($(OSTYPE),darwin) # Clang has these warnings by default
++ifneq ($(OSTYPE),freebsd)
+ GCC_VER_GREATER_OR_EQUAL_TO_5_DOT_4 := $(shell expr `gcc -dumpversion | sed -e 's/\.\([0-9][0-9]\)/\1/g' -e 's/\.\([0-9]\)/0\1/g' -e 's/^[0-9]\{3,4\}$$/&00/'` \>= 50400)
+ ifeq ($(GCC_VER_GREATER_OR_EQUAL_TO_5_DOT_4),1)
+ CXXFLAGS += -Wsuggest-override
+ endif
+ endif
++endif
+ 
+ # objects that inherit form QObject (alphabetical order)
+ QT_SOURCES += \
+@@ -618,6 +651,7 @@ debug profile release: $(TARGET) $(LAUNCHER) $(LAUNCHE
+ 
+ $(TARGET): $(OBJECTS) $(LIB_WREN) $(LIB_ODE)
+ 	@echo "# linking " $@
++	@echo $(CXX) $(LD_FLAGS) -o $(TARGET) $(addprefix $(OBJDIR)/, $(OBJECTS)) $(LIBS)
+ 	@$(CXX) $(LD_FLAGS) -o $(TARGET) $(addprefix $(OBJDIR)/, $(OBJECTS)) $(LIBS)
+ 	@$(EXTRA_CMD)
+ 	@echo "# webots compiled in `expr \`date +%s\` - $(START)` seconds"
