@@ -25,7 +25,7 @@
 +    int result;
 +
 +    result = sendfile(readFd, writeFd, offset,
-+        statBuf.st_size, NULL, &written, 0);
++        statBuf.st_size, nullptr, &written, 0);
 +
 +    if (result != 0)
 +        break;
