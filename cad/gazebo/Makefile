@@ -66,7 +66,7 @@ LIB_DEPENDS=	libassimp.so:multimedia/assimp\
 		libOgrePaging.so:graphics/ogre3d\
 		libOgreRTShaderSystem.so:graphics/ogre3d\
 		libOgreTerrain.so:graphics/ogre3d\
-		libopenblasp-r0.3.15.so:math/openblas\
+		libopenblas.so:math/openblas\
 		libprotobuf.so:devel/protobuf\
 		libqwt6.so:x11-toolkits/qwt6\
 		libsdformat9.so:misc/sdformat\
