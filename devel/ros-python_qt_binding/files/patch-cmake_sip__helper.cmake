@@ -69,7 +69,7 @@
 +        # Here we synthesize `pyproject.toml` and run `sip-install`
  
 -    if(NOT EXISTS "${sip_LIBRARY_DIR}")
-+        find_program(QMAKE_EXECUTABLE NAMES qmake REQUIRED)
++        find_program(QMAKE_EXECUTABLE NAMES qmake qmake-qt5 REQUIRED)
 +
 +        file(REMOVE_RECURSE ${SIP_BUILD_DIR})
          file(MAKE_DIRECTORY ${sip_LIBRARY_DIR})
