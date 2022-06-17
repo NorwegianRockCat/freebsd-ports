@@ -7,9 +7,16 @@ COMMENT=	ROS rosconsole package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rosbuild/package.xml:devel/ros-rosbuild \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/cpp_common/package.xml:devel/ros-cpp_common \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime \
+		${LOCALBASE}/include/apr-1/apr.h:devel/apr1
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -20,10 +27,12 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libcpp_common.so:devel/ros-cpp_common\
 		liblog4cxx.so:devel/log4cxx\
 		librostime.so:devel/ros-rostime
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
-USES=		cmake
+RUN_DEPENDS=	${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/cpp_common/package.xml:devel/ros-cpp_common \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -32,16 +41,6 @@ GH_PROJECT=	rosconsole
 USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rosunit
-_COMMON_RDEPS=	cpp_common rostime
-
-_COMMON_XDEPS=	${LOCALBASE}/include/apr-1/apr.h:devel/apr1\
-		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		${LOCALBASE}/include/log4cxx/log4cxx.h:devel/log4cxx
-
-_RUN_RDEPS=	${_COMMON_RDEPS} rosbuild
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

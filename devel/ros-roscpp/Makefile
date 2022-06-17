@@ -8,9 +8,21 @@ COMMENT=	ROS roscpp package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs \
+		${LOCALBASE}/share/roslang/package.xml:devel/ros-roslang \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/roscpp_traits/package.xml:devel/ros-roscpp_traits \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/xmlrpcpp/package.xml:devel/ros-xmlrpcpp \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -27,8 +39,10 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libroscpp_serialization.so:devel/ros-roscpp_serialization\
 		librostime.so:devel/ros-rostime\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs
 
 USES=		cmake pkgconfig python
 
@@ -38,21 +52,10 @@ GH_PROJECT=	ros_comm
 
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	clients/roscpp
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin message_generation roslang
-
-_COMMON_RDEPS=	cpp_common rosconsole roscpp_serialization roscpp_traits\
-		rosgraph_msgs rostime std_msgs xmlrpcpp
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,8 +8,16 @@ COMMENT=	ROS actionlib_tutorials package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -28,7 +36,9 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libroscpp.so:devel/ros-roscpp\
 		librostime.so:devel/ros-rostime\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+RUN_DEPENDS=	${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
 
 USES=		cmake python shebangfix
 
@@ -40,19 +50,10 @@ SHEBANG_FILES=	scripts/fibonacci_client.py\
 		scripts/fibonacci_server.py\
 		scripts/gen_numbers.py
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	actionlib_tutorials
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} actionlib_msgs catkin message_generation\
-		std_msgs
-
-_COMMON_RDEPS=	actionlib roscpp
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

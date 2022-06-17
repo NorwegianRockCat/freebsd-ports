@@ -8,10 +8,22 @@ COMMENT=	ROS robot_state_publisher package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
 		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
-		${_COMMON_XDEPS}
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/kdl_parser/package.xml:devel/ros-kdl_parser \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2_kdl/package.xml:devel/ros-tf2_kdl \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -29,7 +41,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libmessage_filters.so:devel/ros-message_filters\
 		liborocos-kdl.so:devel/orocos_kdl\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
@@ -49,8 +60,14 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		liburdfdom_sensor.so:devel/ros-urdfdom\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+RUN_DEPENDS=	${LOCALBASE}/share/kdl_parser/package.xml:devel/ros-kdl_parser \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2_kdl/package.xml:devel/ros-tf2_kdl \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
 
 USES=		cmake eigen:3 python
 
@@ -61,15 +78,6 @@ GH_PROJECT=	robot_state_publisher
 USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rosbag rostest
-
-_COMMON_RDEPS=	kdl_parser rosconsole roscpp rostime sensor_msgs tf tf2_kdl\
-		tf2_ros
-
-_COMMON_XDEPS=	${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

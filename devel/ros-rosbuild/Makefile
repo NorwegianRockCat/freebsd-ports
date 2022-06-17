@@ -7,10 +7,11 @@ COMMENT=	ROS rosbuild package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-
-USES=		cmake pkgconfig
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
+USES=		cmake pkgconfig python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -21,10 +22,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	core/rosbuild
-
-_COMMON_RDEPS=	catkin
-_RUN_RDEPS=	${_COMMON_RDEPS} message_generation message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

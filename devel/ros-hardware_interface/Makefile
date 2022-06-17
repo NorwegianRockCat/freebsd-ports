@@ -7,11 +7,13 @@ COMMENT=	ROS hardware_interface package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
 
-USES=		cmake
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros-controls
@@ -21,8 +23,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	hardware_interface
 
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	roscpp
 _SHAREDIR=	${LOCALBASE}/share
 
 post-stage:

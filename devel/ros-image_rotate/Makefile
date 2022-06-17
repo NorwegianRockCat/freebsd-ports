@@ -8,8 +8,18 @@ COMMENT=	ROS image_rotate package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
@@ -85,7 +95,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libopencv_xphoto.so:graphics/opencv\
 		liborocos-kdl.so:devel/orocos_kdl\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -99,7 +108,11 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros
+
 
 USES=		cmake python
 
@@ -112,15 +125,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	image_rotate
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules geometry_msgs rostest
-
-_COMMON_RDEPS=	cv_bridge dynamic_reconfigure image_transport nodelet roscpp tf2\
-		tf2_geometry_msgs tf2_ros
-
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -7,11 +7,19 @@ COMMENT=	ROS tf2_eigen package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2
 
-USES=		cmake eigen:3
+RUN_DEPENDS=	${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+
+USES=		cmake eigen:3 python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -26,10 +34,6 @@ PLIST_FILES=	include/tf2_eigen/tf2_eigen.h\
 		share/tf2_eigen/cmake/tf2_eigenConfig-version.cmake\
 		share/tf2_eigen/cmake/tf2_eigenConfig.cmake\
 		share/tf2_eigen/package.xml
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules
-_COMMON_RDEPS=	geometry_msgs tf2
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

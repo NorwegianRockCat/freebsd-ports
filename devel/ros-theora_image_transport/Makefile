@@ -8,10 +8,18 @@ COMMENT=	ROS theora_image_transport package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -85,7 +93,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libopencv_xobjdetect.so:graphics/opencv\
 		libopencv_xphoto.so:graphics/opencv\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosbag_storage.so:devel/ros-rosbag_storage\
 		librosbag.so:devel/ros-rosbag\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
@@ -103,8 +110,11 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libtinyxml2.so:textproc/tinyxml2\
 		libtopic_tools.so:devel/ros-topic_tools\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
 
 USES=		cmake pkgconfig python
 
@@ -114,24 +124,10 @@ GH_PROJECT=	image_transport_plugins
 
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	theora_image_transport
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin message_generation
-
-_COMMON_RDEPS=	cv_bridge dynamic_reconfigure image_transport pluginlib rosbag\
-		std_msgs
-
-_COMMON_XDEPS=	${LOCALBASE}/lib/libogg.a:audio/libogg\
-		${LOCALBASE}/lib/libtheora.a:multimedia/libtheora
-
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

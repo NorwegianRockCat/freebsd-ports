@@ -8,9 +8,23 @@ COMMENT=	ROS gazebo_ros package
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/gazebo_dev/package.xml:devel/ros-gazebo_dev \
+		${LOCALBASE}/share/gazebo_msgs/package.xml:devel/ros-gazebo_msgs \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libassimp.so:multimedia/assimp\
 		libboost_atomic.so:devel/boost-libs\
@@ -69,7 +83,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libOgreVolume.so:graphics/ogre3d\
 		libopenblas.so:math/openblas\
 		libprotobuf.so:devel/protobuf\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -89,9 +102,17 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/argparse.py:devel/py-argparse@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+RUN_DEPENDS=			${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/gazebo_dev/package.xml:devel/ros-gazebo_dev \
+		${LOCALBASE}/share/gazebo_msgs/package.xml:devel/ros-gazebo_msgs \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${PYTHON_PKGNAMEPREFIX}argparse.py:devel/py-argparse@${PY_FLAVOR}\
 
 USES=		cmake python shebangfix
 
@@ -107,16 +128,6 @@ SHEBANG_FILES=	scripts/gdbrun\
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	gazebo_ros
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules
-
-_COMMON_RDEPS=	dynamic_reconfigure gazebo_dev gazebo_msgs geometry_msgs roscpp\
-		rosgraph_msgs roslib std_msgs std_srvs tf
-
-_COMMON_XDEPS=	${LOCALBASE}/include/tinyxml.h:textproc/tinyxml
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

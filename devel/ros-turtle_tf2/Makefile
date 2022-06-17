@@ -7,7 +7,19 @@ COMMENT=	ROS turtle_tf2 package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/turtlesim/package.xml:devel/ros-turtlesim \
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -30,7 +42,15 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtf2_ros.so:devel/ros-tf2_ros\
 		libtf2.so:devel/ros-tf2\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/turtlesim/package.xml:devel/ros-turtlesim
 
 USES=		cmake python shebangfix
 
@@ -50,13 +70,6 @@ SHEBANG_FILES=	nodes/dynamic_tf2_broadcaster.py\
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	turtle_tf2
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-
-_COMMON_RDEPS=	geometry_msgs roscpp rospy std_msgs tf2 tf2_geometry_msgs\
-		tf2_ros turtlesim
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

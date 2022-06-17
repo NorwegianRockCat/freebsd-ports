@@ -8,8 +8,22 @@ COMMENT=	ROS tf2_ros package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/message_filters/package.xml:devel/ros-message_filters \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph/package.xml:devel/ros-rosgraph \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/tf2_msgs/package.xml:devel/ros-tf2_msgs \
+		${LOCALBASE}/share/tf2_py/package.xml:devel/ros-tf2_py \
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -30,7 +44,11 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		librostime.so:devel/ros-rostime\
 		libtf2.so:devel/ros-tf2\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/tf2_msgs/package.xml:devel/ros-tf2_msgs \
+		${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs
 
 USES=		cmake python
 
@@ -43,13 +61,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	tf2_ros
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest
-
-_COMMON_RDEPS=	actionlib actionlib_msgs geometry_msgs message_filters roscpp\
-		rosgraph rospy std_msgs tf2 tf2_msgs tf2_py xmlrpcpp
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

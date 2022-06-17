@@ -7,8 +7,16 @@ COMMENT=	ROS bondcpp package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/bond/package.xml:devel/ros-bond \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib \
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -27,10 +35,13 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librostime.so:devel/ros-rostime\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
-USES=		cmake
+RUN_DEPENDS=	${LOCALBASE}/share/bond/package.xml:devel/ros-bond \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -41,14 +52,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	bondcpp
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules
-_COMMON_RDEPS=	bond roscpp smclib
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		uuidgen:misc/e2fsprogs-libuuid
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

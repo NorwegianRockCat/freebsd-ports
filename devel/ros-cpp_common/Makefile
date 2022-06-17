@@ -7,7 +7,8 @@ COMMENT=	ROS cpp_common package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/bin/catkin_make:devel/ros-catkin \
 		${_COMMON_XDEPS}
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -17,7 +18,7 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libconsole_bridge.so:devel/ros-console_bridge
 RUN_DEPENDS=	${_COMMON_XDEPS}
 
-USES=		cmake
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -29,9 +30,7 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	cpp_common
 
-_BUILD_RDEPS=	catkin
 _COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

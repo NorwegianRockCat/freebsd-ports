@@ -8,9 +8,14 @@ COMMENT=	ROS kdl_parser package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -25,7 +30,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		liblog4cxx.so:devel/log4cxx\
 		liborocos-kdl.so:devel/orocos_kdl\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
@@ -43,10 +47,8 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		liburdfdom_sensor.so:devel/ros-urdfdom\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
-USES=		cmake python
+USES=		cmake python eigen:3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -57,17 +59,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	kdl_parser
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules roscpp rostest
-_COMMON_RDEPS=	rosconsole urdf
-
-_COMMON_XDEPS=	${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl\
-		${LOCALBASE}/include/tinyxml.h:textproc/tinyxml\
-		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2\
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers
-
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

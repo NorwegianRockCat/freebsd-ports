@@ -8,11 +8,15 @@ COMMENT=	ROS qt_gui package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
 		sip-build:devel/py-sip@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg@${PY_FLAVOR}\
+
+RUN_DEPENDS=	${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg@${PY_FLAVOR}\
 		${LOCALBASE}/share/icons/Tango:x11-themes/icons-tango
 
 USES=		cmake pyqt:5 python qmake:no_env qt:5
@@ -28,11 +32,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	qt_gui
-
-_BUILD_RDEPS=	catkin
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	python_qt_binding
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

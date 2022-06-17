@@ -8,15 +8,24 @@ COMMENT=	ROS rviz package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/pyqtbuild:devel/py-qtbuilder@${PY_FLAVOR}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/map_msgs/package.xml:devel/ros-map_msgs \
+		${PYTHON_PKGNAMEPREFIX}qtbuilder>0:devel/py-qtbuilder@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
 		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
 		check_urdf:devel/ros-urdfdom\
 		sip-build:devel/py-sip@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding
+
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libassimp.so:multimedia/assimp\
 		libboost_atomic.so:devel/boost-libs\
@@ -50,7 +59,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libOgreVolume.so:graphics/ogre3d\
 		liborocos-kdl.so:devel/orocos_kdl\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
 		libQt5Widgets.so:x11-toolkits/qt5-widgets\
@@ -81,8 +89,32 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libX11.so:x11/libX11\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp\
 		libyaml-cpp.so:devel/yaml-cpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/interactive_markers/package.xml:devel/ros-interactive_markers \
+		${LOCALBASE}/share/laser_geometry/package.xml:devel/ros-laser_geometry \
+		${LOCALBASE}/share/map_msgs/package.xml:devel/ros-map_msgs \
+		${LOCALBASE}/share/message_filters/package.xml:devel/ros-message_filters \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/resource_retriever/package.xml:devel/ros-resource_retriever \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/urdf/package.xml:devel/ros-urdf \
+		${LOCALBASE}/share/visualization_msgs/package.xml:devel/ros-visualization_msgs \
+		${LOCALBASE}/share/media_export/package.xml:devel/ros-media_export \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		eigen>0:math/eigen3
 
 USES=		cmake eigen:3 localbase:ldflags pyqt:5 python qt:5
 
@@ -91,32 +123,11 @@ GH_ACCOUNT=	ros-visualization
 GH_PROJECT=	rviz
 
 USE_LDCONFIG=	yes
-USE_PYQT=	gui opengl sip widgets
+USE_PYQT=	pyqt5 sip
 USE_QT=		buildtools_build qmake_build
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules message_generation rostest\
-		rosunit
-
-_COMMON_RDEPS=	geometry_msgs image_transport interactive_markers laser_geometry\
-		map_msgs message_filters nav_msgs pluginlib python_qt_binding\
-		resource_retriever rosbag rosconsole roscpp roslib rospy\
-		sensor_msgs std_msgs std_srvs tf2_geometry_msgs tf2_ros urdf\
-		visualization_msgs
-
-_COMMON_XDEPS=	${LOCALBASE}/include/GL/gl.h:graphics/mesa-libs\
-		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2\
-		${LOCALBASE}/include/yaml-cpp/yaml.h:devel/yaml-cpp\
-		assimp:multimedia/assimp\
-		SampleBrowser:graphics/ogre3d
-
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} media_export message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

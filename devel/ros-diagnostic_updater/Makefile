@@ -8,8 +8,14 @@ COMMENT=	ROS diagnostic_updater package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/diagnostic_msgs/package.xml:devel/ros-diagnostic_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -27,7 +33,10 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libroscpp.so:devel/ros-roscpp\
 		librostime.so:devel/ros-rostime\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/diagnostic_msgs/package.xml:devel/ros-diagnostic_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs
 
 USES=		cmake python
 
@@ -40,10 +49,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	diagnostic_updater
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest
-_COMMON_RDEPS=	diagnostic_msgs roscpp std_msgs
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

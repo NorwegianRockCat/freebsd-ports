@@ -8,11 +8,22 @@ COMMENT=	ROS control_toolbox package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/control_msgs/package.xml:devel/ros-control_msgs \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/realtime_tools/package.xml:devel/ros-realtime_tools \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -33,8 +44,13 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librostime.so:devel/ros-rostime\
 		libtinyxml.so:textproc/tinyxml\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/control_msgs/package.xml:devel/ros-control_msgs \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/realtime_tools/package.xml:devel/ros-realtime_tools \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime
 
 USES=		cmake python
 
@@ -44,16 +60,8 @@ GH_PROJECT=	control_toolbox
 
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules message_generation rosunit
-_COMMON_RDEPS=	control_msgs dynamic_reconfigure realtime_tools roscpp std_msgs
-_COMMON_XDEPS=	${LOCALBASE}/include/tinyxml.h:textproc/tinyxml
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

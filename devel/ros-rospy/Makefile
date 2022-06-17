@@ -8,11 +8,27 @@ COMMENT=	ROS rospy package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/numpy:math/py-numpy@${PY_FLAVOR}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg@${PY_FLAVOR}\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph/package.xml:devel/ros-rosgraph \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+
+RUN_DEPENDS=	${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph/package.xml:devel/ros-rosgraph \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${PYTHON_PKGNAMEPREFIX}numpy>=0:math/py-numpy@${PY_FLAVOR}\
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg@${PY_FLAVOR}\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -25,11 +41,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	clients/rospy
-
-_BUILD_RDEPS=	catkin
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	genpy roscpp rosgraph rosgraph_msgs roslib std_msgs
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,8 +8,29 @@ COMMENT=	ROS rqt_nav_view package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
+
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
 
 USES=		cmake python shebangfix
 
@@ -22,13 +43,6 @@ SHEBANG_FILES=	scripts/rqt_nav_view
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 NO_ARCH=	yes
-
-_BUILD_RDEPS=	catkin
-
-_RUN_RDEPS=	geometry_msgs nav_msgs python_qt_binding qt_gui rospy rqt_gui\
-		rqt_gui_py rqt_py_common tf
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

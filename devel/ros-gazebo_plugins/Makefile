@@ -9,10 +9,42 @@ COMMENT=	ROS gazebo_plugins package
 LICENSE=	APACHE20 BSD3CLAUSE
 LICENSE_COMB=	multi
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/camera_info_manager/package.xml:devel/ros-camera_info_manager \
+		${LOCALBASE}/share/cv_bridge/package.xml:devel/ros-cv_bridge \
+		${LOCALBASE}/share/diagnostic_updater/package.xml:devel/ros-diagnostic_updater \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/gazebo_dev/package.xml:devel/ros-gazebo_dev \
+		${LOCALBASE}/share/gazebo_msgs/package.xml:devel/ros-gazebo_msgs \
+		${LOCALBASE}/share/gazebo_ros/package.xml:devel/ros-gazebo_ros \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
+		${LOCALBASE}/share/polled_camera/package.xml:devel/ros-polled_camera \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/trajectory_msgs/package.xml:devel/ros-trajectory_msgs \
+		${LOCALBASE}/share/urdf/package.xml:devel/ros-urdf \
+		${LOCALBASE}/share/visualization_msgs/package.xml:devel/ros-visualization_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
 		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libassimp.so:multimedia/assimp\
 		libbondcpp.so:devel/ros-bondcpp\
@@ -135,7 +167,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libPocoFoundation.so:devel/poco\
 		libpolled_camera.so:devel/ros-polled_camera\
 		libprotobuf.so:devel/protobuf\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
@@ -161,7 +192,34 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/camera_info_manager/package.xml:devel/ros-camera_info_manager \
+		${LOCALBASE}/share/cv_bridge/package.xml:devel/ros-cv_bridge \
+		${LOCALBASE}/share/diagnostic_updater/package.xml:devel/ros-diagnostic_updater \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/gazebo_dev/package.xml:devel/ros-gazebo_dev \
+		${LOCALBASE}/share/gazebo_msgs/package.xml:devel/ros-gazebo_msgs \
+		${LOCALBASE}/share/gazebo_ros/package.xml:devel/ros-gazebo_ros \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
+		${LOCALBASE}/share/polled_camera/package.xml:devel/ros-polled_camera \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/trajectory_msgs/package.xml:devel/ros-trajectory_msgs \
+		${LOCALBASE}/share/urdf/package.xml:devel/ros-urdf \
+		${LOCALBASE}/share/visualization_msgs/package.xml:devel/ros-visualization_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+
 
 USES=		cmake python
 
@@ -171,24 +229,10 @@ GH_PROJECT=	gazebo_ros_pkgs
 
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	gazebo_plugins
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin message_generation rostest
-
-_COMMON_RDEPS=	angles camera_info_manager cv_bridge diagnostic_updater\
-		dynamic_reconfigure gazebo_dev gazebo_msgs gazebo_ros\
-		geometry_msgs image_transport nav_msgs nodelet polled_camera\
-		rosconsole roscpp rosgraph_msgs rospy sensor_msgs std_msgs\
-		std_srvs tf tf2_ros trajectory_msgs urdf visualization_msgs
-
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

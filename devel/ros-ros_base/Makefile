@@ -7,10 +7,24 @@ COMMENT=	ROS ros_base package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/bond_core/package.xml:devel/ros-bond_core \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/nodelet_core/package.xml:devel/ros-nodelet_core \
+		${LOCALBASE}/share/ros_core/package.xml:devel/ros-ros_core \
 
-USES=		cmake
+
+RUN_DEPENDS=	${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/bond_core/package.xml:devel/ros-bond_core \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/nodelet_core/package.xml:devel/ros-nodelet_core \
+		${LOCALBASE}/share/ros_core/package.xml:devel/ros-ros_core \
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -23,10 +37,6 @@ NO_ARCH=	yes
 WRKSRC_SUBDIR=	ros_base
 
 PLIST_FILES=	share/ros_base/package.xml
-
-_BUILD_RDEPS=	catkin
-_RUN_RDEPS=	actionlib bond_core dynamic_reconfigure nodelet_core ros_core
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

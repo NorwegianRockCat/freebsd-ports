@@ -8,13 +8,28 @@ COMMENT=	ROS dynamic_reconfigure package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
+		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs \
+		${LOCALBASE}/share/cpp_common/package.xml:devel/ros-cpp_common \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/roscpp_serialization/package.xml:devel/ros-roscpp_serialization \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rosservice/package.xml:devel/ros-rosservice
+
+RUN_DEPENDS=	${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/message_runtime/package.xml:devel/ros-message_runtime \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rosservice/package.xml:devel/ros-rosservice
 
 USES=		cmake python shebangfix
 
@@ -27,18 +42,8 @@ USE_LDCONFIG=	yes
 SHEBANG_FILES=	cmake/gendeps\
 		cmake/setup_custom_pythonpath.sh.in
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cpp_common message_generation\
-		roscpp_serialization rostest
-
-_COMMON_RDEPS=	roscpp roslib std_msgs
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	${_COMMON_RDEPS} message_runtime rospy rosservice
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

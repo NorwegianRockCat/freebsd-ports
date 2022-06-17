@@ -8,12 +8,23 @@ COMMENT=	ROS roslaunch package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/paramiko:security/py-paramiko@${PY_FLAVOR}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg@${PY_FLAVOR}\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rosclean/package.xml:devel/ros-rosclean \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/rosmaster/package.xml:devel/ros-rosmaster \
+		${LOCALBASE}/share/rosout/package.xml:devel/ros-rosout \
+		${LOCALBASE}/share/rosparam/package.xml:devel/ros-rosparam \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/rosbuild/package.xml:devel/ros-rosbuild
+
+RUN_DEPENDS=	${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${PYTHON_PKGNAMEPREFIX}paramiko>0:security/py-paramiko@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg@${PY_FLAVOR}\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -26,11 +37,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	tools/roslaunch
-
-_BUILD_RDEPS=	catkin rosbuild
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	rosclean rosgraph_msgs roslib rosmaster rosout rosparam rosunit
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

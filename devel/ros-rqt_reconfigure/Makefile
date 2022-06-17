@@ -8,11 +8,31 @@ COMMENT=	ROS rqt_reconfigure package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/roslint/package.xml:devel/ros-roslint \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rqt_console/package.xml:devel/ros-rqt_console \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+
+
+RUN_DEPENDS=	${LOCALBASE}/share/roslint/package.xml:devel/ros-roslint \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/dynamic_reconfigure/package.xml:devel/ros-dynamic_reconfigure \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rqt_console/package.xml:devel/ros-rqt_console \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -23,14 +43,6 @@ GH_PROJECT=	rqt_reconfigure
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 NO_ARCH=	yes
-
-_BUILD_RDEPS=	catkin roslint rostest
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-
-_RUN_RDEPS=	dynamic_reconfigure python_qt_binding rospy rqt_console rqt_gui\
-		rqt_gui_py rqt_py_common
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

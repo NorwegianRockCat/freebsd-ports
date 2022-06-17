@@ -8,10 +8,14 @@ COMMENT=	ROS tf_conversions package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/kdl_conversions/package.xml:devel/ros-kdl_conversions \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -36,10 +40,9 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtf2_ros.so:devel/ros-tf2_ros\
 		libtf2.so:devel/ros-tf2\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/PyKDL.so:devel/py-orocos_kdl@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
-
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/kdl_conversions/package.xml:devel/ros-kdl_conversions \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
 USES=		cmake eigen:3 python
 
 USE_GITHUB=	yes
@@ -51,12 +54,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	tf_conversions
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	geometry_msgs kdl_conversions tf
-_COMMON_XDEPS=	${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,9 +8,22 @@ COMMENT=	ROS rqt_topic package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs
+
+RUN_DEPENDS=	${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg@${PY_FLAVOR}
 
 USES=		cmake python shebangfix
 
@@ -23,11 +36,6 @@ SHEBANG_FILES=	scripts/rqt_topic
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 NO_ARCH=	yes
-
-_BUILD_RDEPS=	catkin
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	python_qt_binding rostopic rqt_gui rqt_gui_py std_msgs
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

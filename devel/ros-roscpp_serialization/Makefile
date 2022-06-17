@@ -7,10 +7,13 @@ COMMENT=	ROS roscpp_serialization package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/cpp_common/package.xml:devel/ros-cpp_common \
+		${LOCALBASE}/share/roscpp_traits/package.xml:devel/ros-roscpp_traits \
+		${LOCALBASE}/share/rostime/package.xml:devel/ros-rostime \
 
-USES=		cmake
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -21,10 +24,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	roscpp_serialization
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	cpp_common roscpp_traits rostime
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

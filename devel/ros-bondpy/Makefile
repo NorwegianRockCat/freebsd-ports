@@ -8,9 +8,16 @@ COMMENT=	ROS bondpy package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/bond/package.xml:devel/ros-bond \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib
+
+RUN_DEPENDS=	${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib \
 		uuidgen:misc/e2fsprogs-libuuid
 
 USES=		cmake python
@@ -24,11 +31,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	bondpy
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} bond catkin
-_COMMON_RDEPS=	rospy smclib
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,8 +8,28 @@ COMMENT=	ROS smach_ros package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/smach/package.xml:devel/ros-smach \
+		${LOCALBASE}/share/smach_msgs/package.xml:devel/ros-smach_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+
+RUN_DEPENDS=	${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/actionlib_msgs/package.xml:devel/ros-actionlib_msgs \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/smach/package.xml:devel/ros-smach \
+		${LOCALBASE}/share/smach_msgs/package.xml:devel/ros-smach_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
 
 USES=		cmake python
 
@@ -23,12 +43,6 @@ NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	smach_ros
 
-_BUILD_RDEPS=	catkin rostest
-
-_RUN_RDEPS=	actionlib actionlib_msgs rospy rostopic smach smach_msgs std_msgs\
-		std_srvs
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,10 +8,19 @@ COMMENT=	ROS laser_geometry package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${PYTHON_PKGNAMEPREFIX}boost-libs>0:devel/boost-python-libs@${PY_FLAVOR} \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -24,6 +33,7 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libcpp_common.so:devel/ros-cpp_common\
 		liblog4cxx.so:devel/log4cxx\
 		libmessage_filters.so:devel/ros-message_filters\
+		liborocos-kdl.so:devel/orocos_kdl \
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -34,9 +44,15 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtf2_ros.so:devel/ros-tf2_ros\
 		libtf2.so:devel/ros-tf2\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/numpy:math/py-numpy@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/tf2_geometry_msgs/package.xml:devel/ros-tf2_geometry_msgs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${PYTHON_PKGNAMEPREFIX}boost-libs>0:devel/boost-python-libs@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}numpy>0:math/py-numpy@${PY_FLAVOR}\
 
 USES=		cmake eigen:3 python
 
@@ -47,13 +63,6 @@ GH_PROJECT=	laser_geometry
 USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BOOSTLIB=	${LOCALBASE}/lib/lib${PY_BOOST_LIB}.so
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rosunit tf2_geometry_msgs
-_COMMON_RDEPS=	angles roscpp sensor_msgs tf tf2
-_COMMON_XDEPS=	${_BOOSTLIB}:devel/boost-python-libs@${PY_FLAVOR}
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

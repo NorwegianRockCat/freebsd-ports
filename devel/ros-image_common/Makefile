@@ -7,10 +7,21 @@ COMMENT=	ROS image_common package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/camera_calibration_parsers/package.xml:devel/ros-camera_calibration_parsers \
+		${LOCALBASE}/share/camera_info_manager/package.xml:devel/ros-camera_info_manager \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/polled_camera/package.xml:devel/ros-polled_camera
 
-USES=		cmake
+RUN_DEPENDS=	${LOCALBASE}/share/camera_calibration_parsers/package.xml:devel/ros-camera_calibration_parsers \
+		${LOCALBASE}/share/camera_info_manager/package.xml:devel/ros-camera_info_manager \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/polled_camera/package.xml:devel/ros-polled_camera
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros-perception
@@ -23,13 +34,6 @@ NO_ARCH=	yes
 WRKSRC_SUBDIR=	image_common
 
 PLIST_FILES=	share/image_common/package.xml
-
-_BUILD_RDEPS=	catkin
-
-_RUN_RDEPS=	camera_calibration_parsers camera_info_manager image_transport\
-		polled_camera
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

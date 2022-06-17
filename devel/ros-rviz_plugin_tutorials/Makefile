@@ -8,7 +8,12 @@ COMMENT=	ROS rviz_plugin_tutorials package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rviz/package.xml:devel/ros-rviz
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -39,7 +44,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libOgreTerrain.so:graphics/ogre3d\
 		libOgreVolume.so:graphics/ogre3d\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
 		libQt5Widgets.so:x11-toolkits/qt5-widgets\
@@ -65,7 +69,7 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		liburdfdom_sensor.so:devel/ros-urdfdom\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+RUN_DEPENDS=	${LOCALBASE}/share/rviz/package.xml:devel/ros-rviz
 
 USES=		cmake python qt:5
 
@@ -79,11 +83,6 @@ USE_QT=		buildtools_build gui qmake_build widgets
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	rviz_plugin_tutorials
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	rviz
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

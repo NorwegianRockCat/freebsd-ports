@@ -9,11 +9,11 @@ COMMENT=	Orocos Kinematics and Dynamics Library
 
 LICENSE=	LGPL21+
 
-BUILD_DEPENDS=	catkin_make:devel/ros-catkin\
-		${_COMMON_DEPS}
-RUN_DEPENDS=	${_COMMON_DEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl
 
-USES=		cmake python
+USES=		cmake python eigen:3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	orocos
@@ -25,9 +25,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}\
 		-DPYTHON_VERSION=${PYTHON_VER}
 
 WRKSRC_SUBDIR=	python_orocos_kdl
-
-_COMMON_DEPS=	${LOCALBASE}/include/eigen3/Eigen/Core:math/eigen3\
-		${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -10,8 +10,8 @@ LICENSE=	BSD3CLAUSE
 
 BUILD_DEPENDS=	catkin_make:devel/ros-catkin\
 		catkin_find_pkg:devel/ros-catkin_pkg\
-		${_PYLIBDIR}/em.py:textproc/py-empy@${PY_FLAVOR}
-RUN_DEPENDS=	${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}em.py:textproc/py-empy@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}
 
 USES=		cmake python
 

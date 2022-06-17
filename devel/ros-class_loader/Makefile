@@ -7,9 +7,13 @@ COMMENT=	ROS class_loader package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
 		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
+		${LOCALBASE}/include/Poco/Poco.h:devel/poco
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -32,13 +36,6 @@ PYTHON_NO_DEPENDS=	yes
 SHEBANG_FILES=	scripts/class_loader_headers_update.py
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	catkin cmake_modules
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		${LOCALBASE}/include/Poco/Poco.h:devel/poco
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

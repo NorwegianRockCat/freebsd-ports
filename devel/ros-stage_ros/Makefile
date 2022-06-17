@@ -7,8 +7,20 @@ COMMENT=	ROS stage_ros package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		stage:misc/stage \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -41,10 +53,16 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libX11.so:x11/libX11\
 		libXext.so:x11/libXext\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
-USES=		cmake shebangfix
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/nav_msgs/package.xml:devel/ros-nav_msgs \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+		${LOCALBASE}/share/tf/package.xml:devel/ros-tf
+
+USES=		cmake shebangfix python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros-simulation
@@ -53,14 +71,6 @@ GH_PROJECT=	stage_ros
 SHEBANG_FILES=	scripts/upgrade-world.sh
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest
-_COMMON_RDEPS=	geometry_msgs nav_msgs roscpp sensor_msgs std_msgs std_srvs tf
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		stage:misc/stage
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

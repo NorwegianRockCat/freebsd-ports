@@ -7,7 +7,12 @@ COMMENT=	ROS rosconsole_bridge package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -21,9 +26,8 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
 		librostime.so:devel/ros-rostime
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
 
-USES=		cmake
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -33,7 +37,6 @@ USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
 _COMMON_RDEPS=	cpp_common rosconsole
 _SHAREDIR=	${LOCALBASE}/share
 

@@ -8,9 +8,19 @@ COMMENT=	ROS rostopic package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy
+
+RUN_DEPENDS=	${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
 
 USES=		cmake python
 
@@ -23,11 +33,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	tools/rostopic
-
-_BUILD_RDEPS=	catkin rostest
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_RUN_RDEPS=	genpy rosbag rospy
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

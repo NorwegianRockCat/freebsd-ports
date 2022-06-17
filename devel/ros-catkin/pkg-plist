@@ -1,3 +1,4 @@
+share/catkin/env.sh
 bin/catkin_find
 bin/catkin_init_workspace
 bin/catkin_make
@@ -36,6 +37,9 @@ etc/catkin/profile.d/05.catkin_make_isolated.bash
 %%PYTHON_SITELIBDIR%%/catkin/workspace_vcs.py
 libdata/pkgconfig/catkin.pc
 share/catkin/LICENSE
+share/catkin/setup.bash
+share/catkin/setup.sh
+share/catkin/setup.zsh
 share/catkin/catkin_env_hook/05.catkin_make.bash
 share/catkin/catkin_env_hook/05.catkin_make_isolated.bash
 share/catkin/cmake/all.cmake

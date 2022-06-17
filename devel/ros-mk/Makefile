@@ -7,10 +7,18 @@ COMMENT=	ROS mk package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rosbuild/package.xml:devel/ros-rosbuild \
+		${LOCALBASE}/share/rospack/package.xml:devel/ros-rospack
 
-USES=		cmake
+
+RUN_DEPENDS=	${LOCALBASE}/share/rosbuild/package.xml:devel/ros-rosbuild \
+		${LOCALBASE}/share/rospack/package.xml:devel/ros-rospack
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -21,10 +29,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	core/mk
-
-_BUILD_RDEPS=	catkin
-_RUN_RDEPS=	rosbuild rospack
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

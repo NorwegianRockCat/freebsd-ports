@@ -7,10 +7,23 @@ COMMENT=	ROS diagnostics package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/diagnostic_aggregator/package.xml:devel/ros-diagnostic_aggregator \
+		${LOCALBASE}/share/diagnostic_analysis/package.xml:devel/ros-diagnostic_analysis \
+		${LOCALBASE}/share/diagnostic_common_diagnostics/package.xml:devel/ros-diagnostic_common_diagnostics \
+		${LOCALBASE}/share/diagnostic_updater/package.xml:devel/ros-diagnostic_updater \
+		${LOCALBASE}/share/self_test/package.xml:devel/ros-self_test
 
-USES=		cmake
+RUN_DEPENDS=	${LOCALBASE}/share/diagnostic_aggregator/package.xml:devel/ros-diagnostic_aggregator \
+		${LOCALBASE}/share/diagnostic_analysis/package.xml:devel/ros-diagnostic_analysis \
+		${LOCALBASE}/share/diagnostic_common_diagnostics/package.xml:devel/ros-diagnostic_common_diagnostics \
+		${LOCALBASE}/share/diagnostic_updater/package.xml:devel/ros-diagnostic_updater \
+		${LOCALBASE}/share/self_test/package.xml:devel/ros-self_test \
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -23,13 +36,6 @@ NO_ARCH=	yes
 WRKSRC_SUBDIR=	diagnostics
 
 PLIST_FILES=	share/diagnostics/package.xml
-
-_BUILD_RDEPS=	catkin
-
-_RUN_RDEPS=	diagnostic_aggregator diagnostic_analysis\
-		diagnostic_common_diagnostics diagnostic_updater self_test
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

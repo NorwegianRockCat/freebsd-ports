@@ -8,9 +8,31 @@ COMMENT=	ROS rqt_py_common package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic
+
+RUN_DEPENDS=	${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/actionlib/package.xml:devel/ros-actionlib \
+		${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic
 
 USES=		cmake python
 
@@ -23,14 +45,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	rqt_py_common
-
-_BUILD_RDEPS=	catkin genmsg std_msgs
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-
-_RUN_RDEPS=	actionlib genpy python_qt_binding qt_gui rosbag roslib rospy\
-		rostopic
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

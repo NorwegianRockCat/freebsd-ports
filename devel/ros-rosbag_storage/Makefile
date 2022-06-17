@@ -8,9 +8,18 @@ COMMENT=	ROS rosbag_storage package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp_traits/package.xml:devel/ros-roscpp_traits \
+		${LOCALBASE}/share/roslz4/package.xml:devel/ros-roslz4 \
+		${LOCALBASE}/include/gpgme.h:security/gpgme\
+		bzip2:archivers/bzip2
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -26,7 +35,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		liblog4cxx.so:devel/log4cxx\
 		liblz4.so:archivers/liblz4\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -36,8 +44,11 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librospack.so:devel/ros-rospack\
 		librostime.so:devel/ros-rostime\
 		libtinyxml2.so:textproc/tinyxml2
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp_traits/package.xml:devel/ros-roscpp_traits \
+		${LOCALBASE}/share/roslz4/package.xml:devel/ros-roslz4 \
 
 USES=		cmake python ssl
 
@@ -50,18 +61,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	tools/rosbag_storage
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest std_msgs
-
-_COMMON_RDEPS=	cpp_common pluginlib roscpp_serialization roscpp_traits roslz4\
-		rostime
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		${LOCALBASE}/include/gpgme.h:security/gpgme\
-		bzip2:archivers/bzip2
-
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -9,7 +9,7 @@ COMMENT=	ROS diff_drive_controller package
 LICENSE=	BSD3CLAUSE
 
 BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
 		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
 		${_COMMON_XDEPS}
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
@@ -28,7 +28,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		liblog4cxx.so:devel/log4cxx\
 		libmessage_filters.so:devel/ros-message_filters\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librealtime_tools.so:devel/ros-realtime_tools\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\

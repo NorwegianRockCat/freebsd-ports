@@ -8,10 +8,16 @@ COMMENT=	ROS qt_gui_cpp package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/pyqtbuild:devel/py-qtbuilder@${PY_FLAVOR}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${PYTHON_PKGNAMEPREFIX}qtbuilder>0:devel/py-qtbuilder@${PY_FLAVOR} \
+		${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib  \
+		${LOCALBASE}/include/tinyxml.h:textproc/tinyxml
+
+RUN_DEPENDS=	${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib  \
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -26,7 +32,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libGL.so:graphics/mesa-libs\
 		liblog4cxx.so:devel/log4cxx\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
 		libQt5Widgets.so:x11-toolkits/qt5-widgets\
@@ -38,8 +43,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librostime.so:devel/ros-rostime\
 		libtinyxml.so:textproc/tinyxml\
 		libtinyxml2.so:textproc/tinyxml2
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
 USES=		cmake pkgconfig pyqt:5 python qmake:no_env qt:5
 
@@ -48,20 +51,12 @@ GH_ACCOUNT=	ros-visualization
 GH_PROJECT=	qt_gui_core
 
 USE_LDCONFIG=	yes
-USE_PYQT=	gui widgets
+USE_PYQT=	pyqt5
 USE_QT=		buildtools_build qmake_build
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	qt_gui_cpp
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules python_qt_binding
-_COMMON_RDEPS=	pluginlib
-_COMMON_XDEPS=	${LOCALBASE}/include/tinyxml.h:textproc/tinyxml
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} qt_gui
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

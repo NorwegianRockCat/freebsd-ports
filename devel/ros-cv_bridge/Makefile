@@ -8,15 +8,18 @@ COMMENT=	ROS cv_bridge package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${_PYLIBDIR}/numpy:math/py-numpy@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}boost-libs>0:devel/boost-python-libs@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}numpy>0:math/py-numpy@${PY_FLAVOR} \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
-		libboost_python${_PY}.so:devel/boost-python-libs@${PY_FLAVOR}\
 		libboost_regex.so:devel/boost-libs\
 		libboost_system.so:devel/boost-libs\
 		libboost_thread.so:devel/boost-libs\
@@ -77,14 +80,14 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libopencv_ximgproc.so:graphics/opencv\
 		libopencv_xobjdetect.so:graphics/opencv\
 		libopencv_xphoto.so:graphics/opencv\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
 		libroscpp_serialization.so:devel/ros-roscpp_serialization\
 		librostime.so:devel/ros-rostime
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${PYTHON_PKGNAMEPREFIX}boost-libs>0:devel/boost-python-libs@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -97,18 +100,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	cv_bridge
-
-_BOOSTLIB=	${LOCALBASE}/lib/lib${PY_BOOST_LIB}.so
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rostest
-_COMMON_RDEPS=	rosconsole sensor_msgs
-
-_COMMON_XDEPS=	${_BOOSTLIB}:devel/boost-python-libs@${PY_FLAVOR}\
-		${LOCALBASE}/include/opencv4:graphics/opencv
-
-_PY=		${PYTHON_SUFFIX}
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

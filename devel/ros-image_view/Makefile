@@ -8,9 +8,17 @@ COMMENT=	ROS image_view package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${_PYLIBDIR}/yaml:devel/py-yaml@${PY_FLAVOR}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
+		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR} \
+		${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/stereo_msgs/package.xml:devel/ros-stereo_msgs
+
 LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -86,7 +94,6 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libopencv_xobjdetect.so:graphics/opencv\
 		libopencv_xphoto.so:graphics/opencv\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -98,7 +105,13 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/message_generation/package.xml:devel/ros-message_generation \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/stereo_msgs/package.xml:devel/ros-stereo_msgs \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs
+
 
 USES=		cmake gnome localbase:ldflags pkgconfig python
 
@@ -109,22 +122,10 @@ GH_PROJECT=	image_pipeline
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 pango
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS=${_GENERATORS}\
+CMAKE_ARGS=	-DCATKIN_MESSAGE_GENERATORS="gencpp;geneus;genlisp;gennodejs;genpy"\
 		-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	image_view
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin message_generation rostest sensor_msgs\
-		stereo_msgs
-
-_COMMON_RDEPS=	camera_calibration_parsers cv_bridge dynamic_reconfigure\
-		image_transport message_filters nodelet rosconsole roscpp\
-		std_srvs
-
-_GENERATORS=	"gencpp;geneus;genlisp;gennodejs;genpy"
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

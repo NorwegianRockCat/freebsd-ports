@@ -8,8 +8,23 @@ COMMENT=	ROS depth_image_proc package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/cv_bridge/package.xml:devel/ros-cv_bridge \
+		${LOCALBASE}/share/eigen_conversions/package.xml:devel/ros-eigen_conversions \
+		${LOCALBASE}/share/image_geometry/package.xml:devel/ros-image_geometry \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/eigen_conversions/package.xml:devel/ros-eigen_conversions \
+		${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/message_filters/package.xml:devel/ros-message_filters \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+		${LOCALBASE}/share/stereo_msgs/package.xml:devel/ros-stereo_msgs \
+		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
@@ -86,7 +101,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libopencv_xphoto.so:graphics/opencv\
 		liborocos-kdl.so:devel/orocos_kdl\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -100,10 +114,8 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
 
-USES=		cmake python
+USES=		cmake python eigen:3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros-perception
@@ -114,16 +126,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	depth_image_proc
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules message_filters rostest\
-		sensor_msgs stereo_msgs
-
-_COMMON_RDEPS=	cv_bridge eigen_conversions image_geometry image_transport\
-		nodelet tf2 tf2_ros
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

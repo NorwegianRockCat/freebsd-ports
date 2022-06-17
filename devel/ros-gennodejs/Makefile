@@ -8,9 +8,10 @@ COMMENT=	ROS gennodejs package
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -21,11 +22,6 @@ GH_PROJECT=	gennodejs
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 NO_ARCH=	yes
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	genmsg
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

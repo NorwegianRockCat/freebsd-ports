@@ -8,8 +8,14 @@ COMMENT=	ROS rosservice package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} 
+
+RUN_DEPENDS=	${LOCALBASE}/share/genpy/package.xml:devel/ros-genpy \
+		${LOCALBASE}/share/rosgraph/package.xml:devel/ros-rosgraph \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${LOCALBASE}/share/rosmsg/package.xml:devel/ros-rosmsg \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy
 
 USES=		cmake python
 
@@ -22,10 +28,6 @@ CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 NO_ARCH=	yes
 
 WRKSRC_SUBDIR=	tools/rosservice
-
-_BUILD_RDEPS=	catkin
-_RUN_RDEPS=	genpy rosgraph roslib rosmsg rospy
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

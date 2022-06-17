@@ -7,12 +7,20 @@ COMMENT=	ROS pluginlib package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/class_loader/package.xml:devel/ros-class_loader \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg
+
+RUN_DEPENDS=	${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/class_loader/package.xml:devel/ros-class_loader \
+		${LOCALBASE}/share/rosconsole/package.xml:devel/ros-rosconsole \
+		${LOCALBASE}/share/roslib/package.xml:devel/ros-roslib \
 
 USES=		cmake python shebangfix
 
@@ -27,12 +35,6 @@ SHEBANG_FILES=	scripts/pluginlib_headers_migration.py
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	pluginlib
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules
-_COMMON_RDEPS=	class_loader rosconsole roslib
-
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2
 
 _PYLIBDIR=	${PYTHON_SITELIBDIR}
 _SHAREDIR=	${LOCALBASE}/share

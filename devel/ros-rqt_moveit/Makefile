@@ -8,9 +8,30 @@ COMMENT=	ROS rqt_moveit package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rosnode/package.xml:devel/ros-rosnode \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+		${LOCALBASE}/share/rqt_topic/package.xml:devel/ros-rqt_topic \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
+
+
+RUN_DEPENDS=	${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding \
+		${LOCALBASE}/share/rosnode/package.xml:devel/ros-rosnode \
+		${LOCALBASE}/share/rospy/package.xml:devel/ros-rospy \
+		${LOCALBASE}/share/rostopic/package.xml:devel/ros-rostopic \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_py/package.xml:devel/ros-rqt_gui_py \
+		${LOCALBASE}/share/rqt_py_common/package.xml:devel/ros-rqt_py_common \
+		${LOCALBASE}/share/rqt_topic/package.xml:devel/ros-rqt_topic \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
 
 USES=		cmake python
 
@@ -21,14 +42,6 @@ GH_PROJECT=	rqt_moveit
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 NO_ARCH=	yes
-
-_BUILD_RDEPS=	catkin
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-
-_RUN_RDEPS=	python_qt_binding rosnode rospy rostopic rqt_gui rqt_gui_py\
-		rqt_py_common rqt_topic sensor_msgs
-
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

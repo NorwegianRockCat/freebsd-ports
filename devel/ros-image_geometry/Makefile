@@ -8,10 +8,12 @@ COMMENT=	ROS image_geometry package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs \
+
 LIB_DEPENDS=	libopencv_alphamat.so:graphics/opencv\
 		libopencv_aruco.so:graphics/opencv\
 		libopencv_bgsegm.so:graphics/opencv\
@@ -66,8 +68,8 @@ LIB_DEPENDS=	libopencv_alphamat.so:graphics/opencv\
 		libopencv_ximgproc.so:graphics/opencv\
 		libopencv_xobjdetect.so:graphics/opencv\
 		libopencv_xphoto.so:graphics/opencv
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
 
 USES=		cmake python
 
@@ -80,12 +82,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	image_geometry
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	sensor_msgs
-_COMMON_XDEPS=	${LOCALBASE}/include/opencv4:graphics/opencv
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

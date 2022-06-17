@@ -8,11 +8,21 @@ COMMENT=	ROS tf2_kdl package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/ros_environment/package.xml:devel/ros-ros_environment \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/tf2_py/package.xml:devel/ros-tf2_py \
+		${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl \
+
+RUN_DEPENDS=	${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
+		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/tf2_py/package.xml:devel/ros-tf2_py
 
 USES=		cmake eigen:3 python
 
@@ -23,11 +33,6 @@ GH_PROJECT=	geometry2
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	tf2_kdl
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules ros_environment rostest
-_COMMON_RDEPS=	tf2 tf2_ros
-_COMMON_XDEPS=	${LOCALBASE}/include/kdl/kdl.hpp:devel/orocos_kdl
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

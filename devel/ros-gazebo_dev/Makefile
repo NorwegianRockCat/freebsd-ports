@@ -7,10 +7,14 @@ COMMENT=	ROS gazebo_dev package
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest
+
 RUN_DEPENDS=	gazebo:cad/gazebo
 
-USES=		cmake
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros-simulation
@@ -27,9 +31,6 @@ PLIST_FILES=	libdata/pkgconfig/gazebo_dev.pc\
 		share/gazebo_dev/cmake/gazebo_devConfig-version.cmake\
 		share/gazebo_dev/cmake/gazebo_devConfig.cmake\
 		share/gazebo_dev/package.xml
-
-_BUILD_RDEPS=	catkin
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

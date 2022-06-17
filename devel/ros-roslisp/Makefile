@@ -7,8 +7,22 @@ COMMENT=	ROS roslisp package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/ros_environment/package.xml:devel/ros-ros_environment \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslang/package.xml:devel/ros-roslang \
+		${LOCALBASE}/share/rospack/package.xml:devel/ros-rospack \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
+
+
+RUN_DEPENDS=	${LOCALBASE}/share/ros_environment/package.xml:devel/ros-ros_environment \
+		${LOCALBASE}/share/rosgraph_msgs/package.xml:devel/ros-rosgraph_msgs \
+		${LOCALBASE}/share/roslang/package.xml:devel/ros-roslang \
+		${LOCALBASE}/share/rospack/package.xml:devel/ros-rospack \
+		${LOCALBASE}/share/std_srvs/package.xml:devel/ros-std_srvs \
 		sbcl:lang/sbcl
 
 USES=		cmake python shebangfix
@@ -36,7 +50,7 @@ FETCH_ENV=	DISTDIR="${DISTDIR}" WRKDIR="${WRKDIR}"
 NO_ARCH=	yes
 
 _BUILD_RDEPS=	catkin
-_RUN_RDEPS=	ros_environment rosgraph_msgs roslang rospack std_srvs
+_RUN_RDEPS=	
 _SHAREDIR=	${LOCALBASE}/share
 
 post-extract:

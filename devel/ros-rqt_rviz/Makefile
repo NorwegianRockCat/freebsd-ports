@@ -8,8 +8,15 @@ COMMENT=	ROS rqt_rviz package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_cpp/package.xml:devel/ros-rqt_gui_cpp \
+		${LOCALBASE}/share/rviz/package.xml:devel/ros-rviz
+
 LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
@@ -42,7 +49,6 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		libOgreTerrain.so:graphics/ogre3d\
 		libOgreVolume.so:graphics/ogre3d\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libqt_gui_cpp.so:devel/ros-qt_gui_cpp\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
@@ -71,8 +77,11 @@ LIB_DEPENDS=	libactionlib.so:devel/ros-actionlib\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_cpp/package.xml:devel/ros-rqt_gui_cpp \
+		${LOCALBASE}/share/rviz/package.xml:devel/ros-rviz
 
 USES=		cmake python qt:5 shebangfix
 
@@ -86,12 +95,6 @@ USE_QT=		buildtools_build core qmake_build
 SHEBANG_FILES=	scripts/rqt_rviz
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	pluginlib rqt_gui rqt_gui_cpp rviz
-_COMMON_XDEPS=	${LOCALBASE}/include/boost/version.hpp:devel/boost-libs
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

@@ -8,10 +8,17 @@ COMMENT=	ROS camera_calibration_parsers package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_BOOSTLIB}:devel/boost-python-libs@${PY_FLAVOR}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${PYTHON_PKGNAMEPREFIX}boost-libs>0:devel/boost-python-libs@${PY_FLAVOR} \
+		${LOCALBASE}/share/rosbash/package.xml:devel/ros-rosbash \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/roscpp_serialization/package.xml:devel/ros-roscpp_serialization \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -22,7 +29,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libconsole_bridge.so:devel/ros-console_bridge\
 		libcpp_common.so:devel/ros-cpp_common\
 		liblog4cxx.so:devel/log4cxx\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -31,9 +37,12 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		librostime.so:devel/ros-rostime\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp\
 		libyaml-cpp.so:devel/yaml-cpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
-		${_COMMON_XDEPS}
+
+RUN_DEPENDS=	${LOCALBASE}/share/rosbash/package.xml:devel/ros-rosbash \
+		${LOCALBASE}/share/rosunit/package.xml:devel/ros-rosunit \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/roscpp_serialization/package.xml:devel/ros-roscpp_serialization \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
 
 USES=		cmake pkgconfig python
 
@@ -46,14 +55,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	camera_calibration_parsers
-
-_BOOSTLIB=	${LOCALBASE}/lib/lib${PY_BOOST_LIB}.so
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin rosbash rosconsole rosunit
-_COMMON_RDEPS=	roscpp roscpp_serialization sensor_msgs
-_COMMON_XDEPS=	${LOCALBASE}/include/yaml-cpp/yaml.h:devel/yaml-cpp
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

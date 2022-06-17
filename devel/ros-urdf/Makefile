@@ -8,9 +8,19 @@ COMMENT=	ROS urdf package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/include/tinyxml.h:textproc/tinyxml\
+		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2\
+		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
+		check_urdf:devel/ros-urdfdom \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
+		${LOCALBASE}/share/urdf_parser_plugin/package.xml:devel/ros-urdf_parser_plugin \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -24,7 +34,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libcpp_common.so:devel/ros-cpp_common\
 		liblog4cxx.so:devel/log4cxx\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
@@ -41,8 +50,8 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		liburdfdom_sensor.so:devel/ros-urdfdom\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+RUN_DEPENDS=	${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib\
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
 
 USES=		cmake python
 
@@ -55,17 +64,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	urdf
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules rostest urdf_parser_plugin
-_COMMON_RDEPS=	pluginlib rosconsole_bridge roscpp
-
-_COMMON_XDEPS=	${LOCALBASE}/include/tinyxml.h:textproc/tinyxml\
-		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2\
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
-		check_urdf:devel/ros-urdfdom
-
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

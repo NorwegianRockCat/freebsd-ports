@@ -8,9 +8,16 @@ COMMENT=	ROS transmission_interface package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${LOCALBASE}/include/gtest/gtest.h:devel/googletest\
-		${_COMMON_XDEPS}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/resource_retriever/package.xml:devel/ros-resource_retriever \
+		${LOCALBASE}/share/hardware_interface/package.xml:devel/ros-hardware_interface \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp
+
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
 		libboost_date_time.so:devel/boost-libs\
@@ -24,7 +31,6 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libcpp_common.so:devel/ros-cpp_common\
 		liblog4cxx.so:devel/log4cxx\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_log4cxx.so:devel/ros-rosconsole\
 		librosconsole.so:devel/ros-rosconsole\
@@ -36,8 +42,11 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libtinyxml.so:textproc/tinyxml\
 		libtinyxml2.so:textproc/tinyxml2\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_COMMON_XDEPS}
+RUN_DEPENDS=	${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
+		${LOCALBASE}/share/resource_retriever/package.xml:devel/ros-resource_retriever \
+		${LOCALBASE}/share/hardware_interface/package.xml:devel/ros-hardware_interface \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp
 
 USES=		cmake python
 
@@ -50,12 +59,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	transmission_interface
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin cmake_modules resource_retriever
-_COMMON_RDEPS=	hardware_interface pluginlib roscpp
-_COMMON_XDEPS=	${LOCALBASE}/include/tinyxml.h:textproc/tinyxml
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

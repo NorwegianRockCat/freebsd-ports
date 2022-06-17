@@ -8,7 +8,24 @@ COMMENT=	ROS gazebo_ros_control package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/controller_interface/package.xml:devel/ros-controller_interface \
+		${LOCALBASE}/share/controller_manager_msgs/package.xml:devel/ros-controller_manager_msgs \
+		${LOCALBASE}/share/gazebo_dev/package.xml:devel/ros-gazebo_dev \
+		${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/control_toolbox/package.xml:devel/ros-control_toolbox \
+		${LOCALBASE}/share/controller_manager/package.xml:devel/ros-controller_manager \
+		${LOCALBASE}/share/hardware_interface/package.xml:devel/ros-hardware_interface \
+		${LOCALBASE}/share/joint_limits_interface/package.xml:devel/ros-joint_limits_interface \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/transmission_interface/package.xml:devel/ros-transmission_interface \
+		 ${LOCALBASE}/share/urdf/package.xml:devel/ros-urdf \
+
 LIB_DEPENDS=	libassimp.so:multimedia/assimp\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -69,7 +86,6 @@ LIB_DEPENDS=	libassimp.so:multimedia/assimp\
 		libopenblas.so:math/openblas\
 		libPocoFoundation.so:devel/poco\
 		libprotobuf.so:devel/protobuf\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librealtime_tools.so:devel/ros-realtime_tools\
 		librosconsole_backend_interface.so:devel/ros-rosconsole\
 		librosconsole_bridge.so:devel/ros-rosconsole_bridge\
@@ -96,7 +112,16 @@ LIB_DEPENDS=	libassimp.so:multimedia/assimp\
 		liburdfdom_world.so:devel/ros-urdfdom\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+RUN_DEPENDS=	${LOCALBASE}/share/angles/package.xml:devel/ros-angles \
+		${LOCALBASE}/share/control_toolbox/package.xml:devel/ros-control_toolbox \
+		${LOCALBASE}/share/controller_manager/package.xml:devel/ros-controller_manager \
+		${LOCALBASE}/share/hardware_interface/package.xml:devel/ros-hardware_interface \
+		${LOCALBASE}/share/joint_limits_interface/package.xml:devel/ros-joint_limits_interface \
+		${LOCALBASE}/share/pluginlib/package.xml:devel/ros-pluginlib \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp \
+		${LOCALBASE}/share/std_msgs/package.xml:devel/ros-std_msgs \
+		${LOCALBASE}/share/transmission_interface/package.xml:devel/ros-transmission_interface \
+		${LOCALBASE}/share/urdf/package.xml:devel/ros-urdf
 
 USES=		cmake python
 
@@ -109,17 +134,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	gazebo_ros_control
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin controller_interface\
-		controller_manager_msgs gazebo_dev
-
-_COMMON_RDEPS=	angles control_toolbox controller_manager hardware_interface\
-		joint_limits_interface pluginlib roscpp std_msgs\
-		transmission_interface urdf
-
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} gazebo_ros
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

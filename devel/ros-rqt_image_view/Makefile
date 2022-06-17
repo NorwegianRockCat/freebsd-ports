@@ -8,7 +8,16 @@ COMMENT=	ROS rqt_image_view package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_cpp/package.xml:devel/ros-rqt_gui_cpp \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
+
 LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -81,7 +90,6 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libopencv_xobjdetect.so:graphics/opencv\
 		libopencv_xphoto.so:graphics/opencv\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libqt_gui_cpp.so:devel/ros-qt_gui_cpp\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
@@ -99,7 +107,11 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+RUN_DEPENDS=	${LOCALBASE}/share/geometry_msgs/package.xml:devel/ros-geometry_msgs \
+		${LOCALBASE}/share/image_transport/package.xml:devel/ros-image_transport \
+		${LOCALBASE}/share/rqt_gui/package.xml:devel/ros-rqt_gui \
+		${LOCALBASE}/share/rqt_gui_cpp/package.xml:devel/ros-rqt_gui_cpp \
+		${LOCALBASE}/share/sensor_msgs/package.xml:devel/ros-sensor_msgs
 
 USES=		cmake python qt:5
 
@@ -111,14 +123,6 @@ USE_LDCONFIG=	yes
 USE_QT=		buildtools_build core qmake_build
 
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-
-_COMMON_RDEPS=	cv_bridge geometry_msgs image_transport rqt_gui rqt_gui_cpp\
-		sensor_msgs
-
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

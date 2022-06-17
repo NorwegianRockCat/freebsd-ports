@@ -7,10 +7,21 @@ COMMENT=	ROS bond_core package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
-RUN_DEPENDS=	${_RUN_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/bond/package.xml:devel/ros-bond \
+		${LOCALBASE}/share/bondcpp/package.xml:devel/ros-bondcpp \
+		${LOCALBASE}/share/bondpy/package.xml:devel/ros-bondpy \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib
 
-USES=		cmake
+RUN_DEPENDS=	${LOCALBASE}/share/bond/package.xml:devel/ros-bond \
+		${LOCALBASE}/share/bondcpp/package.xml:devel/ros-bondcpp \
+		${LOCALBASE}/share/bondpy/package.xml:devel/ros-bondpy \
+		${LOCALBASE}/share/smclib/package.xml:devel/ros-smclib
+
+USES=		cmake python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ros
@@ -23,10 +34,6 @@ NO_ARCH=	yes
 WRKSRC_SUBDIR=	bond_core
 
 PLIST_FILES=	share/bond_core/package.xml
-
-_BUILD_RDEPS=	catkin
-_RUN_RDEPS=	bond bondcpp bondpy smclib
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

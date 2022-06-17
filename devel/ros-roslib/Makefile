@@ -8,9 +8,11 @@ COMMENT=	ROS roslib package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/nose:devel/py-nose@${PY_FLAVOR}\
-		${_PYLIBDIR}/setuptools:devel/py-setuptools@${PY_FLAVOR}\
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${LOCALBASE}/share/rospack/package.xml:devel/ros-rospack \
+		${LOCALBASE}/share/rosmake/package.xml:devel/ros-rosmake \
+		${PYTHON_PKGNAMEPREFIX}nose>=0:devel/py-nose@${PY_FLAVOR}\
 		${LOCALBASE}/include/boost/version.hpp:devel/boost-libs\
 		${LOCALBASE}/include/gtest/gtest.h:devel/googletest
 LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
@@ -20,11 +22,11 @@ LIB_DEPENDS=	libboost_atomic.so:devel/boost-libs\
 		libboost_program_options.so:devel/boost-libs\
 		libboost_system.so:devel/boost-libs\
 		libboost_thread.so:devel/boost-libs\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		librospack.so:devel/ros-rospack\
 		libtinyxml2.so:textproc/tinyxml2
-RUN_DEPENDS=	${_RUN_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}\
-		${_PYLIBDIR}/rospkg:devel/ros-rospkg@${PY_FLAVOR}
+
+RUN_DEPENDS=	${LOCALBASE}/share/ros_environment/package.xml:devel/ros-ros_environment \
+		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg@${PY_FLAVOR}
 
 USES=		cmake python
 
@@ -37,13 +39,6 @@ USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	core/roslib
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} rosmake
-_COMMON_RDEPS=	catkin rospack
-_PYLIBDIR=	${PYTHON_SITELIBDIR}
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_RUN_RDEPS=	${_COMMON_RDEPS} ros_environment
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete

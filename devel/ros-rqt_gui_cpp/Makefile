@@ -8,7 +8,15 @@ COMMENT=	ROS rqt_gui_cpp package
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${_BUILD_RDEPS:O:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
+		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
+		googletest>0:devel/googletest \
+		${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/qt_gui_cpp/package.xml:devel/ros-qt_gui_cpp \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp
+
 LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libboost_atomic.so:devel/boost-libs\
 		libboost_chrono.so:devel/boost-libs\
@@ -24,7 +32,6 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		liblog4cxx.so:devel/log4cxx\
 		libnodeletlib.so:devel/ros-nodelet\
 		libPocoFoundation.so:devel/poco\
-		libpython${_PYVERSION}.so:lang/python${PYTHON_SUFFIX}\
 		libqt_gui_cpp.so:devel/ros-qt_gui_cpp\
 		libQt5Core.so:devel/qt5-core\
 		libQt5Gui.so:x11-toolkits/qt5-gui\
@@ -41,7 +48,11 @@ LIB_DEPENDS=	libbondcpp.so:devel/ros-bondcpp\
 		libtinyxml2.so:textproc/tinyxml2\
 		libuuid.so:misc/e2fsprogs-libuuid\
 		libxmlrpcpp.so:devel/ros-xmlrpcpp
-RUN_DEPENDS=	${_COMMON_RDEPS:C|.*|${_SHAREDIR}/&/package.xml:devel/ros-&|}
+
+RUN_DEPENDS=	${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
+		${LOCALBASE}/share/qt_gui/package.xml:devel/ros-qt_gui \
+		${LOCALBASE}/share/qt_gui_cpp/package.xml:devel/ros-qt_gui_cpp \
+		${LOCALBASE}/share/roscpp/package.xml:devel/ros-roscpp
 
 USES=		cmake python qt:5
 
@@ -55,11 +66,6 @@ USE_QT=		buildtools_build core qmake_build
 CMAKE_ARGS=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 
 WRKSRC_SUBDIR=	rqt_gui_cpp
-
-_BUILD_RDEPS=	${_COMMON_RDEPS} catkin
-_COMMON_RDEPS=	nodelet qt_gui qt_gui_cpp roscpp
-_PYVERSION=	${PYTHON_VER}${PYTHON_ABIVER}
-_SHAREDIR=	${LOCALBASE}/share
 
 post-stage:
 	${FIND} ${STAGEDIR}${PREFIX} -type f -depth 1 -delete
