@@ -18,6 +18,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		${LOCALBASE}/share/nodelet/package.xml:devel/ros-nodelet \
 		${LOCALBASE}/share/tf2/package.xml:devel/ros-tf2 \
 		${LOCALBASE}/share/tf2_ros/package.xml:devel/ros-tf2_ros \
+		${LOCALBASE}/share/tf2_py/package.xml:devel/ros-tf2_py \
 		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
 		${LOCALBASE}/share/message_filters/package.xml:devel/ros-message_filters \
 		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
