@@ -12,11 +12,13 @@ BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
 		googletest>0:devel/googletest \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
 		${PYTHON_PKGNAMEPREFIX}numpy>=1:math/py-numpy@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}yaml>=0:devel/py-yaml@${PY_FLAVOR}
 
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}numpy>=1:math/py-numpy@${PY_FLAVOR} \
+		${LOCALBASE}/share/genmsg/package.xml:devel/ros-genmsg \
 		${PYTHON_PKGNAMEPREFIX}yaml>=0:devel/py-yaml@${PY_FLAVOR}
 
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>=0:devel/py-nose@${PY_FLAVOR}
