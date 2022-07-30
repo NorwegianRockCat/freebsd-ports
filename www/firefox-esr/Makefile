@@ -25,7 +25,7 @@ BUILD_DEPENDS=	nspr>=4.19:devel/nspr \
 		sqlite3>=3.22.0:databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 		v4l_compat>0:multimedia/v4l_compat \
-		autoconf-2.13:devel/autoconf213 \
+		autoconf2.13:devel/autoconf213 \
 		yasm:devel/yasm \
 		zip:archivers/zip
 
