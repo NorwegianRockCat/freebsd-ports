@@ -3,7 +3,10 @@ lib/libresource_retriever.so
 lib/libresource_retriever.so.1
 lib/libresource_retriever.so.1.12
 lib/libresource_retriever.so.1.12.6
-%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/resource_retriever-1.12.6-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/resource_retriever/__init__.py
 %%PYTHON_SITELIBDIR%%/resource_retriever/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 libdata/pkgconfig/resource_retriever.pc

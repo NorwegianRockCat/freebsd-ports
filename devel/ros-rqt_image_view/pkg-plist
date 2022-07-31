@@ -5,7 +5,10 @@ lib/librqt_image_view.so
 lib/librqt_image_view.so.0
 lib/librqt_image_view.so.0.4
 lib/librqt_image_view.so.0.4.16
-%%PYTHON_SITELIBDIR%%/rqt_image_view-0.4.16-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_image_view-0.4.16-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rqt_image_view-0.4.16-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rqt_image_view-0.4.16-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rqt_image_view-0.4.16-py%%PYTHON_VER%%.egg-info/top_level.txt
 lib/rqt_image_view/rqt_image_view
 libdata/pkgconfig/rqt_image_view.pc
 share/rqt_image_view/cmake/rqt_image_viewConfig-version.cmake

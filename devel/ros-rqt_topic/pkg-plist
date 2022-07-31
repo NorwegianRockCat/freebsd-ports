@@ -1,4 +1,7 @@
-%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rqt_topic-0.4.12-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/rqt_topic/__init__.py
 %%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/rqt_topic/__pycache__/topic%%PYTHON_EXT_SUFFIX%%.pyc

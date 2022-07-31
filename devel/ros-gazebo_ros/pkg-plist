@@ -15,7 +15,10 @@ lib/libgazebo_ros_paths_plugin.so
 lib/libgazebo_ros_paths_plugin.so.2
 lib/libgazebo_ros_paths_plugin.so.2.9
 lib/libgazebo_ros_paths_plugin.so.2.9.2
-%%PYTHON_SITELIBDIR%%/gazebo_ros-2.9.2-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/gazebo_ros-2.9.2-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/gazebo_ros-2.9.2-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/gazebo_ros-2.9.2-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/gazebo_ros-2.9.2-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/gazebo_ros/__init__.py
 %%PYTHON_SITELIBDIR%%/gazebo_ros/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/gazebo_ros/__pycache__/gazebo_interface%%PYTHON_EXT_SUFFIX%%.pyc

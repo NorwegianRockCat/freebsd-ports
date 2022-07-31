@@ -1,5 +1,8 @@
 lib/joint_state_publisher_gui/joint_state_publisher_gui
-%%PYTHON_SITELIBDIR%%/joint_state_publisher_gui-1.15.0-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/joint_state_publisher_gui-1.15.0-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/joint_state_publisher_gui-1.15.0-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/joint_state_publisher_gui-1.15.0-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/joint_state_publisher_gui-1.15.0-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/joint_state_publisher_gui/__init__.py
 %%PYTHON_SITELIBDIR%%/joint_state_publisher_gui/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 libdata/pkgconfig/joint_state_publisher_gui.pc

@@ -1,5 +1,8 @@
 include/angles/angles.h
-%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/angles-1.9.13-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/angles/__init__.py
 %%PYTHON_SITELIBDIR%%/angles/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 libdata/pkgconfig/angles.pc

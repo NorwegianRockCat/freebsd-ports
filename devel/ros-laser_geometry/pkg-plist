@@ -3,7 +3,10 @@ lib/liblaser_geometry.so
 lib/liblaser_geometry.so.1
 lib/liblaser_geometry.so.1.6
 lib/liblaser_geometry.so.1.6.7
-%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/laser_geometry-1.6.7-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/laser_geometry/__init__.py
 %%PYTHON_SITELIBDIR%%/laser_geometry/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/laser_geometry/__pycache__/laser_geometry%%PYTHON_EXT_SUFFIX%%.pyc

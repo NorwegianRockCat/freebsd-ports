@@ -1,4 +1,7 @@
-%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rqt_tf_tree-0.6.2-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/rqt_tf_tree/__init__.py
 %%PYTHON_SITELIBDIR%%/rqt_tf_tree/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/rqt_tf_tree/__pycache__/dotcode_tf%%PYTHON_EXT_SUFFIX%%.pyc

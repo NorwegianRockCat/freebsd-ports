@@ -189,7 +189,10 @@ lib/libvision_reconfigure.so
 lib/libvision_reconfigure.so.2
 lib/libvision_reconfigure.so.2.9
 lib/libvision_reconfigure.so.2.9.2
-%%PYTHON_SITELIBDIR%%/gazebo_plugins-2.9.2-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/gazebo_plugins-2.9.2-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/gazebo_plugins-2.9.2-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/gazebo_plugins-2.9.2-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/gazebo_plugins-2.9.2-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/gazebo_plugins/__init__.py
 %%PYTHON_SITELIBDIR%%/gazebo_plugins/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/gazebo_plugins/__pycache__/gazebo_plugins_interface%%PYTHON_EXT_SUFFIX%%.pyc

@@ -1,5 +1,8 @@
 bin/rqt_plot
-%%PYTHON_SITELIBDIR%%/rqt_plot-0.4.13-py%%PYTHON_VER%%.egg-info
+%%PYTHON_SITELIBDIR%%/rqt_plot-0.4.13-py%%PYTHON_VER%%.egg-info/PKG-INFO
+%%PYTHON_SITELIBDIR%%/rqt_plot-0.4.13-py%%PYTHON_VER%%.egg-info/SOURCES.txt
+%%PYTHON_SITELIBDIR%%/rqt_plot-0.4.13-py%%PYTHON_VER%%.egg-info/dependency_links.txt
+%%PYTHON_SITELIBDIR%%/rqt_plot-0.4.13-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/rqt_plot/__init__.py
 %%PYTHON_SITELIBDIR%%/rqt_plot/__pycache__/__init__%%PYTHON_EXT_SUFFIX%%.pyc
 %%PYTHON_SITELIBDIR%%/rqt_plot/__pycache__/plot%%PYTHON_EXT_SUFFIX%%.pyc
