@@ -9,7 +9,7 @@ LICENSE=	BSD3CLAUSE
 
 BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers
+		${LOCALBASE}/include/urdfdom_headers/urdf_model:devel/ros-urdfdom_headers
 
 USES=		cmake python
 

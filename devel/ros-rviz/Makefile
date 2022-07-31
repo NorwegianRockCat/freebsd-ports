@@ -20,7 +20,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		${PYTHON_PKGNAMEPREFIX}qtbuilder>0:devel/py-qtbuilder@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}ros-rospkg>=0:devel/ros-rospkg\
 		${PYTHON_PKGNAMEPREFIX}yaml>=3:devel/py-yaml@${PY_FLAVOR}\
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
+		${LOCALBASE}/include/urdfdom_headers/urdf_model:devel/ros-urdfdom_headers\
 		check_urdf:devel/ros-urdfdom\
 		sip-build:devel/py-sip@${PY_FLAVOR}\
 		${LOCALBASE}/share/python_qt_binding/package.xml:devel/ros-python_qt_binding

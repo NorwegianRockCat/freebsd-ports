@@ -12,7 +12,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		${PYTHON_PKGNAMEPREFIX}ros-catkin_pkg>=0.4.0:devel/ros-catkin_pkg@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}nose>0:devel/py-nose@${PY_FLAVOR} \
 		googletest>0:devel/googletest \
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
+		${LOCALBASE}/include/urdfdom_headers/urdf_model:devel/ros-urdfdom_headers\
 		${LOCALBASE}/share/rosbag/package.xml:devel/ros-rosbag \
 		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
 		${LOCALBASE}/share/kdl_parser/package.xml:devel/ros-kdl_parser \

@@ -14,7 +14,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/catkin/package.xml:devel/ros-catkin \
 		googletest>0:devel/googletest \
 		${LOCALBASE}/include/tinyxml.h:textproc/tinyxml\
 		${LOCALBASE}/include/tinyxml2.h:textproc/tinyxml2\
-		${LOCALBASE}/include/urdf_model:devel/ros-urdfdom_headers\
+		${LOCALBASE}/include/urdfdom_headers/urdf_model:devel/ros-urdfdom_headers\
 		check_urdf:devel/ros-urdfdom \
 		${LOCALBASE}/share/cmake_modules/package.xml:devel/ros-cmake_modules \
 		${LOCALBASE}/share/rostest/package.xml:devel/ros-rostest \
