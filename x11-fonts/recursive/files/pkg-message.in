@@ -1,0 +1,15 @@
+[
+{ type: install
+  message: <<EOM
+Recursive has been installed.
+
+Recursive is a dynamic, variable width font, but there are many static
+versions that are installed to better work with programs that do not
+work well with variable width font (yet).
+
+Please see the documentation installed in
+/usr/local/share/doc/recursive for advice on use.
+
+EOM
+}
+]
