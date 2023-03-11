@@ -1,0 +1,19 @@
+[
+{ type: install
+  message: <<EOM
+Users running Solaar need to be in the solaar group to read and write from the Logitech receiver.
+
+A devd rule has been added to added to make the necessary changes.
+Restart devd for these changes to take effect immediately.
+
+# service devd restart
+
+Add users to the solaar group to grant them access.
+
+# pw groupmod solaar -m your_user
+
+Then log the user out and back in again for the changes to take effect.
+
+EOM
+}
+]

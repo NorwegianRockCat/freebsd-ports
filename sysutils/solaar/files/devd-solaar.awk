@@ -27,9 +27,7 @@ END {
 "	match \"type\" \"ATTACH\";\n" \
 "	match \"vendor\" \"0x%s\";\n" \
 "	match \"product\" \"%s\";\n" \
-"# Please uncomment the line below and change the group name to suit\n" \
-"# your own needs.\n" \
-"#	action \"chgrp solaar /dev/$cdev && chmod 660 /dev/$cdev\";\n" \
+"	action \"chgrp solaar /dev/$cdev && chmod 660 /dev/$cdev\";\n" \
 "};\n\n", vendor, products
 	}
 }
