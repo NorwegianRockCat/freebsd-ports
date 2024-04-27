@@ -1,18 +1,17 @@
-PORTNAME=	logitechmediaserver
-DISTVERSION=	8.5.2
+PORTNAME=	lyrionmusicserver
+DISTVERSION=	9.0.2
 CATEGORIES=	audio
 
-MAINTAINER=	trueos@norwegianrockcat.com
-COMMENT=	Audio streaming server that powers Squeezebox players from Logitech
-WWW=		https://wiki.slimdevices.com/index.php/Squeezebox_Server
 
-LICENSE=	SDL
-LICENSE_NAME=	Slim Devices License
+PORTSCOUT=   skipv:10.0.3,10.0.4,release-10.0.0.0
+
+MAINTAINER=	trueos@norwegianrockcat.com
+COMMENT=	Audio streaming server that powers Squeezebox players previously from Logitech and many other devices
+WWW=		https://lyrion.org/
+
+LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/License.txt
 # Contains non-redistributable firmware, documentation, and images
-LICENSE_PERMS=	no-dist-mirror no-dist-sell no-pkg-mirror no-pkg-sell
-
-ONLY_FOR_ARCHS=	amd64 i386
 
 BUILD_DEPENDS=	nasm:devel/nasm \
 		bash:shells/bash \
@@ -20,28 +19,29 @@ BUILD_DEPENDS=	nasm:devel/nasm \
 LIB_DEPENDS=	libgd.so:graphics/gd
 RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
 
+ONLY_FOR_ARCHS=	i386 amd64 aarch64
+ONLY_FOR_ARCHS_REASON=	Only tested on these archs, custom Perl triplet for plist.
+
 USES=		gettext-runtime gmake perl5 shebangfix
 USE_GITHUB=	yes
-GH_TUPLE=	LMS-Community:slimserver:88ba56f \
-		LMS-Community:slimserver-vendor:384095c:vendor
-USE_RC_SUBR=	logitechmediaserver
+GH_TUPLE=	LMS-Community:slimserver:1470c94 \
+		LMS-Community:slimserver-vendor:bf9bf02:vendor
+USE_RC_SUBR=	lyrionmusicserver
 SHEBANG_FILES=	Bin/darwin/check-update.pl \
 		CPAN/Log/Log4perl/Layout/PatternLayout/Multiline.pm \
 		Slim/Plugin/UPnP/t/MediaRenderer.t \
 		Slim/Plugin/UPnP/t/MediaServer.t \
 		cleanup.pl \
-		gdresize.pl \
 		gdresized.pl \
 		lib/MPEG/Audio/Frame.pm \
 		scanner.pl \
 		slimserver.pl \
 		${WRKSRC_vendor}/CPAN/hints/darwin.pl
 
-PORTSCOUT=	skipv:10.0.3,10.0.4,release-10.0.0.0
-
 SUB_FILES=	Custom.pm \
-		custom-convert.conf \
-		logitechmediaserver.conf
+		lyrionmusicserver.conf \
+		custom-convert.conf
+
 SUB_LIST=	PERL=${PERL} \
 		PORTNAME=${PORTNAME} \
 		SITE_PERL=${PREFIX}/${SITE_PERL_REL} \
@@ -75,8 +75,8 @@ TEST_VARS_OFF=		CONTRIB_FLAGS=-t
 DOCFILES=	Changelog*.html License*.txt
 CONFFILES=	convert.conf types.conf
 
-SLIMDIR?=	share/logitechmediaserver
-SLIMDBDIR?=	/var/db/logitechmediaserver
+SLIMDIR?=	share/lyrionmusicserver
+SLIMDBDIR?=	/var/db/lyrionmusicserver
 SLIMUSER?=	slimserv
 SLIMGROUP?=	${SLIMUSER}
 
@@ -84,12 +84,16 @@ SLIMGROUP?=	${SLIMUSER}
 
 .if ${ARCH} == "i386"
 ARCHNAME=	i386-freebsd-thread-multi-64int
-PLIST=		${PKGDIR}/pkg-plist.i386
 .endif
 
 .if ${ARCH} == "amd64"
 ARCHNAME=	amd64-freebsd-thread-multi
 .endif
+
+.if ${ARCH} == "aarch64"
+ARCHNAME=	aarch64-freebsd-thread-multi
+.endif
+
 
 do-build:
 	cd ${WRKSRC_vendor}/CPAN && ./buildme.sh ${CONTRIB_FLAGS}
@@ -105,6 +109,9 @@ do-install:
 		${FIND} ./CPAN/arch/ ! -path './CPAN/arch/${PERL_VER}*' -delete && \
 		${RM} -r -- Bin/* .editorconfig .github && \
 		${RM} -- ${CONFFILES} ${DOCFILES})
+	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR} && \
+		${RM} -r -- Firmware/* && \
+		${RM} -r -- Graphics/CODE2000*.*)
 	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR}/CPAN/arch/${PERL_VER} && \
 		${RM} -r -- arm-linux-gnueabihf-thread-multi-64int && \
 		${RM} -r -- aarch64-linux-thread-multi && \
@@ -116,9 +123,9 @@ do-install:
 	${INSTALL_DATA} ${WRKDIR}/Custom.pm \
 	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/Slim/Utils/OS/Custom.pm
 	${INSTALL_DATA} ${WRKDIR}/custom-convert.conf \
-	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf
+	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf.sample
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d
-	${INSTALL_DATA} ${WRKDIR}/logitechmediaserver.conf \
+	${INSTALL_DATA} ${WRKDIR}/lyrionmusicserver.conf \
 	    ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d/
 	@${MKDIR} ${STAGEDIR}${SLIMDBDIR}
 	@${LN} -s ${SLIMDBDIR}/cache ${STAGEDIR}${PREFIX}/${SLIMDIR}/Cache
