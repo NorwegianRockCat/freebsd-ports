@@ -8,12 +8,7 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%PORTDOCS%%%%DOCSDIR%%/Changelog6.html
 %%PORTDOCS%%%%DOCSDIR%%/Changelog7.html
 %%PORTDOCS%%%%DOCSDIR%%/Changelog8.html
-%%PORTDOCS%%%%DOCSDIR%%/License.de.txt
-%%PORTDOCS%%%%DOCSDIR%%/License.es.txt
-%%PORTDOCS%%%%DOCSDIR%%/License.fr.txt
-%%PORTDOCS%%%%DOCSDIR%%/License.he.txt
-%%PORTDOCS%%%%DOCSDIR%%/License.it.txt
-%%PORTDOCS%%%%DOCSDIR%%/License.nl.txt
+%%PORTDOCS%%%%DOCSDIR%%/Changelog9.html
 %%PORTDOCS%%%%DOCSDIR%%/License.txt
 %%SLIMDIR%%/CPAN/AE.pm
 %%SLIMDIR%%/CPAN/Algorithm/C3.pm
@@ -1268,7 +1263,6 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/Default/html/images/icon_now_playing_selected.gif
 %%SLIMDIR%%/HTML/Default/html/images/icon_nowplaying.gif
 %%SLIMDIR%%/HTML/Default/html/images/icon_nowplaying_collapsed.gif
-%%SLIMDIR%%/HTML/Default/html/images/logitech.gif
 %%SLIMDIR%%/HTML/Default/html/images/playlist.png
 %%SLIMDIR%%/HTML/Default/html/images/playlistadd.png
 %%SLIMDIR%%/HTML/Default/html/images/playlistclear.png
@@ -1351,7 +1345,6 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/docs/buttons.html
 %%SLIMDIR%%/HTML/EN/html/docs/cli-api.html
 %%SLIMDIR%%/HTML/EN/html/docs/display.html
-%%SLIMDIR%%/HTML/EN/html/docs/fonts.html
 %%SLIMDIR%%/HTML/EN/html/docs/http.html
 %%SLIMDIR%%/HTML/EN/html/docs/index.html
 %%SLIMDIR%%/HTML/EN/html/docs/input.html
@@ -1359,12 +1352,9 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/docs/linux-update.html.de
 %%SLIMDIR%%/HTML/EN/html/docs/plugins.html
 %%SLIMDIR%%/HTML/EN/html/docs/protocol.html
-%%SLIMDIR%%/HTML/EN/html/docs/radio-compatibility.html
-%%SLIMDIR%%/HTML/EN/html/docs/radio-compatibility.html.de
 %%SLIMDIR%%/HTML/EN/html/docs/remote.html
 %%SLIMDIR%%/HTML/EN/html/docs/remotestreaming.html
 %%SLIMDIR%%/HTML/EN/html/docs/remotestreaming.html.de
-%%SLIMDIR%%/HTML/EN/html/docs/skins.html
 %%SLIMDIR%%/HTML/EN/html/docs/slimproto.html
 %%SLIMDIR%%/HTML/EN/html/docs/vfdshots/adding.gif
 %%SLIMDIR%%/HTML/EN/html/docs/vfdshots/artists1.gif
@@ -1389,7 +1379,6 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/docs/vfdshots/setup.gif
 %%SLIMDIR%%/HTML/EN/html/docs/vfdshots/setup_done.gif
 %%SLIMDIR%%/HTML/EN/html/docs/vfdshots/setup_myip.gif
-%%SLIMDIR%%/HTML/EN/html/docs/xpl.html
 %%SLIMDIR%%/HTML/EN/html/errors/400.html
 %%SLIMDIR%%/HTML/EN/html/errors/401.html
 %%SLIMDIR%%/HTML/EN/html/errors/403.html
@@ -1654,8 +1643,8 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/images/genres.png
 %%SLIMDIR%%/HTML/EN/html/images/icon_grey.png
 %%SLIMDIR%%/HTML/EN/html/images/list.png
+%%SLIMDIR%%/HTML/EN/html/images/lms.png
 %%SLIMDIR%%/HTML/EN/html/images/loading.gif
-%%SLIMDIR%%/HTML/EN/html/images/logitech_media_server.png
 %%SLIMDIR%%/HTML/EN/html/images/musicfolder.png
 %%SLIMDIR%%/HTML/EN/html/images/newmusic.png
 %%SLIMDIR%%/HTML/EN/html/images/playall.png
@@ -1681,6 +1670,7 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/images/transporter_logo.small_bk.gif
 %%SLIMDIR%%/HTML/EN/html/images/transporter_logo.small_grey.gif
 %%SLIMDIR%%/HTML/EN/html/images/wait.gif
+%%SLIMDIR%%/HTML/EN/html/images/works.png
 %%SLIMDIR%%/HTML/EN/html/images/years.png
 %%SLIMDIR%%/HTML/EN/html/lbrsilence.mp3
 %%SLIMDIR%%/HTML/EN/html/mypage.ico
@@ -1700,8 +1690,6 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/silence.mp3
 %%SLIMDIR%%/HTML/EN/html/silentpacket.mp3
 %%SLIMDIR%%/HTML/EN/html/slim-backup-alarm.mp3
-%%SLIMDIR%%/HTML/EN/html/softsqueeze/index.html
-%%SLIMDIR%%/HTML/EN/html/softsqueeze/index.html.de
 %%SLIMDIR%%/HTML/EN/html/test.html
 %%SLIMDIR%%/HTML/EN/html/vars.js
 %%SLIMDIR%%/HTML/EN/include.html
@@ -1801,6 +1789,8 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/SQL/SQLite/schema_21_up.sql
 %%SLIMDIR%%/SQL/SQLite/schema_22_down.sql
 %%SLIMDIR%%/SQL/SQLite/schema_22_up.sql
+%%SLIMDIR%%/SQL/SQLite/schema_23_down.sql
+%%SLIMDIR%%/SQL/SQLite/schema_23_up.sql
 %%SLIMDIR%%/SQL/SQLite/schema_2_down.sql
 %%SLIMDIR%%/SQL/SQLite/schema_2_up.sql
 %%SLIMDIR%%/SQL/SQLite/schema_3_down.sql
@@ -1847,6 +1837,8 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/SQL/mysql/schema_21_up.sql
 %%SLIMDIR%%/SQL/mysql/schema_22_down.sql
 %%SLIMDIR%%/SQL/mysql/schema_22_up.sql
+%%SLIMDIR%%/SQL/mysql/schema_23_down.sql
+%%SLIMDIR%%/SQL/mysql/schema_23_up.sql
 %%SLIMDIR%%/SQL/mysql/schema_2_down.sql
 %%SLIMDIR%%/SQL/mysql/schema_2_up.sql
 %%SLIMDIR%%/SQL/mysql/schema_3_down.sql
@@ -1947,6 +1939,7 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/Slim/Menu/ArtistInfo.pm
 %%SLIMDIR%%/Slim/Menu/Base.pm
 %%SLIMDIR%%/Slim/Menu/BrowseLibrary/Releases.pm
+%%SLIMDIR%%/Slim/Menu/BrowseLibrary/Works.pm
 %%SLIMDIR%%/Slim/Menu/BrowseLibrary.pm
 %%SLIMDIR%%/Slim/Menu/FolderInfo.pm
 %%SLIMDIR%%/Slim/Menu/GenreInfo.pm
@@ -2019,6 +2012,9 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/Slim/Plugin/ACLFiletest/Plugin.pm
 %%SLIMDIR%%/Slim/Plugin/ACLFiletest/install.xml
 %%SLIMDIR%%/Slim/Plugin/ACLFiletest/strings.txt
+%%SLIMDIR%%/Slim/Plugin/Analytics/Plugin.pm  
+%%SLIMDIR%%/Slim/Plugin/Analytics/install.xml
+%%SLIMDIR%%/Slim/Plugin/Analytics/strings.txt
 %%SLIMDIR%%/Slim/Plugin/AudioAddict/API.pm
 %%SLIMDIR%%/Slim/Plugin/AudioAddict/HTML/EN/plugins/AudioAddict/settings.html
 %%SLIMDIR%%/Slim/Plugin/AudioAddict/Plugin.pm
@@ -2072,6 +2068,9 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/Slim/Plugin/DontStopTheMusic/Settings.pm
 %%SLIMDIR%%/Slim/Plugin/DontStopTheMusic/install.xml
 %%SLIMDIR%%/Slim/Plugin/DontStopTheMusic/strings.txt
+%%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/composers.png    
+%%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/conductors.png   
+%%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/jazzcomposers.png
 %%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/icon.png
 %%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/icon_charts.png
 %%SLIMDIR%%/Slim/Plugin/ExtendedBrowseModes/HTML/EN/plugins/ExtendedBrowseModes/html/icon_folder.png
@@ -2360,6 +2359,10 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/Slim/Schema.pm
 %%SLIMDIR%%/Slim/Schema/Album.pm
 %%SLIMDIR%%/Slim/Schema/Comment.pm
+%%SLIMDIR%%/Slim/Schema/Composer.pm          
+%%SLIMDIR%%/Slim/Schema/ResultSet/Composer.pm
+%%SLIMDIR%%/Slim/Schema/ResultSet/Work.pm    
+%%SLIMDIR%%/Slim/Schema/Work.pm
 %%SLIMDIR%%/Slim/Schema/Contributor.pm
 %%SLIMDIR%%/Slim/Schema/ContributorAlbum.pm
 %%SLIMDIR%%/Slim/Schema/ContributorTrack.pm
