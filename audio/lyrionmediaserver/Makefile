@@ -2,6 +2,9 @@ PORTNAME=	lyrionmediaserver
 DISTVERSION=	9.0.0
 CATEGORIES=	audio
 
+
+PORTSCOUT=   skipv:10.0.3,10.0.4
+
 MAINTAINER=	trueos@norwegianrockcat.com
 COMMENT=	Audio streaming server that powers Squeezebox players previously from Logitech and many other devices
 WWW=		https://lyrion.org/
@@ -89,6 +92,9 @@ do-build:
 	cd ${WRKSRC_vendor}/CPAN && ./buildme.sh ${CONTRIB_FLAGS}
 
 do-install:
+	${INSTALL_DATA} ${WRKDIR}/custom-convert.conf ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf
+	${INSTALL_DATA} ${WRKDIR}/convert.conf ${STAGEDIR}${PREFIX}/${SLIMDIR}
+
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/${SLIMDIR})
 	(cd ${WRKSRC_vendor}/CPAN/build && \
 		${COPYTREE_SHARE} arch ${STAGEDIR}${PREFIX}/${SLIMDIR}/CPAN)
