@@ -92,9 +92,6 @@ do-build:
 	cd ${WRKSRC_vendor}/CPAN && ./buildme.sh ${CONTRIB_FLAGS}
 
 do-install:
-	${INSTALL_DATA} ${WRKDIR}/custom-convert.conf ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf
-	${INSTALL_DATA} ${WRKDIR}/convert.conf ${STAGEDIR}${PREFIX}/${SLIMDIR}
-
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/${SLIMDIR})
 	(cd ${WRKSRC_vendor}/CPAN/build && \
 		${COPYTREE_SHARE} arch ${STAGEDIR}${PREFIX}/${SLIMDIR}/CPAN)
@@ -116,7 +113,7 @@ do-install:
 	${INSTALL_DATA} ${WRKDIR}/Custom.pm \
 	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/Slim/Utils/OS/Custom.pm
 	${INSTALL_DATA} ${WRKDIR}/custom-convert.conf \
-	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf
+	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf.sample
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d
 	${INSTALL_DATA} ${WRKDIR}/logitechmediaserver.conf \
 	    ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d/
