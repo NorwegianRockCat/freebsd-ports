@@ -1263,6 +1263,7 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/HTML/Default/html/images/icon_now_playing_selected.gif
 %%SLIMDIR%%/HTML/Default/html/images/icon_nowplaying.gif
 %%SLIMDIR%%/HTML/Default/html/images/icon_nowplaying_collapsed.gif
+%%SLIMDIR%%/HTML/Default/html/images/logo.png
 %%SLIMDIR%%/HTML/Default/html/images/playlist.png
 %%SLIMDIR%%/HTML/Default/html/images/playlistadd.png
 %%SLIMDIR%%/HTML/Default/html/images/playlistclear.png
