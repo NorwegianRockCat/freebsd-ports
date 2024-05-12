@@ -73,8 +73,8 @@ TEST_VARS_OFF=		CONTRIB_FLAGS=-t
 DOCFILES=	Changelog*.html License*.txt
 CONFFILES=	convert.conf types.conf
 
-SLIMDIR?=	share/logitechmediaserver
-SLIMDBDIR?=	/var/db/logitechmediaserver
+SLIMDIR?=	share/lyrionmediaserver
+SLIMDBDIR?=	/var/db/lyrionmediaserver
 SLIMUSER?=	slimserv
 SLIMGROUP?=	${SLIMUSER}
 
@@ -102,6 +102,9 @@ do-install:
 		${FIND} ./CPAN/arch/ ! -path './CPAN/arch/${PERL_VER}*' -delete && \
 		${RM} -r -- Bin/* .editorconfig .github && \
 		${RM} -- ${CONFFILES} ${DOCFILES})
+	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR} && \
+		${RM} -r -- Firmware/* && \
+		${RM} -r -- graphics/CODE2000*.*)
 	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR}/CPAN/arch/${PERL_VER} && \
 		${RM} -r -- arm-linux-gnueabihf-thread-multi-64int && \
 		${RM} -r -- aarch64-linux-thread-multi && \
