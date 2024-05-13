@@ -23,7 +23,7 @@ USES=		gettext-runtime gmake perl5 shebangfix
 USE_GITHUB=	yes
 GH_TUPLE=	LMS-Community:slimserver:72a7a92 \
 		LMS-Community:slimserver-vendor:384095c:vendor
-USE_RC_SUBR=	logitechmediaserver
+USE_RC_SUBR=	lyrionmediaserver
 SHEBANG_FILES=	Bin/darwin/check-update.pl \
 		CPAN/Log/Log4perl/Layout/PatternLayout/Multiline.pm \
 		Slim/Plugin/UPnP/t/MediaRenderer.t \
@@ -37,7 +37,7 @@ SHEBANG_FILES=	Bin/darwin/check-update.pl \
 		${WRKSRC_vendor}/CPAN/hints/darwin.pl
 
 SUB_FILES=	Custom.pm \
-		logitechmediaserver.conf \
+		lyrionmediaserver.conf \
 		custom-convert.conf
 
 SUB_LIST=	PERL=${PERL} \
@@ -104,7 +104,7 @@ do-install:
 		${RM} -- ${CONFFILES} ${DOCFILES})
 	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR} && \
 		${RM} -r -- Firmware/* && \
-		${RM} -r -- graphics/CODE2000*.*)
+		${RM} -r -- Graphics/CODE2000*.*)
 	(cd ${STAGEDIR}${PREFIX}/${SLIMDIR}/CPAN/arch/${PERL_VER} && \
 		${RM} -r -- arm-linux-gnueabihf-thread-multi-64int && \
 		${RM} -r -- aarch64-linux-thread-multi && \
@@ -118,7 +118,7 @@ do-install:
 	${INSTALL_DATA} ${WRKDIR}/custom-convert.conf \
 	    ${STAGEDIR}${PREFIX}/${SLIMDIR}/custom-convert.conf.sample
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d
-	${INSTALL_DATA} ${WRKDIR}/logitechmediaserver.conf \
+	${INSTALL_DATA} ${WRKDIR}/lyrionmediaserver.conf \
 	    ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d/
 	@${MKDIR} ${STAGEDIR}${SLIMDBDIR}
 	@${LN} -s ${SLIMDBDIR}/cache ${STAGEDIR}${PREFIX}/${SLIMDIR}/Cache

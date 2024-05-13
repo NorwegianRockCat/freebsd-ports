@@ -1,4 +1,4 @@
-etc/newsyslog.conf.d/logitechmediaserver.conf
+etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%PORTDOCS%%%%DOCSDIR%%/Changelog.html
 %%PORTDOCS%%%%DOCSDIR%%/Changelog1.html
 %%PORTDOCS%%%%DOCSDIR%%/Changelog2.html
@@ -1111,6 +1111,7 @@ etc/newsyslog.conf.d/logitechmediaserver.conf
 %%SLIMDIR%%/CPAN/version/vpp.pm
 %%SLIMDIR%%/Cache
 %%SLIMDIR%%/DEVELOPERS.txt
+@dir %%SLIMDIR%%/Firmware
 %%SLIMDIR%%/Graphics/FreeSans.ttf
 %%SLIMDIR%%/Graphics/blockanimateSB2.1.font.bmp
 %%SLIMDIR%%/Graphics/blockanimateSBG.1.font.bmp
