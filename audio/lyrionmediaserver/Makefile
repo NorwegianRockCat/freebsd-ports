@@ -9,7 +9,7 @@ MAINTAINER=	trueos@norwegianrockcat.com
 COMMENT=	Audio streaming server that powers Squeezebox players previously from Logitech and many other devices
 WWW=		https://lyrion.org/
 
-LICENSE=	GPLv3
+LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/License.txt
 # Contains non-redistributable firmware, documentation, and images
 
@@ -21,7 +21,7 @@ RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
 
 USES=		gettext-runtime gmake perl5 shebangfix
 USE_GITHUB=	yes
-GH_TUPLE=	LMS-Community:slimserver:72a7a92 \
+GH_TUPLE=	LMS-Community:slimserver:edd98d0 \
 		LMS-Community:slimserver-vendor:384095c:vendor
 USE_RC_SUBR=	lyrionmediaserver
 SHEBANG_FILES=	Bin/darwin/check-update.pl \
@@ -87,6 +87,11 @@ ARCHNAME=	i386-freebsd-thread-multi-64int
 .if ${ARCH} == "amd64"
 ARCHNAME=	amd64-freebsd-thread-multi
 .endif
+
+.if ${ARCH} == "arm64"
+ARCHNAME=	arm64-freebsd-thread-multi
+.endif
+
 
 do-build:
 	cd ${WRKSRC_vendor}/CPAN && ./buildme.sh ${CONTRIB_FLAGS}
