@@ -3,7 +3,7 @@ DISTVERSION=	9.0.0
 CATEGORIES=	audio
 
 
-PORTSCOUT=   skipv:10.0.3,10.0.4
+PORTSCOUT=   skipv:10.0.3,10.0.4,release-10.0.0.0
 
 MAINTAINER=	trueos@norwegianrockcat.com
 COMMENT=	Audio streaming server that powers Squeezebox players previously from Logitech and many other devices
@@ -21,8 +21,8 @@ RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
 
 USES=		gettext-runtime gmake perl5 shebangfix
 USE_GITHUB=	yes
-GH_TUPLE=	LMS-Community:slimserver:edd98d0 \
-		LMS-Community:slimserver-vendor:384095c:vendor
+GH_TUPLE=	LMS-Community:slimserver:d584d4a \
+		LMS-Community:slimserver-vendor:ee74dc4:vendor
 USE_RC_SUBR=	lyrionmediaserver
 SHEBANG_FILES=	Bin/darwin/check-update.pl \
 		CPAN/Log/Log4perl/Layout/PatternLayout/Multiline.pm \

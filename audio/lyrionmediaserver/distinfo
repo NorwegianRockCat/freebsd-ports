@@ -1,5 +1,5 @@
-TIMESTAMP = 1715706440
-SHA256 (LMS-Community-slimserver-9.0.0-edd98d0_GH0.tar.gz) = ef62a1df94d0c4e41df0d1566471c4a0fcefc256b4edf056a63a560f1aeaa69a
-SIZE (LMS-Community-slimserver-9.0.0-edd98d0_GH0.tar.gz) = 157131917
-SHA256 (LMS-Community-slimserver-vendor-384095c_GH0.tar.gz) = 8e597e560b699401baac0c352d9538a70bd7b54be4e78a8952f594efb213cf2a
-SIZE (LMS-Community-slimserver-vendor-384095c_GH0.tar.gz) = 184535265
+TIMESTAMP = 1721294077
+SHA256 (LMS-Community-slimserver-9.0.0-d584d4a_GH0.tar.gz) = 08c3c7edd5261c7129cf30a89681e74bad128949c15d7cd17a04d91e38cbfcd4
+SIZE (LMS-Community-slimserver-9.0.0-d584d4a_GH0.tar.gz) = 157083968
+SHA256 (LMS-Community-slimserver-vendor-ee74dc4_GH0.tar.gz) = 35091fdced293e9b3dd3f5f04b0cdf845980693642bbd3c3652fcce39751021d
+SIZE (LMS-Community-slimserver-vendor-ee74dc4_GH0.tar.gz) = 184535402
