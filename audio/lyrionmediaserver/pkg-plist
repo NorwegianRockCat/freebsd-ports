@@ -10,6 +10,7 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%PORTDOCS%%%%DOCSDIR%%/Changelog8.html
 %%PORTDOCS%%%%DOCSDIR%%/Changelog9.html
 %%PORTDOCS%%%%DOCSDIR%%/License.txt
+%%SLIMDIR%%/.perlimports.toml
 %%SLIMDIR%%/CPAN/AE.pm
 %%SLIMDIR%%/CPAN/Algorithm/C3.pm
 %%SLIMDIR%%/CPAN/AnyEvent.pm
@@ -1611,10 +1612,8 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/HTML/EN/html/images/gallery.png
 %%SLIMDIR%%/HTML/EN/html/images/genres.png
 %%SLIMDIR%%/HTML/EN/html/images/hardware.svg
-%%SLIMDIR%%/HTML/EN/html/images/icon_grey.png
 %%SLIMDIR%%/HTML/EN/html/images/information.svg
 %%SLIMDIR%%/HTML/EN/html/images/list.png
-%%SLIMDIR%%/HTML/EN/html/images/lms.png
 %%SLIMDIR%%/HTML/EN/html/images/lms.svg
 %%SLIMDIR%%/HTML/EN/html/images/loading.gif
 %%SLIMDIR%%/HTML/EN/html/images/misc.svg
@@ -1913,12 +1912,6 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/Slim/Formats/Wav.pm
 %%SLIMDIR%%/Slim/Formats/WavPack.pm
 %%SLIMDIR%%/Slim/Formats/XML.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel/Advanced.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel/Diagnostics.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel/Music.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel/Settings.pm
-%%SLIMDIR%%/Slim/GUI/ControlPanel/Status.pm
 %%SLIMDIR%%/Slim/Hardware/BacklightLED.pm
 %%SLIMDIR%%/Slim/Hardware/IR.pm
 %%SLIMDIR%%/Slim/Hardware/TriLED.pm
@@ -2407,6 +2400,7 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/Slim/Utils/OS.pm
 %%SLIMDIR%%/Slim/Utils/OS/Custom.pm
 %%SLIMDIR%%/Slim/Utils/OS/Debian.pm
+%%SLIMDIR%%/Slim/Utils/OS/Docker.pm
 %%SLIMDIR%%/Slim/Utils/OS/Linux.pm
 %%SLIMDIR%%/Slim/Utils/OS/OSX.pm
 %%SLIMDIR%%/Slim/Utils/OS/RedHat.pm
@@ -2438,7 +2432,6 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/ClientV7.pm
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/ClientV8.pm
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/ClientV9.pm
-%%SLIMDIR%%/Slim/Utils/Prefs/Migration/README.md
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/V1.pm
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/V2.pm
 %%SLIMDIR%%/Slim/Utils/Prefs/Migration/V3.pm
@@ -2457,9 +2450,6 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/Slim/Utils/Scanner/Local/Async.pm
 %%SLIMDIR%%/Slim/Utils/Scanner/Remote.pm
 %%SLIMDIR%%/Slim/Utils/Scheduler.pm
-%%SLIMDIR%%/Slim/Utils/ServiceManager.pm
-%%SLIMDIR%%/Slim/Utils/ServiceManager/OSX.pm
-%%SLIMDIR%%/Slim/Utils/ServiceManager/Win32.pm
 %%SLIMDIR%%/Slim/Utils/SoundCheck.pm
 %%SLIMDIR%%/Slim/Utils/Strings.pm
 %%SLIMDIR%%/Slim/Utils/Text.pm
@@ -2521,7 +2511,6 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 %%SLIMDIR%%/cleanup.pl
 @sample %%SLIMDIR%%/convert.conf.sample %%SLIMDIR%%/convert.conf
 @sample %%SLIMDIR%%/custom-convert.conf.sample %%SLIMDIR%%/custom-convert.conf
-%%SLIMDIR%%/gdresize.pl
 %%SLIMDIR%%/gdresized.pl
 %%SLIMDIR%%/icudt46b.dat
 %%SLIMDIR%%/icudt46l.dat
@@ -2556,6 +2545,7 @@ etc/newsyslog.conf.d/lyrionmediaserver.conf
 @(,,755) %%SLIMDIR%%/slimserver.pl
 %%SLIMDIR%%/strings.txt
 %%SLIMDIR%%/t/00_smoketest.sh
+%%SLIMDIR%%/t/verifyStrings.pl
 @sample %%SLIMDIR%%/types.conf.sample %%SLIMDIR%%/types.conf
 @dir %%SLIMDIR%%/Bin
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Audio/Cuefile/Parser

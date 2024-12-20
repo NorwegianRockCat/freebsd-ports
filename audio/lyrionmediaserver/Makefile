@@ -21,15 +21,14 @@ RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
 
 USES=		gettext-runtime gmake perl5 shebangfix
 USE_GITHUB=	yes
-GH_TUPLE=	LMS-Community:slimserver:d584d4a \
-		LMS-Community:slimserver-vendor:ee74dc4:vendor
+GH_TUPLE=	LMS-Community:slimserver:0e6b212 \
+		LMS-Community:slimserver-vendor:206ddf2:vendor
 USE_RC_SUBR=	lyrionmediaserver
 SHEBANG_FILES=	Bin/darwin/check-update.pl \
 		CPAN/Log/Log4perl/Layout/PatternLayout/Multiline.pm \
 		Slim/Plugin/UPnP/t/MediaRenderer.t \
 		Slim/Plugin/UPnP/t/MediaServer.t \
 		cleanup.pl \
-		gdresize.pl \
 		gdresized.pl \
 		lib/MPEG/Audio/Frame.pm \
 		scanner.pl \
