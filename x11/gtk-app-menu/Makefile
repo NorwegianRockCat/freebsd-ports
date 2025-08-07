@@ -27,7 +27,7 @@ MESON_ARGS=	-Dappmenu-gtk-module=enabled \
 USE_GITLAB=	yes
 GL_ACCOUNT=	vala-panel-project
 GL_PROJECT=	vala-panel-appmenu
-GL_TAGNAME=	8c8e788bf04c8c2911b72a24e3b79842d5b2b286
+GL_TAGNAME=	${DISTVERSION}
 
 USE_GNOME=	gtk30 glib20 gtk20 gdkpixbuf
 GLIB_SCHEMAS=	org.appmenu.gtk-module.gschema.xml
