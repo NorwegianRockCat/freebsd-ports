@@ -36,6 +36,7 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/Archive/Zip/Tree.pm
 %%SLIMDIR%%/CPAN/Archive/Zip/ZipFileMember.pm
 %%SLIMDIR%%/lib/Async/Util.pm
+%%SLIMDIR%%/lib/Audio/Scan.pm
 %%SLIMDIR%%/CPAN/Bundle/LWP.pm
 %%SLIMDIR%%/CPAN/Cache/BaseCache.pm
 %%SLIMDIR%%/CPAN/Cache/Cache.pm
@@ -180,10 +181,10 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/Devel/Leak/Object.pm
 %%SLIMDIR%%/CPAN/Digest/SHA1.pm
 %%SLIMDIR%%/CPAN/Digest/base.pm
-%%SLIMDIR%%/CPAN/EV.pm
 %%SLIMDIR%%/CPAN/Encode/Detect/Detector.pm
 %%SLIMDIR%%/CPAN/Encode/Locale.pm
 %%SLIMDIR%%/CPAN/Error.pm
+%%SLIMDIR%%/CPAN/EV.pm
 %%SLIMDIR%%/CPAN/Exporter/Lite.pm
 %%SLIMDIR%%/CPAN/File/BOM.pm
 %%SLIMDIR%%/CPAN/File/Copy/Recursive.pm
@@ -728,61 +729,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/YAML/XS.pm
 %%SLIMDIR%%/CPAN/YAML/XS/LibYAML.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Audio/Cuefile/Parser.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Audio/Scan.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Class/XSAccessor.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Class/XSAccessor/Array.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Class/XSAccessor/Heavy.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/DBM.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/ExampleP.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/File.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Policy/Base.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Policy/classic.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Policy/pedantic.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Policy/rush.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Transport/Base.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Transport/corostream.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Transport/null.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Transport/pipeone.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Gofer/Transport/stream.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/NullP.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Proxy.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/SQLite.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/SQLite/Constants.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/SQLite/VirtualTable.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/SQLite/VirtualTable/FileContent.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/SQLite/VirtualTable/PerlData.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBD/Sponge.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Changes.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Const/GetInfo/ANSI.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Const/GetInfo/ODBC.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Const/GetInfoReturn.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Const/GetInfoType.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/DBD.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/DBD/Metadata.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/DBD/SqlEngine.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/FAQ.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Execute.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Request.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Response.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Serializer/Base.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Serializer/DataDumper.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Serializer/Storable.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Transport/Base.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Transport/pipeone.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Gofer/Transport/stream.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Profile.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/ProfileData.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/ProfileDumper.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/ProfileDumper/Apache.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/ProfileSubs.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/ProxyServer.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/PurePerl.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/SQL/Nano.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Util/CacheMemory.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/Util/_accessor.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/DBI/W32ODBC.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Data/Dump.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Data/Dump/FilterContext.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Data/Dump/Filtered.pm
@@ -798,9 +744,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/ExtUtils/CBuilder/Platform/dec_osf.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/ExtUtils/CBuilder/Platform/os2.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/HTML/Tagset.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Image/Scale.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/JSON/XS.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/JSON/XS/Boolean.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build/API.pod
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build/Authoring.pod
@@ -830,14 +773,9 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build/PodParser.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build/Version.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Module/Build/YAML.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Sub/Uplevel.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Sub/Uplevel.pod
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Test/NoWarnings.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Test/NoWarnings/Warning.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Test/Warn.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/Tree/DAG_Node.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Audio/Cuefile/Parser.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Audio/Scan.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Bundle/DBI.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Class/XSAccessor.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Class/XSAccessor/Array.pm
@@ -906,11 +844,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Data/Dump/Filtered.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Data/Dump/Trace.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Digest/SHA1.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/EV.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/EV/EVAPI.h
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/EV/MakeMaker.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/EV/ev.h
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/EV/libev.pod
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Encode/Detect.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Encode/Detect/Detector.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/ExtUtils/CBuilder.pm
@@ -966,7 +899,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Module/Build/Version.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Module/Build/YAML.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Sub/Name.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Sub/Uplevel.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Template.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Template/Base.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Template/Config.pm
@@ -1035,8 +967,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Template/View.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Test/NoWarnings.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Test/NoWarnings/Warning.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Test/Warn.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Tree/DAG_Node.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/Win32/DBIODBC.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/XML/Parser.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/XML/Parser/Encodings/Japanese_Encodings.msg
@@ -1074,7 +1004,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/YAML/XS.pm
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/YAML/XS.pod
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/YAML/XS/LibYAML.pm
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Audio/Scan/Scan.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Class/XSAccessor/XSAccessor.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/DBD/SQLite/SQLite.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/DBI/DBI.so
@@ -1087,7 +1016,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/DBI/dbivport.h
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/DBI/dbixs_rev.h
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Digest/SHA1/SHA1.so
-%%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/EV/EV.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Encode/Detect/Detector/Detector.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/HTML/Parser/Parser.so
 %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/IO/Interface/Interface.so
@@ -2533,7 +2461,6 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 %%SLIMDIR%%/lib/AnyEvent/Handle.pm
 %%SLIMDIR%%/lib/AnyEvent/Impl/PerfMonEV.pm
 %%SLIMDIR%%/lib/AnyEvent/Socket.pm
-%%SLIMDIR%%/lib/Audio/Scan.pm
 %%SLIMDIR%%/lib/CGI/Cookie.pm
 %%SLIMDIR%%/lib/CGI/Util.pm
 %%SLIMDIR%%/lib/Cache/FileBackend.pm
@@ -2566,10 +2493,7 @@ etc/newsyslog.conf.d/lyrionmusicserver.conf
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/ExtUtils/CBuilder
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/HTML/Tagset
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Module/Build
-@dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Sub/Uplevel
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Test/NoWarnings
-@dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Test/Warn
-@dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/Tree/DAG_Node
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/YAML/LibYAML
 @dir %%SLIMDIR%%/CPAN/arch/%%PERL_VER%%/%%ARCHNAME%%/auto/common/sense
 @dir(%%SLIMUSER%%,%%SLIMGROUP%%) %%SLIMDBDIR%%

@@ -16,8 +16,11 @@ LICENSE_FILE=	${WRKSRC}/License.txt
 BUILD_DEPENDS=	nasm:devel/nasm \
 		bash:shells/bash \
 		rsync:net/rsync
+
 LIB_DEPENDS=	libgd.so:graphics/gd
-RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
+RUN_DEPENDS=	p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL \
+		p5-Audio-Scan>0:audio/p5-Audio-Scan \
+		p5-EV>0:devel/p5-EV
 
 ONLY_FOR_ARCHS=	i386 amd64 aarch64
 ONLY_FOR_ARCHS_REASON=	Only tested on these archs, custom Perl triplet for plist.
@@ -53,6 +56,8 @@ SUB_LIST=	PERL=${PERL} \
 
 USERS=		${SLIMUSER}
 GROUPS=		${SLIMGROUP}
+
+PATCH_WRKSRC=	${WRKDIR}
 
 PLIST_SUB=	SLIMDIR=${SLIMDIR} \
 		SLIMDBDIR=${SLIMDBDIR} \
